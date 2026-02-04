@@ -238,14 +238,13 @@
                                     </div>
                                     <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="outline" data-text="signin_with" data-size="large" data-logo_alignment="left"></div>
                                 </div>
-                                <p class="text-[10px] text-slate-400 uppercase italic">Tu privacidad es importante. Solo usamos esto para la gestión del archivo.</p>
                             </div>
 
-                            <!-- PASO 2: Selección de Archivo (Se activa tras login) -->
+                            <!-- PASO 2: Selección de Archivo -->
                             <div id="upload-step-pick" class="hidden animate-fade">
                                 <i data-lucide="file-check" class="w-12 h-12 text-brandGreen mx-auto mb-4"></i>
-                                <p class="text-sm font-bold text-brandGreen mb-2">¡Sesión iniciada con éxito!</p>
-                                <p class="text-xs text-slate-500 mb-6">Ahora haz clic en el botón para elegir tu documento.</p>
+                                <p class="text-sm font-bold text-brandGreen mb-2">¡Sesión iniciada!</p>
+                                <p class="text-xs text-slate-500 mb-6">Haz clic abajo para elegir tu documento.</p>
                                 <button type="button" onclick="document.getElementById('real-file-input').click()" class="bg-brandGreen text-white px-8 py-3 rounded-full font-bold hover:bg-green-600 transition shadow-md flex items-center gap-2 mx-auto">
                                     <i data-lucide="file-up" class="w-4 h-4"></i>
                                     Seleccionar Archivo
@@ -256,15 +255,14 @@
                             <!-- PASO 3: Subiendo -->
                             <div id="upload-step-loading" class="hidden animate-fade">
                                 <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-brandGreen mx-auto mb-4"></div>
-                                <p class="text-sm font-bold">Subiendo a tu carpeta segura...</p>
-                                <p class="text-xs text-slate-500 mt-2">Por favor, no cierres esta pestaña.</p>
+                                <p class="text-sm font-bold">Subiendo a tu carpeta en Drive...</p>
                             </div>
 
                             <!-- PASO 4: Éxito -->
                             <div id="upload-step-success" class="hidden animate-fade text-green-500">
                                 <i data-lucide="check-circle" class="w-14 h-14 mx-auto mb-4"></i>
                                 <p class="text-lg font-bold">¡Archivo guardado en la nube!</p>
-                                <p class="text-xs text-slate-500 mt-1">Ya puedes finalizar tu pedido enviándolo a WhatsApp.</p>
+                                <p class="text-xs text-slate-500 mt-1">Ya puedes enviar tu pedido a WhatsApp.</p>
                             </div>
                         </div>
 
@@ -289,7 +287,6 @@
                         <i data-lucide="shopping-cart"></i>
                         ENVIAR PEDIDO A WHATSAPP
                     </button>
-                    <p class="text-center text-[10px] text-slate-400 mt-4 uppercase tracking-widest">Se abrirá la aplicación de WhatsApp automáticamente</p>
                 </div>
 
             </form>
@@ -353,11 +350,12 @@
         lucide.createIcons();
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        // CONFIGURACIÓN DRIVE / GOOGLE
-        const scriptURL = "https://script.google.com/macros/s/AKfcybyr7mnBMtcrLoCZ1oJZkJiscXke8l0uu7PfTLUpsPgeURk53EfTtQfgESdzHj_6NT7Z/exec";
+        // TU NUEVA URL GENERADA
+        const scriptURL = "https://script.google.com/macros/s/AKfycbwl8vBS_B4DmTaHCp00n4ngwIK29IVRrokK9EDHpIeX3F98PAtChagjV2O_069TwcoY/exec";
+        
         let isFileUploaded = false;
+        let userEmailForFolder = "";
 
-        // ELEMENTOS DEL DOM
         const orderForm = document.getElementById('order-form');
         const fileRadios = document.getElementsByName('has-files');
         const fileOptionsContainer = document.getElementById('file-options-container');
@@ -367,27 +365,30 @@
         const realFileInput = document.getElementById('real-file-input');
         const submitBtn = document.getElementById('submit-btn');
         
-        // Pasos de subida
         const stepLogin = document.getElementById('upload-step-login');
         const stepPick = document.getElementById('upload-step-pick');
         const stepLoading = document.getElementById('upload-step-loading');
         const stepSuccess = document.getElementById('upload-step-success');
 
-        // CALLBACK DE LOGIN GOOGLE (Asignar globalmente para GSI)
+        // CALLBACK LOGIN
         window.handleCredentialResponse = function(response) {
-            console.log("Login de Google exitoso.");
-            // Ocultamos el login y mostramos el paso de selección de archivo
-            stepLogin.classList.add('hidden');
-            stepPick.classList.remove('hidden');
-            lucide.createIcons(); // Recargar iconos lucide en el nuevo paso
+            try {
+                const payload = JSON.parse(atob(response.credential.split('.')[1]));
+                userEmailForFolder = payload.email;
+                
+                stepLogin.classList.add('hidden');
+                stepPick.classList.remove('hidden');
+                lucide.createIcons();
+            } catch (err) {
+                console.error("Error al procesar login:", err);
+            }
         };
 
-        // LÓGICA DE CARGA REAL A GOOGLE DRIVE
+        // SUBIDA DE ARCHIVO
         realFileInput.addEventListener('change', async function() {
             const file = this.files[0];
             if (!file) return;
 
-            // Mostramos el estado de carga
             stepPick.classList.add('hidden');
             stepLoading.classList.remove('hidden');
 
@@ -398,57 +399,49 @@
                 const payload = {
                     base64: base64Data,
                     fileName: file.name,
-                    mimeType: file.type
+                    mimeType: file.type,
+                    userEmail: userEmailForFolder || document.getElementById('full-name').value || "Cliente_Anonimo"
                 };
 
                 try {
+                    // Envío real al Apps Script
                     await fetch(scriptURL, {
                         method: 'POST',
                         mode: 'no-cors', 
                         body: JSON.stringify(payload)
                     });
 
-                    // Simulación de éxito
+                    // Confirmación de éxito
                     setTimeout(() => {
                         stepLoading.classList.add('hidden');
                         stepSuccess.classList.remove('hidden');
                         isFileUploaded = true;
                         checkSubmitButton();
                         lucide.createIcons();
-                    }, 2500);
+                    }, 3000);
 
                 } catch (e) {
-                    console.error("Error en la subida:", e);
-                    alert("Error al subir el archivo. Inténtalo de nuevo.");
+                    console.error("Error:", e);
+                    alert("Error al conectar con Drive. Verifica tu conexión.");
                     stepLoading.classList.add('hidden');
                     stepPick.classList.remove('hidden');
                 }
             };
         });
 
-        // LÓGICA DE UI DE ARCHIVOS
+        // LÓGICA DE UI
         fileRadios.forEach(radio => {
             radio.addEventListener('change', (e) => {
-                if(e.target.value === 'yes') {
-                    fileOptionsContainer.classList.remove('hidden');
-                } else {
-                    fileOptionsContainer.classList.add('hidden');
-                    isFileUploaded = false;
-                }
+                fileOptionsContainer.classList.toggle('hidden', e.target.value === 'no');
                 checkSubmitButton();
             });
         });
 
         uploadMethodRadios.forEach(radio => {
             radio.addEventListener('change', (e) => {
-                if(e.target.value === 'cloud') {
-                    uploadZone.classList.remove('hidden');
-                    whatsappNotice.classList.add('hidden');
-                } else {
-                    uploadZone.classList.add('hidden');
-                    whatsappNotice.classList.remove('hidden');
-                    isFileUploaded = false;
-                }
+                const isCloud = e.target.value === 'cloud';
+                uploadZone.classList.toggle('hidden', !isCloud);
+                whatsappNotice.classList.toggle('hidden', isCloud);
                 checkSubmitButton();
             });
         });
@@ -457,7 +450,6 @@
             const hasFiles = Array.from(fileRadios).find(r => r.checked).value === 'yes';
             const methodCloud = Array.from(uploadMethodRadios).find(r => r.checked).value === 'cloud';
             
-            // Si eligió nube y no ha subido nada, bloqueamos el envío
             if (hasFiles && methodCloud && !isFileUploaded) {
                 submitBtn.disabled = true;
                 submitBtn.style.opacity = "0.5";
@@ -467,50 +459,25 @@
             }
         }
 
-        // ENVÍO A WHATSAPP
         orderForm.addEventListener('submit', (e) => {
             e.preventDefault();
-
             const name = document.getElementById('full-name').value;
-            const email = document.getElementById('email').value || "No proporcionado";
-            const phone = document.getElementById('phone').value;
             const type = document.getElementById('work-type').value;
-            const subject = document.getElementById('subject').value;
             const title = document.getElementById('title').value;
-            const pages = document.getElementById('pages').value || "No especificado";
             const deadline = document.getElementById('deadline').value;
 
             const hasFiles = Array.from(fileRadios).find(r => r.checked).value === 'yes';
             const method = hasFiles ? Array.from(uploadMethodRadios).find(r => r.checked).value : 'none';
 
-            let fileInfo = "";
-            if (!hasFiles) {
-                fileInfo = "Sin archivos adjuntos por el momento.";
-            } else if (method === 'whatsapp') {
-                fileInfo = "SE ENVIARÁN ARCHIVOS/FOTOS POR ESTE CHAT INTERNAMENTE.";
-            } else if (method === 'cloud') {
-                fileInfo = "✅ ARCHIVOS CARGADOS EN LA NUBE (Google Drive).";
+            let fileInfo = "Sin archivos.";
+            if (hasFiles) {
+                fileInfo = method === 'cloud' ? "✅ ARCHIVOS EN DRIVE" : "📎 Se enviarán por WhatsApp";
             }
 
-            const message = `*NUEVO PEDIDO - ACADÉMIKA PLUS*%0A%0A` +
-                            `*DATOS DEL CLIENTE*%0A` +
-                            `👤 Nombre: ${name}%0A` +
-                            `📧 Correo: ${email}%0A` +
-                            `📞 Celular: ${phone}%0A%0A` +
-                            `*DETALLES DEL TRABAJO*%0A` +
-                            `📑 Tipo: ${type}%0A` +
-                            `📚 Asignatura: ${subject}%0A` +
-                            `🎯 Título: ${title}%0A` +
-                            `📄 Páginas: ${pages}%0A` +
-                            `⏰ Entrega: ${deadline.replace('T', ' ')}%0A%0A` +
-                            `*DOCUMENTACIÓN*%0A` +
-                            `📎 ${fileInfo}`;
-
-            const whatsappUrl = `https://wa.me/593995458260?text=${message}`;
-            window.open(whatsappUrl, '_blank');
+            const message = `*NUEVO PEDIDO ACADÉMIKA*%0A👤 Cliente: ${name}%0A📑 Tipo: ${type}%0A🎯 Título: ${title}%0A⏰ Entrega: ${deadline.replace('T', ' ')}%0A📎 Archivos: ${fileInfo}`;
+            window.open(`https://wa.me/593995458260?text=${message}`, '_blank');
         });
 
-        // TEMA OSCURO Y LOGOS
         const themeToggleBtn = document.getElementById('theme-toggle');
         const navLogo = document.getElementById('nav-logo');
         const footerLogo = document.getElementById('footer-logo');
