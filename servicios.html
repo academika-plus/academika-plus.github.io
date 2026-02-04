@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO BÁSICO -->
+    <title>Servicios | Académika Plus - Expertos en Apoyo Académico</title>
+    <meta name="description" content="Explora nuestra amplia gama de servicios académicos: Tesis, Monografías, Ensayos, Proyectos y más. Calidad garantizada para tu éxito.">
+    
+    <!-- OPEN GRAPH / SOCIAL -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Servicios | Académika Plus">
+    <meta property="og:description" content="Soluciones académicas integrales: Tesis, Proyectos, Ensayos y más.">
+    <meta property="og:image" content="http://academika-plus.github.io/img/photos/academika+.png">
+
+    <!-- CONFIGURACIÓN DE FAVICON -->
+    <link rel="icon" type="image/x-icon" href="https://academika-plus.github.io/img/static/a+.ico">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brandYellow: '#FACC15',
+                        brandGreen: '#22C55E',
+                        brandDark: '#111827',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap');
+        body { font-family: 'Lexend', sans-serif; }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        .dark .glass {
+            background: rgba(17, 24, 39, 0.8);
+        }
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        /* Estilo para ocultar con transición suave */
+        .hidden-card {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900 dark:bg-brandDark dark:text-white transition-colors duration-300 min-h-screen flex flex-col">
+
+    <!-- NAVBAR -->
+    <nav class="sticky top-0 z-50 glass border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html">
+                        <img id="nav-logo" class="h-12 w-auto" src="https://academika-plus.github.io/img/static/academika_color.png" alt="Académika Logo">
+                    </a>
+                </div>
+
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html" class="hover:text-brandGreen transition">Inicio</a>
+                    <a href="servicios.html" class="font-semibold text-brandGreen">Servicios</a>
+                    <a href="quienes-somos.html" class="hover:text-brandGreen transition">Quiénes Somos</a>
+                    <a href="contacto.html" class="hover:text-brandGreen transition">Contacto</a>
+                    <a href="pedido.html" class="bg-brandYellow text-black px-6 py-2 rounded-full font-bold hover:shadow-lg transition transform hover:-translate-y-1">Hacer Pedido</a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <i data-lucide="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-brandDark border-b border-gray-200 dark:border-gray-800 px-4 pt-2 pb-6 space-y-2">
+            <a href="index.html" class="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">Inicio</a>
+            <a href="servicios.html" class="block px-3 py-2 text-brandGreen font-bold">Servicios</a>
+            <a href="quienes-somos.html" class="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">Quiénes Somos</a>
+            <a href="contacto.html" class="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">Contacto</a>
+            <a href="pedido.html" class="block px-3 py-2 bg-brandYellow text-black font-bold text-center rounded-lg mt-4">Hacer Pedido</a>
+        </div>
+    </nav>
+
+    <!-- HERO SERVICIOS (Título y Descripción) -->
+    <header class="pt-16 pb-8 bg-gradient-to-b from-green-50 to-white dark:from-gray-900 dark:to-brandDark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Nuestros <span class="text-brandGreen">Servicios</span></h1>
+            <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+                Ofrecemos soluciones académicas integrales adaptadas a tus necesidades. Calidad, puntualidad y profesionalismo en cada entrega.
+            </p>
+        </div>
+    </header>
+
+    <!-- BUSCADOR FIJADO (Sticky Search) -->
+    <div class="sticky top-20 z-40 glass border-b border-gray-200 dark:border-gray-800 py-4 shadow-sm">
+        <div class="max-w-xl mx-auto px-4">
+            <div class="relative group">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <i data-lucide="search" class="w-5 h-5 text-slate-400 group-focus-within:text-brandGreen transition-colors"></i>
+                </div>
+                <input 
+                    type="text" 
+                    id="service-search" 
+                    placeholder="¿Qué trabajo necesitas? (ej: Tesis, Ensayos...)" 
+                    class="w-full pl-12 pr-4 py-3 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/50 dark:bg-gray-800/50 shadow-sm focus:ring-2 focus:ring-brandGreen focus:border-brandGreen outline-none transition-all dark:text-white"
+                >
+            </div>
+        </div>
+    </div>
+
+    <!-- GRID DE SERVICIOS -->
+    <section class="py-12 flex-grow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Mensaje de no resultados -->
+            <div id="no-results" class="hidden text-center py-20">
+                <i data-lucide="search-x" class="w-16 h-16 text-slate-300 dark:text-slate-600 mx-auto mb-4"></i>
+                <h3 class="text-2xl font-bold text-slate-400">No encontramos lo que buscas...</h3>
+                <p class="text-slate-500 mt-2">Prueba con otras palabras o contáctanos por WhatsApp para un pedido personalizado.</p>
+            </div>
+
+            <div id="services-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                
+                <!-- Monografías -->
+                <div class="service-card group bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300">
+                    <div class="service-icon w-14 h-14 bg-yellow-100 dark:bg-yellow-900/30 text-brandYellow rounded-2xl flex items-center justify-center mb-6 transition-transform">
+                        <i data-lucide="book-open"></i>
+                    </div>
+                    <h3 class="service-title text-xl font-bold mb-3">Monografías</h3>
+                    <p class="service-desc text-slate-500 dark:text-slate-400 text-sm mb-6">Investigaciones exhaustivas sobre temas específicos con rigor metodológico.</p>
+                    <button onclick="openModal('monografias')" class="text-brandGreen font-bold flex items-center gap-2 hover:underline">
+                        Saber más <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Artículos Científicos -->
+                <div class="service-card group bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300">
+                    <div class="service-icon w-14 h-14 bg-green-100 dark:bg-green-900/30 text-brandGreen rounded-2xl flex items-center justify-center mb-6 transition-transform">
+                        <i data-lucide="microscope"></i>
+                    </div>
+                    <h3 class="service-title text-xl font-bold mb-3">Artículos Científicos</h3>
+                    <p class="service-desc text-slate-500 dark:text-slate-400 text-sm mb-6">Redacción y estructuración de papers para publicación en revistas indexadas.</p>
+                    <button onclick="openModal('articulos')" class="text-brandGreen font-bold flex items-center gap-2 hover:underline">
+                        Saber más <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Tesis -->
+                <div class="service-card group bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300">
+                    <div class="service-icon w-14 h-14 bg-blue-100 dark:bg-blue-900/30 text-blue-500 rounded-2xl flex items-center justify-center mb-6 transition-transform">
+                        <i data-lucide="graduation-cap"></i>
+                    </div>
+                    <h3 class="service-title text-xl font-bold mb-3">Tesis Grado/Posgrado</h3>
+                    <p class="service-desc text-slate-500 dark:text-slate-400 text-sm mb-6">Asesoría integral desde la elección del tema hasta la defensa final.</p>
+                    <button onclick="openModal('tesis')" class="text-brandGreen font-bold flex items-center gap-2 hover:underline">
+                        Saber más <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Ensayos -->
+                <div class="service-card group bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300">
+                    <div class="service-icon w-14 h-14 bg-purple-100 dark:bg-purple-900/30 text-purple-500 rounded-2xl flex items-center justify-center mb-6 transition-transform">
+                        <i data-lucide="pen-tool"></i>
+                    </div>
+                    <h3 class="service-title text-xl font-bold mb-3">Ensayos</h3>
+                    <p class="service-desc text-slate-500 dark:text-slate-400 text-sm mb-6">Textos argumentativos, críticos y analíticos con excelente redacción.</p>
+                    <button onclick="openModal('ensayos')" class="text-brandGreen font-bold flex items-center gap-2 hover:underline">
+                        Saber más <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Maquetas -->
+                <div class="service-card group bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300">
+                    <div class="service-icon w-14 h-14 bg-orange-100 dark:bg-orange-900/30 text-orange-500 rounded-2xl flex items-center justify-center mb-6 transition-transform">
+                        <i data-lucide="layers"></i>
+                    </div>
+                    <h3 class="service-title text-xl font-bold mb-3">Maquetas</h3>
+                    <p class="service-desc text-slate-500 dark:text-slate-400 text-sm mb-6">Diseño y elaboración de prototipos físicos o digitales para proyectos.</p>
+                    <button onclick="openModal('maquetas')" class="text-brandGreen font-bold flex items-center gap-2 hover:underline">
+                        Saber más <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Transcripción -->
+                <div class="service-card group bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300">
+                    <div class="service-icon w-14 h-14 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-500 rounded-2xl flex items-center justify-center mb-6 transition-transform">
+                        <i data-lucide="type"></i>
+                    </div>
+                    <h3 class="service-title text-xl font-bold mb-3">Transcripción de escritura</h3>
+                    <p class="service-desc text-slate-500 dark:text-slate-400 text-sm mb-6">Conversión de audio, video o escritura manual a documentos digitales.</p>
+                    <button onclick="openModal('transcripcion')" class="text-brandGreen font-bold flex items-center gap-2 hover:underline">
+                        Saber más <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Tareas -->
+                <div class="service-card group bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300">
+                    <div class="service-icon w-14 h-14 bg-rose-100 dark:bg-rose-900/30 text-rose-500 rounded-2xl flex items-center justify-center mb-6 transition-transform">
+                        <i data-lucide="edit-3"></i>
+                    </div>
+                    <h3 class="service-title text-xl font-bold mb-3">Tareas Universitario/Colegio</h3>
+                    <p class="service-desc text-slate-500 dark:text-slate-400 text-sm mb-6">Resolución de ejercicios y deberes en diversas áreas del conocimiento.</p>
+                    <button onclick="openModal('tareas')" class="text-brandGreen font-bold flex items-center gap-2 hover:underline">
+                        Saber más <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- PPTs -->
+                <div class="service-card group bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300">
+                    <div class="service-icon w-14 h-14 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-500 rounded-2xl flex items-center justify-center mb-6 transition-transform">
+                        <i data-lucide="presentation"></i>
+                    </div>
+                    <h3 class="service-title text-xl font-bold mb-3">Diseño de PPT's</h3>
+                    <p class="service-desc text-slate-500 dark:text-slate-400 text-sm mb-6">Presentaciones visualmente impactantes para exposiciones y defensas.</p>
+                    <button onclick="openModal('ppt')" class="text-brandGreen font-bold flex items-center gap-2 hover:underline">
+                        Saber más <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Correcciones -->
+                <div class="service-card group bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300">
+                    <div class="service-icon w-14 h-14 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-500 rounded-2xl flex items-center justify-center mb-6 transition-transform">
+                        <i data-lucide="check-square"></i>
+                    </div>
+                    <h3 class="service-title text-xl font-bold mb-3">Correcciones de Texto</h3>
+                    <p class="service-desc text-slate-500 dark:text-slate-400 text-sm mb-6">Revisión ortotipográfica y normas APA/Vancouver para tus documentos.</p>
+                    <button onclick="openModal('correcciones')" class="text-brandGreen font-bold flex items-center gap-2 hover:underline">
+                        Saber más <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Trabajos Académicos -->
+                <div class="service-card group bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300">
+                    <div class="service-icon w-14 h-14 bg-pink-100 dark:bg-pink-900/30 text-pink-500 rounded-2xl flex items-center justify-center mb-6 transition-transform">
+                        <i data-lucide="graduation-cap"></i>
+                    </div>
+                    <h3 class="service-title text-xl font-bold mb-3">Trabajos Académicos</h3>
+                    <p class="service-desc text-slate-500 dark:text-slate-400 text-sm mb-6">Apoyo general en cualquier tipo de asignación académica que necesites.</p>
+                    <button onclick="openModal('academicos')" class="text-brandGreen font-bold flex items-center gap-2 hover:underline">
+                        Saber más <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Proyectos -->
+                <div class="service-card group bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300">
+                    <div class="service-icon w-14 h-14 bg-violet-100 dark:bg-violet-900/30 text-violet-500 rounded-2xl flex items-center justify-center mb-6 transition-transform">
+                        <i data-lucide="folder-kanban"></i>
+                    </div>
+                    <h3 class="service-title text-xl font-bold mb-3">Proyectos</h3>
+                    <p class="service-desc text-slate-500 dark:text-slate-400 text-sm mb-6">Planificación y desarrollo de proyectos integradores y técnicos.</p>
+                    <button onclick="openModal('proyectos')" class="text-brandGreen font-bold flex items-center gap-2 hover:underline">
+                        Saber más <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Próximamente -->
+                <div id="proximamente-card" class="service-card group bg-gray-50 dark:bg-gray-900/20 p-6 rounded-3xl border-2 border-dashed border-gray-200 dark:border-gray-800 flex flex-col items-center justify-center text-center">
+                    <div class="w-14 h-14 bg-gray-100 dark:bg-gray-800 text-gray-400 rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="plus"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Próximamente</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-4">Estamos trabajando para ofrecerte más soluciones académicas.</p>
+                    <a href="https://wa.me/593995458260?text=%C2%BFHacen%20este%20tipo%20de%20trabajo%3F" class="text-brandGreen font-bold text-sm">Consultar por interno</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION PERSONALIZADO -->
+    <section class="py-16 bg-brandYellow text-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-extrabold mb-4">¿No encuentras lo que buscas?</h2>
+            <p class="text-lg mb-8 opacity-80">Escríbenos y cuéntanos sobre tu pedido. Buscaremos la mejor forma de ayudarte.</p>
+            <a href="https://wa.me/593995458260?text=%C2%BFQuer%C3%ADa%20hacer%20una%20consulta%20sobre%20un%20trabajo%20personalizado%3F" target="_blank" class="inline-flex items-center gap-2 bg-black text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-800 transition shadow-xl">
+                <i data-lucide="message-circle"></i>
+                Consulta Personalizada
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-100 dark:bg-black pt-16 pb-8 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Brand & Slogan -->
+                <div class="space-y-6">
+                    <img id="footer-logo" class="h-12 w-auto" src="https://academika-plus.github.io/img/static/academika_color.png" alt="Académika Logo">
+                    <p class="text-slate-600 dark:text-slate-400 italic">
+                        "Excelencia académica a tu alcance, apoyando a la próxima generación de profesionales."
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/academika.plus" target="_blank" class="w-10 h-10 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-brandGreen hover:text-white transition shadow-sm">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@academika.plus" target="_blank" class="w-10 h-10 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-brandGreen hover:text-white transition shadow-sm">
+                            <i data-lucide="music-2" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://www.instagram.com/academika.plus" target="_blank" class="w-10 h-10 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-brandGreen hover:text-white transition shadow-sm">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quiénes Somos -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 uppercase tracking-wider text-brandGreen">Quiénes Somos</h4>
+                    <ul class="space-y-4 text-slate-600 dark:text-slate-400">
+                        <li><a href="como-trabajamos.html" class="hover:text-brandGreen transition">¿Cómo trabajamos?</a></li>
+                        <li><a href="nuestro-equipo.html" class="hover:text-brandGreen transition">Nuestro Equipo</a></li>
+                        <li><a href="opiniones.html" class="hover:text-brandGreen transition">Opiniones sobre Nosotros</a></li>
+                        <li><a href="cv.html" class="hover:text-brandGreen transition">Trabajar con Nosotros</a></li>
+                        <li><a href="metodo-pago.html" class="hover:text-brandGreen transition">Métodos de pago</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contacto -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 uppercase tracking-wider text-brandGreen">Contacto</h4>
+                    <ul class="space-y-4 text-slate-600 dark:text-slate-400 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="phone" class="w-4 h-4 mt-1 text-brandYellow"></i>
+                            <span>+593 99 545 8260</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="mail" class="w-4 h-4 mt-1 text-brandYellow"></i>
+                            <span>academika.plus@gmail.com</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="clock" class="w-4 h-4 mt-1 text-brandYellow"></i>
+                            <div>
+                                <p>Lun - Vie: 07h00 - 20h00</p>
+                                <p>Sab - Dom: 08h00 - 17h00</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Legal -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 uppercase tracking-wider text-brandGreen">Legal & Otros</h4>
+                    <ul class="space-y-4 text-slate-600 dark:text-slate-400">
+                        <li><a href="metodo-pago.html" class="hover:text-brandGreen transition">Métodos de pago</a></li>
+                        <li><a href="tyc.html" class="hover:text-brandGreen transition">Términos y Condiciones</a></li>
+                        <li><a href="pdp.html" class="hover:text-brandGreen transition">Política de Privacidad</a></li>
+                        <li><a href="pdc.html" class="hover:text-brandGreen transition">Política de Cookies</a></li>
+                        <li><a href="pdd.html" class="hover:text-brandGreen transition">Política de Devolución</a></li>
+                        <li><a href="ddr.html" class="hover:text-brandGreen transition">Descargo de Responsabilidad</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-slate-500 dark:text-slate-500 text-sm">
+                    © <span id="current-year"></span> Académika Plus. Todos los derechos reservados.
+                </p>
+                <button id="theme-toggle" class="flex items-center gap-3 px-5 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full shadow-sm hover:shadow-md transition">
+                    <span class="dark:hidden flex items-center gap-2 font-medium"><i data-lucide="moon" class="w-4 h-4"></i> Modo Noche</span>
+                    <span class="hidden dark:flex items-center gap-2 font-medium"><i data-lucide="sun" class="w-4 h-4"></i> Modo Claro</span>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL DE INFORMACIÓN -->
+    <div id="service-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+        <div class="bg-white dark:bg-gray-800 w-full max-w-xl rounded-3xl overflow-hidden shadow-2xl transform transition-all scale-95 opacity-0 duration-300" id="modal-content">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div id="modal-icon-container" class="w-16 h-16 rounded-2xl flex items-center justify-center text-white"></div>
+                    <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"><i data-lucide="x" class="w-6 h-6"></i></button>
+                </div>
+                <h3 id="modal-title" class="text-3xl font-extrabold mb-4">Título</h3>
+                <p id="modal-description" class="text-slate-600 dark:text-slate-400 leading-relaxed mb-8"></p>
+                <a id="modal-whatsapp-link" href="#" target="_blank" class="w-full flex items-center justify-center gap-2 bg-brandGreen text-white px-6 py-4 rounded-xl font-bold hover:bg-green-600 transition">
+                    <i data-lucide="message-circle"></i> Cotizar ahora
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        const serviceData = {
+            'monografias': { title: 'Monografías', description: 'Desarrollamos monografías completas siguiendo las normas de tu institución. Incluye búsqueda bibliográfica, estructura lógica y conclusiones sólidas.', color: 'bg-yellow-500', icon: 'book-open' },
+            'articulos': { title: 'Artículos Científicos', description: 'Asesoría en la redacción de papers, revisión de metodología, análisis de resultados y adaptación al formato de revistas científicas.', color: 'bg-green-500', icon: 'microscope' },
+            'tesis': { title: 'Tesis Grado/Posgrado', description: 'Acompañamiento integral: desde el anteproyecto hasta la redacción final. Garantizamos originalidad y cumplimiento de estándares.', color: 'bg-blue-500', icon: 'graduation-cap' },
+            'ensayos': { title: 'Ensayos', description: 'Redactamos ensayos literarios, argumentativos o descriptivos con enfoque crítico y analítico.', color: 'bg-purple-500', icon: 'pen-tool' },
+            'maquetas': { title: 'Maquetas', description: 'Representaciones físicas o diseños 3D digitales según la necesidad de tu carrera. Atención al detalle y calidad.', color: 'bg-orange-500', icon: 'layers' },
+            'transcripcion': { title: 'Transcripción', description: 'Pasamos tus apuntes a limpio, transcribimos entrevistas de audio o convertimos documentos manuales a digital.', color: 'bg-indigo-500', icon: 'type' },
+            'tareas': { title: 'Tareas Universitario/Colegio', description: 'Apoyo puntual en deberes diarios y resolución de guías de estudio para cualquier nivel educativo.', color: 'bg-rose-500', icon: 'edit-3' },
+            'ppt': { title: 'Diseño de PPT\'s', description: 'Presentaciones modernas, minimalistas y profesionales para tus defensas académicas.', color: 'bg-cyan-500', icon: 'presentation' },
+            'correcciones': { title: 'Correcciones de Texto', description: 'Revisión ortotipográfica y normas de citado (APA 7ma, Vancouver, Chicago, etc.) para tus documentos.', color: 'bg-emerald-500', icon: 'check-square' },
+            'academicos': { title: 'Trabajos Académicos', description: 'Apoyo general en cualquier tipo de asignación académica que necesites.', color: 'bg-pink-500', icon: 'graduation-cap' },
+            'proyectos': { title: 'Proyectos', description: 'Planificación y desarrollo de proyectos integradores y técnicos.', color: 'bg-violet-500', icon: 'folder-kanban' }
+        };
+
+        // LÓGICA DEL BUSCADOR
+        const searchInput = document.getElementById('service-search');
+        const serviceCards = document.querySelectorAll('.service-card:not(#proximamente-card)');
+        const proximamenteCard = document.getElementById('proximamente-card');
+        const noResults = document.getElementById('no-results');
+
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase().trim();
+            let visibleCount = 0;
+
+            serviceCards.forEach(card => {
+                const title = card.querySelector('.service-title').textContent.toLowerCase();
+                const desc = card.querySelector('.service-desc').textContent.toLowerCase();
+
+                if (title.includes(term) || desc.includes(term)) {
+                    card.classList.remove('hidden-card');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden-card');
+                }
+            });
+
+            // Manejo de visibilidad de "Próximamente" y "No resultados"
+            if (term === '') {
+                proximamenteCard.classList.remove('hidden-card');
+                noResults.classList.add('hidden');
+            } else if (visibleCount === 0) {
+                proximamenteCard.classList.add('hidden-card');
+                noResults.classList.remove('hidden');
+            } else {
+                proximamenteCard.classList.add('hidden-card');
+                noResults.classList.add('hidden');
+            }
+        });
+
+        // Funciones del Modal
+        const modal = document.getElementById('service-modal');
+        const modalInner = document.getElementById('modal-content');
+
+        function openModal(id) {
+            const data = serviceData[id];
+            document.getElementById('modal-title').textContent = data.title;
+            document.getElementById('modal-description').textContent = data.description;
+            const iconContainer = document.getElementById('modal-icon-container');
+            iconContainer.className = `w-16 h-16 rounded-2xl flex items-center justify-center text-white ${data.color}`;
+            iconContainer.innerHTML = `<i data-lucide="${data.icon}" class="w-8 h-8"></i>`;
+            document.getElementById('modal-whatsapp-link').href = `https://wa.me/593995458260?text=%C2%BFQuer%C3%ADa%20hacer%20una%20consulta%20sobre%20${data.title}%3F`;
+            lucide.createIcons();
+            modal.classList.remove('hidden');
+            setTimeout(() => modalInner.classList.remove('scale-95', 'opacity-0'), 10);
+        }
+
+        function closeModal() {
+            modalInner.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+
+        const menuBtn = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const navLogo = document.getElementById('nav-logo');
+        const footerLogo = document.getElementById('footer-logo');
+        const logoColor = "https://academika-plus.github.io/img/static/academika_color.png";
+        const logoBlanco = "https://academika-plus.github.io/img/static/academika_blanco.png";
+
+        function updateLogos(isDark) {
+            navLogo.src = isDark ? logoBlanco : logoColor;
+            footerLogo.src = isDark ? logoBlanco : logoColor;
+        }
+
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            updateLogos(true);
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateLogos(isDark);
+        });
+    </script>
+</body>
+</html>
