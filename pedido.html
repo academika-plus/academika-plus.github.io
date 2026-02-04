@@ -51,18 +51,11 @@
             ring-color: #22C55E;
         }
 
-        .step-card {
-            display: none;
-        }
-        .step-card.active {
-            display: block;
-            animation: fadeIn 0.4s ease-out;
-        }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        .animate-fade { animation: fadeIn 0.4s ease-out; }
     </style>
 </head>
 <body class="bg-white text-slate-900 dark:bg-brandDark dark:text-white transition-colors duration-300 min-h-screen flex flex-col">
@@ -231,32 +224,47 @@
                         </div>
 
                         <!-- ZONA DE CARGA REAL (GOOGLE DRIVE) -->
-                        <div id="upload-zone" class="hidden mt-6 p-8 border-2 border-dashed border-gray-200 dark:border-gray-700 rounded-3xl text-center bg-gray-50/50 dark:bg-gray-900/50">
-                            <div id="upload-idle">
-                                <i data-lucide="folder-up" class="w-12 h-12 text-slate-300 mx-auto mb-4"></i>
-                                <p class="text-sm font-medium mb-4">Inicia sesión para crear tu carpeta segura y subir archivos:</p>
+                        <div id="upload-zone" class="hidden mt-6 p-8 border-2 border-dashed border-gray-200 dark:border-gray-700 rounded-3xl text-center bg-gray-50/50 dark:bg-gray-900/50 transition-all">
+                            
+                            <!-- PASO 1: Identificación -->
+                            <div id="upload-step-login" class="animate-fade">
+                                <i data-lucide="log-in" class="w-12 h-12 text-slate-300 mx-auto mb-4"></i>
+                                <p class="text-sm font-medium mb-4">Primero, identifícate con Google para habilitar tu subida:</p>
                                 <div class="flex justify-center mb-4">
-                                    <!-- Google Login Buttons -->
                                     <div id="g_id_onload"
                                          data-client_id="853854343883-rc0pnonk39e9a5pek3bk014f3vk9l3l6.apps.googleusercontent.com"
-                                         data-callback="handleCredentialResponse">
+                                         data-callback="handleCredentialResponse"
+                                         data-auto_prompt="false">
                                     </div>
-                                    <div class="g_id_signin" data-type="standard" data-shape="pill"></div>
+                                    <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="outline" data-text="signin_with" data-size="large" data-logo_alignment="left"></div>
                                 </div>
-                                <!-- Input oculto para activar selector tras login -->
+                                <p class="text-[10px] text-slate-400 uppercase italic">Tu privacidad es importante. Solo usamos esto para la gestión del archivo.</p>
+                            </div>
+
+                            <!-- PASO 2: Selección de Archivo (Se activa tras login) -->
+                            <div id="upload-step-pick" class="hidden animate-fade">
+                                <i data-lucide="file-check" class="w-12 h-12 text-brandGreen mx-auto mb-4"></i>
+                                <p class="text-sm font-bold text-brandGreen mb-2">¡Sesión iniciada con éxito!</p>
+                                <p class="text-xs text-slate-500 mb-6">Ahora haz clic en el botón para elegir tu documento.</p>
+                                <button type="button" onclick="document.getElementById('real-file-input').click()" class="bg-brandGreen text-white px-8 py-3 rounded-full font-bold hover:bg-green-600 transition shadow-md flex items-center gap-2 mx-auto">
+                                    <i data-lucide="file-up" class="w-4 h-4"></i>
+                                    Seleccionar Archivo
+                                </button>
                                 <input type="file" id="real-file-input" class="hidden">
-                                <p class="text-[10px] text-slate-400 uppercase italic">Se abrirá el selector de archivos automáticamente al identificarse</p>
                             </div>
 
-                            <div id="uploading-state" class="hidden">
-                                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-brandGreen mx-auto mb-4"></div>
-                                <p class="text-sm">Subiendo archivos a tu carpeta en Drive...</p>
+                            <!-- PASO 3: Subiendo -->
+                            <div id="upload-step-loading" class="hidden animate-fade">
+                                <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-brandGreen mx-auto mb-4"></div>
+                                <p class="text-sm font-bold">Subiendo a tu carpeta segura...</p>
+                                <p class="text-xs text-slate-500 mt-2">Por favor, no cierres esta pestaña.</p>
                             </div>
 
-                            <div id="uploaded-success" class="hidden text-green-500">
-                                <i data-lucide="check-circle" class="w-12 h-12 mx-auto mb-4"></i>
-                                <p class="text-sm font-bold">¡Archivos guardados en tu carpeta!</p>
-                                <p class="text-xs text-slate-500 mt-1">Se ha registrado el éxito de la subida para tu pedido.</p>
+                            <!-- PASO 4: Éxito -->
+                            <div id="upload-step-success" class="hidden animate-fade text-green-500">
+                                <i data-lucide="check-circle" class="w-14 h-14 mx-auto mb-4"></i>
+                                <p class="text-lg font-bold">¡Archivo guardado en la nube!</p>
+                                <p class="text-xs text-slate-500 mt-1">Ya puedes finalizar tu pedido enviándolo a WhatsApp.</p>
                             </div>
                         </div>
 
@@ -359,23 +367,29 @@
         const realFileInput = document.getElementById('real-file-input');
         const submitBtn = document.getElementById('submit-btn');
         
-        const uploadIdle = document.getElementById('upload-idle');
-        const uploadingState = document.getElementById('uploading-state');
-        const uploadedSuccess = document.getElementById('uploaded-success');
+        // Pasos de subida
+        const stepLogin = document.getElementById('upload-step-login');
+        const stepPick = document.getElementById('upload-step-pick');
+        const stepLoading = document.getElementById('upload-step-loading');
+        const stepSuccess = document.getElementById('upload-step-success');
 
-        // CALLBACK DE LOGIN GOOGLE
-        function handleCredentialResponse(response) {
-            // Abrir selector de archivos automáticamente tras identificarse
-            realFileInput.click();
-        }
+        // CALLBACK DE LOGIN GOOGLE (Asignar globalmente para GSI)
+        window.handleCredentialResponse = function(response) {
+            console.log("Login de Google exitoso.");
+            // Ocultamos el login y mostramos el paso de selección de archivo
+            stepLogin.classList.add('hidden');
+            stepPick.classList.remove('hidden');
+            lucide.createIcons(); // Recargar iconos lucide en el nuevo paso
+        };
 
         // LÓGICA DE CARGA REAL A GOOGLE DRIVE
         realFileInput.addEventListener('change', async function() {
             const file = this.files[0];
             if (!file) return;
 
-            uploadIdle.classList.add('hidden');
-            uploadingState.classList.remove('hidden');
+            // Mostramos el estado de carga
+            stepPick.classList.add('hidden');
+            stepLoading.classList.remove('hidden');
 
             const reader = new FileReader();
             reader.readAsDataURL(file);
@@ -388,25 +402,26 @@
                 };
 
                 try {
-                    // Envío al Apps Script configurado
                     await fetch(scriptURL, {
                         method: 'POST',
-                        mode: 'no-cors', // Para evitar bloqueos de CORS en Apps Script
+                        mode: 'no-cors', 
                         body: JSON.stringify(payload)
                     });
 
-                    // Simulación de éxito tras delay (Apps Script no retorna respuesta en no-cors)
+                    // Simulación de éxito
                     setTimeout(() => {
-                        uploadingState.classList.add('hidden');
-                        uploadedSuccess.classList.remove('hidden');
+                        stepLoading.classList.add('hidden');
+                        stepSuccess.classList.remove('hidden');
                         isFileUploaded = true;
                         checkSubmitButton();
+                        lucide.createIcons();
                     }, 2500);
 
                 } catch (e) {
                     console.error("Error en la subida:", e);
-                    uploadIdle.classList.remove('hidden');
-                    uploadingState.classList.add('hidden');
+                    alert("Error al subir el archivo. Inténtalo de nuevo.");
+                    stepLoading.classList.add('hidden');
+                    stepPick.classList.remove('hidden');
                 }
             };
         });
@@ -416,12 +431,11 @@
             radio.addEventListener('change', (e) => {
                 if(e.target.value === 'yes') {
                     fileOptionsContainer.classList.remove('hidden');
-                    checkSubmitButton();
                 } else {
                     fileOptionsContainer.classList.add('hidden');
                     isFileUploaded = false;
-                    checkSubmitButton();
                 }
+                checkSubmitButton();
             });
         });
 
@@ -430,13 +444,12 @@
                 if(e.target.value === 'cloud') {
                     uploadZone.classList.remove('hidden');
                     whatsappNotice.classList.add('hidden');
-                    checkSubmitButton();
                 } else {
                     uploadZone.classList.add('hidden');
                     whatsappNotice.classList.remove('hidden');
                     isFileUploaded = false;
-                    checkSubmitButton();
                 }
+                checkSubmitButton();
             });
         });
 
@@ -444,6 +457,7 @@
             const hasFiles = Array.from(fileRadios).find(r => r.checked).value === 'yes';
             const methodCloud = Array.from(uploadMethodRadios).find(r => r.checked).value === 'cloud';
             
+            // Si eligió nube y no ha subido nada, bloqueamos el envío
             if (hasFiles && methodCloud && !isFileUploaded) {
                 submitBtn.disabled = true;
                 submitBtn.style.opacity = "0.5";
@@ -475,7 +489,7 @@
             } else if (method === 'whatsapp') {
                 fileInfo = "SE ENVIARÁN ARCHIVOS/FOTOS POR ESTE CHAT INTERNAMENTE.";
             } else if (method === 'cloud') {
-                fileInfo = "✅ ARCHIVOS CARGADOS EN LA NUBE (Google Drive). Verificar carpeta de recepción.";
+                fileInfo = "✅ ARCHIVOS CARGADOS EN LA NUBE (Google Drive).";
             }
 
             const message = `*NUEVO PEDIDO - ACADÉMIKA PLUS*%0A%0A` +
