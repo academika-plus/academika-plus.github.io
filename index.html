@@ -3,9 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO BÁSICO -->
+    <title>Académika Plus | Expertos en Trabajos Universitarios y Proyectos</title>
+    <meta name="description" content="Ayudamos a estudiantes de colegio y universidad con sus tareas, proyectos y tesis. Calidad garantizada, confidencialidad absoluta y trato personalizado.">
+    <meta name="keywords" content="trabajos universitarios, tesis, tareas escolares, apoyo académico, ecuador, proyectos estudiantiles, academia">
+    <meta name="author" content="Académika Plus">
+    <meta name="robots" content="index, follow">
+
+    <!-- OPEN GRAPH / FACEBOOK / WHATSAPP / LINKEDIN -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://academika-plus.github.io/">
+    <meta property="og:title" content="Académika Plus | Tu éxito académico a un clic">
+    <meta property="og:description" content="¿Necesitas ayuda con tus trabajos? Somos expertos en redacción y proyectos académicos. ¡Consulta gratis por WhatsApp!">
+    <meta property="og:image" content="https://academika-plus.github.io/img/static/academika_color.png">
+    <meta property="og:image:alt" content="Logo de Académika Plus">
+
+    <!-- TWITTER / X -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://academika-plus.github.io/">
+    <meta property="twitter:title" content="Académika Plus | Expertos en Trabajos Universitarios">
+    <meta property="twitter:description" content="Tus tareas y proyectos en buenas manos. Calidad, rapidez y trato personalizado.">
+    <meta property="twitter:image" content="https://academika-plus.github.io/img/static/academika_color.png">
+
+    <!-- TEMA DE NAVEGADOR Y MÓVIL -->
+    <meta name="theme-color" content="#22C55E">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
     <!-- CONFIGURACIÓN DE FAVICON -->
     <link rel="icon" type="image/x-icon" href="https://academika-plus.github.io/img/static/a+.ico">
-    <title>Académika | Tu éxito académico a un clic</title>
+    <link rel="apple-touch-icon" href="https://academika-plus.github.io/img/static/a+.ico">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -48,7 +76,6 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="index.html">
-                        <!-- INDICADOR DE LOGO NAVBAR -->
                         <img id="nav-logo" class="h-12 w-auto" src="https://academika-plus.github.io/img/static/academika_color.png" alt="Académika Logo">
                     </a>
                 </div>
@@ -180,7 +207,6 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
                 <!-- Brand & Slogan -->
                 <div class="space-y-6">
-                    <!-- INDICADOR DE LOGO FOOTER -->
                     <img id="footer-logo" class="h-12 w-auto" src="https://academika-plus.github.io/img/static/academika_color.png" alt="Académika Logo">
                     <p class="text-slate-600 dark:text-slate-400 italic">
                         "Excelencia académica a tu alcance, apoyando a la próxima generación de profesionales."
@@ -251,10 +277,9 @@
             <!-- Footer Bottom: Theme Toggle & Copyright -->
             <div class="pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-6">
                 <p class="text-slate-500 dark:text-slate-500 text-sm">
-                    © <span id="current-year"></span> Académika. Todos los derechos reservados.
+                    © <span id="current-year"></span> Académika Plus. Todos los derechos reservados.
                 </p>
                 
-                <!-- THEME TOGGLE (IN FOOTER AS REQUESTED) -->
                 <button id="theme-toggle" class="flex items-center gap-3 px-5 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full shadow-sm hover:shadow-md transition">
                     <span class="dark:hidden flex items-center gap-2 font-medium">
                         <i data-lucide="moon" class="w-4 h-4"></i> Modo Noche
@@ -273,24 +298,18 @@
     </a>
 
     <script>
-        // Inicializar iconos
         lucide.createIcons();
-
-        // 1. Manejo del Año Automático
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        // 2. Manejo de Menú Móvil
         const menuBtn = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
-        // 3. Manejo de Modo Oscuro / Noche
         const themeToggleBtn = document.getElementById('theme-toggle');
         const navLogo = document.getElementById('nav-logo');
         const footerLogo = document.getElementById('footer-logo');
-
         const logoColor = "https://academika-plus.github.io/img/static/academika_color.png";
         const logoBlanco = "https://academika-plus.github.io/img/static/academika_blanco.png";
 
@@ -304,7 +323,6 @@
             }
         }
 
-        // Detectar preferencia del sistema o guardada
         if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
             updateLogos(true);
@@ -323,16 +341,6 @@
                 localStorage.setItem('theme', 'dark');
                 updateLogos(true);
             }
-        });
-
-        // 4. Smooth scroll for internal links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
         });
     </script>
 </body>
