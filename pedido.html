@@ -4,13 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- SEO BÁSICO -->
     <title>Hacer Pedido | Académika Plus - Tu Éxito Académico</title>
-    <meta name="description" content="Completa el formulario para solicitar tu trabajo académico.">
+    <meta name="description" content="Completa el formulario para solicitar tu trabajo académico. Tesis, ensayos, proyectos y más con la mejor calidad.">
     
+    <!-- CONFIGURACIÓN DE FAVICON -->
     <link rel="icon" type="image/x-icon" href="https://academika-plus.github.io/img/static/a+.ico">
     
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Identity Services (GSI) -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     
     <script>
@@ -30,12 +35,39 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap');
         body { font-family: 'Lexend', sans-serif; }
-        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); }
-        .dark .glass { background: rgba(17, 24, 39, 0.8); }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        .dark .glass {
+            background: rgba(17, 24, 39, 0.8);
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #22C55E;
+            ring: 2px;
+            ring-color: #22C55E;
+        }
+
+        .step-card {
+            display: none;
+        }
+        .step-card.active {
+            display: block;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body class="bg-white text-slate-900 dark:bg-brandDark dark:text-white transition-colors duration-300 min-h-screen flex flex-col">
 
+    <!-- NAVBAR -->
     <nav class="sticky top-0 z-50 glass border-b border-gray-200 dark:border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
@@ -44,6 +76,7 @@
                         <img id="nav-logo" class="h-12 w-auto" src="https://academika-plus.github.io/img/static/academika_color.png" alt="Académika Logo">
                     </a>
                 </div>
+
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="index.html" class="hover:text-brandGreen transition">Inicio</a>
                     <a href="servicios.html" class="hover:text-brandGreen transition">Servicios</a>
@@ -51,139 +84,298 @@
                     <a href="contacto.html" class="hover:text-brandGreen transition">Contacto</a>
                     <a href="pedido.html" class="font-semibold text-brandGreen">Hacer Pedido</a>
                 </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <i data-lucide="menu"></i>
+                    </button>
+                </div>
             </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-brandDark border-b border-gray-200 dark:border-gray-800 px-4 pt-2 pb-6 space-y-2">
+            <a href="index.html" class="block px-3 py-2 rounded-lg">Inicio</a>
+            <a href="servicios.html" class="block px-3 py-2 rounded-lg">Servicios</a>
+            <a href="quienes-somos.html" class="block px-3 py-2 rounded-lg">Quiénes Somos</a>
+            <a href="contacto.html" class="block px-3 py-2 rounded-lg">Contacto</a>
+            <a href="pedido.html" class="block px-3 py-2 text-brandGreen font-bold">Hacer Pedido</a>
         </div>
     </nav>
 
+    <!-- FORM SECTION -->
     <main class="flex-grow py-12 bg-gray-50 dark:bg-gray-900/30">
         <div class="max-w-3xl mx-auto px-4">
+            
             <header class="text-center mb-10">
                 <h1 class="text-3xl md:text-4xl font-black mb-4">Solicita tu <span class="text-brandGreen">Pedido</span></h1>
+                <p class="text-slate-500 dark:text-slate-400">Completa los datos y te contactaremos de inmediato por WhatsApp para confirmar.</p>
             </header>
 
             <form id="order-form" class="space-y-6">
+                
+                <!-- SECCIÓN 1: DATOS PERSONALES -->
                 <div class="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700">
                     <div class="flex items-center gap-3 mb-6">
                         <div class="w-10 h-10 bg-brandGreen/10 text-brandGreen rounded-full flex items-center justify-center">
-                            <i data-lucide="user"></i>
+                            <i data-lucide="user" class="w-5 h-5"></i>
                         </div>
                         <h2 class="text-xl font-bold">Datos Personales</h2>
                     </div>
+                    
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="md:col-span-2">
-                            <label class="block text-sm font-semibold mb-2">Nombre y Apellido *</label>
-                            <input type="text" id="full-name" required class="w-full px-4 py-3 rounded-xl border dark:bg-gray-900">
+                            <label class="block text-sm font-semibold mb-2 ml-1">Nombre y Apellido *</label>
+                            <input type="text" id="full-name" required placeholder="Ej. Juan Pérez" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 dark:text-white transition-all">
                         </div>
                         <div>
-                            <label class="block text-sm font-semibold mb-2">Número de celular *</label>
-                            <input type="tel" id="phone" required class="w-full px-4 py-3 rounded-xl border dark:bg-gray-900">
+                            <label class="block text-sm font-semibold mb-2 ml-1 text-slate-400">Correo electrónico (Opcional)</label>
+                            <input type="email" id="email" placeholder="ejemplo@correo.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 dark:text-white transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2 ml-1">Número de celular *</label>
+                            <input type="tel" id="phone" required placeholder="+593 99 999 9999" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 dark:text-white transition-all">
                         </div>
                     </div>
                 </div>
 
+                <!-- SECCIÓN 2: DETALLES DEL TRABAJO -->
                 <div class="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700">
                     <div class="flex items-center gap-3 mb-6">
                         <div class="w-10 h-10 bg-brandYellow/10 text-brandYellow rounded-full flex items-center justify-center">
-                            <i data-lucide="file-text"></i>
+                            <i data-lucide="file-text" class="w-5 h-5"></i>
                         </div>
                         <h2 class="text-xl font-bold">Detalles del Trabajo</h2>
                     </div>
+
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="md:col-span-2">
-                            <label class="block text-sm font-semibold mb-2">Título del Trabajo *</label>
-                            <input type="text" id="title" required class="w-full px-4 py-3 rounded-xl border dark:bg-gray-900">
+                        <div>
+                            <label class="block text-sm font-semibold mb-2 ml-1">Tipo de Trabajo *</label>
+                            <select id="work-type" required class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 dark:text-white transition-all appearance-none">
+                                <option value="">Selecciona una opción</option>
+                                <option value="Monografía">Monografía</option>
+                                <option value="Artículo Científico">Artículo Científico</option>
+                                <option value="Tesis">Tesis de Grado/Posgrado</option>
+                                <option value="Ensayo">Ensayo</option>
+                                <option value="Proyecto">Proyecto</option>
+                                <option value="Maqueta">Maqueta</option>
+                                <option value="PPT">Diseño de Diapositivas</option>
+                                <option value="Otro">Otro (Especificar en título)</option>
+                            </select>
                         </div>
                         <div>
-                            <label class="block text-sm font-semibold mb-2">Fecha de entrega *</label>
-                            <input type="datetime-local" id="deadline" required class="w-full px-4 py-3 rounded-xl border dark:bg-gray-900">
+                            <label class="block text-sm font-semibold mb-2 ml-1">Asignatura *</label>
+                            <input type="text" id="subject" required placeholder="Ej. Matemáticas, Derecho..." class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 dark:text-white transition-all">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-semibold mb-2 ml-1">Título del Trabajo *</label>
+                            <input type="text" id="title" required placeholder="Ej. Impacto ambiental en la Amazonía" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 dark:text-white transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2 ml-1">Número de páginas</label>
+                            <input type="number" id="pages" placeholder="Ej. 15" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 dark:text-white transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2 ml-1">Fecha y Hora de entrega *</label>
+                            <input type="datetime-local" id="deadline" required class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 dark:text-white transition-all">
                         </div>
                     </div>
                 </div>
 
+                <!-- SECCIÓN 3: ARCHIVOS Y DOCUMENTOS -->
                 <div class="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700">
                     <div class="flex items-center gap-3 mb-4">
                         <div class="w-10 h-10 bg-blue-100 text-blue-500 rounded-full flex items-center justify-center">
-                            <i data-lucide="paperclip"></i>
+                            <i data-lucide="paperclip" class="w-5 h-5"></i>
                         </div>
-                        <h2 class="text-xl font-bold">¿Enviar archivos?</h2>
+                        <h2 class="text-xl font-bold">¿Vas a enviarnos documentos y/o imágenes?</h2>
                     </div>
 
                     <div class="flex gap-4 mb-6">
-                        <label class="flex-1 cursor-pointer">
+                        <label class="flex-1">
                             <input type="radio" name="has-files" value="no" checked class="hidden peer">
-                            <div class="p-4 border-2 rounded-2xl text-center peer-checked:border-brandGreen peer-checked:bg-green-50 dark:peer-checked:bg-green-900/10">No por ahora</div>
+                            <div class="p-4 border-2 border-gray-100 dark:border-gray-700 rounded-2xl cursor-pointer peer-checked:border-brandGreen peer-checked:bg-green-50 dark:peer-checked:bg-green-900/10 text-center transition-all">
+                                <p class="font-bold">No por ahora</p>
+                            </div>
                         </label>
-                        <label class="flex-1 cursor-pointer">
+                        <label class="flex-1">
                             <input type="radio" name="has-files" value="yes" class="hidden peer">
-                            <div class="p-4 border-2 rounded-2xl text-center peer-checked:border-brandGreen peer-checked:bg-green-50 dark:peer-checked:bg-green-900/10">Sí, subir a la Nube</div>
+                            <div class="p-4 border-2 border-gray-100 dark:border-gray-700 rounded-2xl cursor-pointer peer-checked:border-brandGreen peer-checked:bg-green-50 dark:peer-checked:bg-green-900/10 text-center transition-all">
+                                <p class="font-bold">Sí, tengo archivos</p>
+                            </div>
                         </label>
                     </div>
 
+                    <!-- OPCIONES DE ENVÍO DE ARCHIVOS -->
                     <div id="file-options-container" class="hidden space-y-4">
-                        <div id="upload-zone" class="p-8 border-2 border-dashed border-gray-200 dark:border-gray-700 rounded-3xl text-center">
+                        <p class="text-sm font-semibold mb-3">Elige cómo enviarlos:</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <label>
+                                <input type="radio" name="upload-method" value="whatsapp" checked class="hidden peer">
+                                <div class="p-4 border-2 border-gray-100 dark:border-gray-700 rounded-2xl cursor-pointer peer-checked:border-brandGreen peer-checked:bg-green-50 dark:peer-checked:bg-green-900/10 transition-all">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <i data-lucide="message-circle" class="w-4 h-4 text-green-500"></i>
+                                        <p class="font-bold text-sm">Vía WhatsApp</p>
+                                    </div>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Los enviarás directamente por el chat al finalizar.</p>
+                                </div>
+                            </label>
+                            <label>
+                                <input type="radio" name="upload-method" value="cloud" class="hidden peer">
+                                <div class="p-4 border-2 border-gray-100 dark:border-gray-700 rounded-2xl cursor-pointer peer-checked:border-brandGreen peer-checked:bg-green-50 dark:peer-checked:bg-green-900/10 transition-all">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <i data-lucide="cloud-upload" class="w-4 h-4 text-blue-500"></i>
+                                        <p class="font-bold text-sm">Subir a Drive (Nube)</p>
+                                    </div>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Cargarás tus documentos ahora mismo.</p>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- ZONA DE CARGA REAL (GOOGLE DRIVE) -->
+                        <div id="upload-zone" class="hidden mt-6 p-8 border-2 border-dashed border-gray-200 dark:border-gray-700 rounded-3xl text-center bg-gray-50/50 dark:bg-gray-900/50">
                             <div id="upload-idle">
-                                <p class="text-sm mb-4">Inicia sesión para crear tu carpeta segura:</p>
-                                <div class="flex justify-center">
+                                <i data-lucide="folder-up" class="w-12 h-12 text-slate-300 mx-auto mb-4"></i>
+                                <p class="text-sm font-medium mb-4">Inicia sesión para crear tu carpeta segura y subir archivos:</p>
+                                <div class="flex justify-center mb-4">
+                                    <!-- Google Login Buttons -->
                                     <div id="g_id_onload"
                                          data-client_id="853854343883-rc0pnonk39e9a5pek3bk014f3vk9l3l6.apps.googleusercontent.com"
                                          data-callback="handleCredentialResponse">
                                     </div>
-                                    <div class="g_id_signin" data-type="standard"></div>
+                                    <div class="g_id_signin" data-type="standard" data-shape="pill"></div>
                                 </div>
+                                <!-- Input oculto para activar selector tras login -->
                                 <input type="file" id="real-file-input" class="hidden">
+                                <p class="text-[10px] text-slate-400 uppercase italic">Se abrirá el selector de archivos automáticamente al identificarse</p>
                             </div>
 
                             <div id="uploading-state" class="hidden">
                                 <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-brandGreen mx-auto mb-4"></div>
-                                <p>Subiendo a Drive...</p>
+                                <p class="text-sm">Subiendo archivos a tu carpeta en Drive...</p>
                             </div>
 
                             <div id="uploaded-success" class="hidden text-green-500">
                                 <i data-lucide="check-circle" class="w-12 h-12 mx-auto mb-4"></i>
-                                <p class="font-bold">¡Archivo guardado en tu carpeta!</p>
+                                <p class="text-sm font-bold">¡Archivos guardados en tu carpeta!</p>
+                                <p class="text-xs text-slate-500 mt-1">Se ha registrado el éxito de la subida para tu pedido.</p>
                             </div>
+                        </div>
+
+                        <!-- AVISO WHATSAPP DIRECTO -->
+                        <div id="whatsapp-notice" class="mt-4 p-4 bg-green-50 dark:bg-green-900/20 border border-green-100 dark:border-green-800 rounded-2xl text-green-700 dark:text-green-400 text-xs flex gap-3 italic">
+                            <i data-lucide="info" class="w-5 h-5 flex-shrink-0"></i>
+                            <p>Recuerda: Deberás enviar tus documentos o fotos manualmente por el chat interno una vez que se abra WhatsApp.</p>
                         </div>
                     </div>
                 </div>
 
-                <button type="submit" id="submit-btn" class="w-full bg-brandYellow text-black py-4 rounded-2xl font-black text-xl shadow-xl hover:scale-[1.02] transition-all">
-                    ENVIAR PEDIDO A WHATSAPP
-                </button>
+                <!-- LEGAL NOTICE & SUBMIT -->
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700">
+                    <div class="flex items-start gap-3 mb-8">
+                        <input type="checkbox" id="legal-check" required class="mt-1 w-5 h-5 accent-brandGreen">
+                        <label for="legal-check" class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                            Acepto los <a href="tyc.html" class="text-brandGreen underline">Términos y Condiciones</a>, la <a href="pdd.html" class="text-brandGreen underline">Política de Devoluciones</a> y el <a href="ddr.html" class="text-brandGreen underline">Descargo de Responsabilidad</a> de Académika Plus.
+                        </label>
+                    </div>
+
+                    <button type="submit" id="submit-btn" class="w-full bg-brandYellow text-black py-4 rounded-2xl font-black text-xl shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-3 transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed">
+                        <i data-lucide="shopping-cart"></i>
+                        ENVIAR PEDIDO A WHATSAPP
+                    </button>
+                    <p class="text-center text-[10px] text-slate-400 mt-4 uppercase tracking-widest">Se abrirá la aplicación de WhatsApp automáticamente</p>
+                </div>
+
             </form>
         </div>
     </main>
 
+    <!-- FOOTER -->
+    <footer class="bg-gray-100 dark:bg-black pt-16 pb-8 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div class="space-y-6">
+                    <img id="footer-logo" class="h-12 w-auto" src="https://academika-plus.github.io/img/static/academika_color.png" alt="Académika Logo">
+                    <p class="text-slate-600 dark:text-slate-400 italic">"Excelencia académica a tu alcance, apoyando a la próxima generación de profesionales."</p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/academika.plus" target="_blank" class="w-10 h-10 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-brandGreen hover:text-white transition shadow-sm"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                        <a href="https://www.tiktok.com/@academika.plus" target="_blank" class="w-10 h-10 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-brandGreen hover:text-white transition shadow-sm"><i data-lucide="music-2" class="w-5 h-5"></i></a>
+                        <a href="https://www.instagram.com/academika.plus" target="_blank" class="w-10 h-10 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-brandGreen hover:text-white transition shadow-sm"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-6 uppercase tracking-wider text-brandGreen">Quiénes Somos</h4>
+                    <ul class="space-y-4 text-slate-600 dark:text-slate-400">
+                        <li><a href="como-trabajamos.html" class="hover:text-brandGreen transition">¿Cómo trabajamos?</a></li>
+                        <li><a href="nuestro-equipo.html" class="hover:text-brandGreen transition">Nuestro Equipo</a></li>
+                        <li><a href="opiniones.html" class="hover:text-brandGreen transition">Opiniones sobre Nosotros</a></li>
+                        <li><a href="cv.html" class="hover:text-brandGreen transition">Trabajar con Nosotros</a></li>
+                        <li><a href="metodo-pago.html" class="hover:text-brandGreen transition">Métodos de pago</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-6 uppercase tracking-wider text-brandGreen">Contacto</h4>
+                    <ul class="space-y-4 text-slate-600 dark:text-slate-400 text-sm">
+                        <li class="flex items-start gap-3"><i data-lucide="phone" class="w-4 h-4 mt-1 text-brandYellow"></i><span>+593 99 545 8260</span></li>
+                        <li class="flex items-start gap-3"><i data-lucide="mail" class="w-4 h-4 mt-1 text-brandYellow"></i><span>academika.plus@gmail.com</span></li>
+                        <li class="flex items-start gap-3"><i data-lucide="clock" class="w-4 h-4 mt-1 text-brandYellow"></i><div><p>Lun - Vie: 07h00 - 20h00</p><p>Sab - Dom: 08h00 - 17h00</p></div></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-6 uppercase tracking-wider text-brandGreen">Legal & Otros</h4>
+                    <ul class="space-y-4 text-slate-600 dark:text-slate-400">
+                        <li><a href="metodo-pago.html" class="hover:text-brandGreen transition">Métodos de pago</a></li>
+                        <li><a href="tyc.html" class="hover:text-brandGreen transition">Términos y Condiciones</a></li>
+                        <li><a href="pdp.html" class="hover:text-brandGreen transition">Política de Privacidad</a></li>
+                        <li><a href="pdc.html" class="hover:text-brandGreen transition">Política de Cookies</a></li>
+                        <li><a href="pdd.html" class="hover:text-brandGreen transition">Política de Devolución</a></li>
+                        <li><a href="ddr.html" class="hover:text-brandGreen transition">Descargo de Responsabilidad</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-slate-500 dark:text-slate-500 text-sm">© <span id="current-year"></span> Académika Plus. Todos los derechos reservados.</p>
+                <button id="theme-toggle" class="flex items-center gap-3 px-5 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full shadow-sm hover:shadow-md transition">
+                    <span class="dark:hidden flex items-center gap-2 font-medium"><i data-lucide="moon" class="w-4 h-4"></i> Modo Noche</span>
+                    <span class="hidden dark:flex items-center gap-2 font-medium"><i data-lucide="sun" class="w-4 h-4"></i> Modo Claro</span>
+                </button>
+            </div>
+        </div>
+    </footer>
+
     <script>
         lucide.createIcons();
+        document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        // CONFIGURACIÓN DE URLs
+        // CONFIGURACIÓN DRIVE / GOOGLE
         const scriptURL = "https://script.google.com/macros/s/AKfcybyr7mnBMtcrLoCZ1oJZkJiscXke8l0uu7PfTLUpsPgeURk53EfTtQfgESdzHj_6NT7Z/exec";
         let isFileUploaded = false;
-        let loggedUserEmail = "";
 
-        // UI LOGIC
+        // ELEMENTOS DEL DOM
+        const orderForm = document.getElementById('order-form');
         const fileRadios = document.getElementsByName('has-files');
-        const fileContainer = document.getElementById('file-options-container');
+        const fileOptionsContainer = document.getElementById('file-options-container');
+        const uploadMethodRadios = document.getElementsByName('upload-method');
+        const uploadZone = document.getElementById('upload-zone');
+        const whatsappNotice = document.getElementById('whatsapp-notice');
         const realFileInput = document.getElementById('real-file-input');
+        const submitBtn = document.getElementById('submit-btn');
+        
+        const uploadIdle = document.getElementById('upload-idle');
+        const uploadingState = document.getElementById('uploading-state');
+        const uploadedSuccess = document.getElementById('uploaded-success');
 
-        fileRadios.forEach(r => r.addEventListener('change', e => {
-            fileContainer.classList.toggle('hidden', e.target.value === 'no');
-            checkSubmitButton();
-        }));
-
-        // GOOGLE LOGIN CALLBACK
+        // CALLBACK DE LOGIN GOOGLE
         function handleCredentialResponse(response) {
-            // Abrir selector de archivos tras login
+            // Abrir selector de archivos automáticamente tras identificarse
             realFileInput.click();
         }
 
-        // FILE UPLOAD LOGIC
+        // LÓGICA DE CARGA REAL A GOOGLE DRIVE
         realFileInput.addEventListener('change', async function() {
             const file = this.files[0];
             if (!file) return;
 
-            document.getElementById('upload-idle').classList.add('hidden');
-            document.getElementById('uploading-state').classList.remove('hidden');
+            uploadIdle.classList.add('hidden');
+            uploadingState.classList.remove('hidden');
 
             const reader = new FileReader();
             reader.readAsDataURL(file);
@@ -196,45 +388,140 @@
                 };
 
                 try {
-                    // Usamos mode: 'no-cors' para evitar bloqueos del navegador con Apps Script
+                    // Envío al Apps Script configurado
                     await fetch(scriptURL, {
                         method: 'POST',
-                        mode: 'no-cors',
+                        mode: 'no-cors', // Para evitar bloqueos de CORS en Apps Script
                         body: JSON.stringify(payload)
                     });
 
-                    // Como no podemos leer respuesta con no-cors, simulamos éxito tras delay
+                    // Simulación de éxito tras delay (Apps Script no retorna respuesta en no-cors)
                     setTimeout(() => {
-                        document.getElementById('uploading-state').classList.add('hidden');
-                        document.getElementById('uploaded-success').classList.remove('hidden');
+                        uploadingState.classList.add('hidden');
+                        uploadedSuccess.classList.remove('hidden');
                         isFileUploaded = true;
                         checkSubmitButton();
                     }, 2500);
 
                 } catch (e) {
-                    alert("Error de conexión");
-                    document.getElementById('upload-idle').classList.remove('hidden');
-                    document.getElementById('uploading-state').classList.add('hidden');
+                    console.error("Error en la subida:", e);
+                    uploadIdle.classList.remove('hidden');
+                    uploadingState.classList.add('hidden');
                 }
             };
         });
 
+        // LÓGICA DE UI DE ARCHIVOS
+        fileRadios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                if(e.target.value === 'yes') {
+                    fileOptionsContainer.classList.remove('hidden');
+                    checkSubmitButton();
+                } else {
+                    fileOptionsContainer.classList.add('hidden');
+                    isFileUploaded = false;
+                    checkSubmitButton();
+                }
+            });
+        });
+
+        uploadMethodRadios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                if(e.target.value === 'cloud') {
+                    uploadZone.classList.remove('hidden');
+                    whatsappNotice.classList.add('hidden');
+                    checkSubmitButton();
+                } else {
+                    uploadZone.classList.add('hidden');
+                    whatsappNotice.classList.remove('hidden');
+                    isFileUploaded = false;
+                    checkSubmitButton();
+                }
+            });
+        });
+
         function checkSubmitButton() {
-            const needsFile = Array.from(fileRadios).find(r => r.checked).value === 'yes';
-            document.getElementById('submit-btn').disabled = (needsFile && !isFileUploaded);
-            document.getElementById('submit-btn').style.opacity = (needsFile && !isFileUploaded) ? "0.5" : "1";
+            const hasFiles = Array.from(fileRadios).find(r => r.checked).value === 'yes';
+            const methodCloud = Array.from(uploadMethodRadios).find(r => r.checked).value === 'cloud';
+            
+            if (hasFiles && methodCloud && !isFileUploaded) {
+                submitBtn.disabled = true;
+                submitBtn.style.opacity = "0.5";
+            } else {
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = "1";
+            }
         }
 
-        // WHATSAPP SUBMIT
-        document.getElementById('order-form').addEventListener('submit', e => {
+        // ENVÍO A WHATSAPP
+        orderForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const name = document.getElementById('full-name').value;
-            const title = document.getElementById('title').value;
-            const status = isFileUploaded ? "✅ ARCHIVOS SUBIDOS A DRIVE" : "❌ Sin archivos en nube";
 
-            const msg = `*NUEVO PEDIDO ACADÉMIKA*%0A👤 Cliente: ${name}%0A🎯 Título: ${title}%0A📂 Estado Drive: ${status}`;
-            window.open(`https://wa.me/593995458260?text=${msg}`, '_blank');
+            const name = document.getElementById('full-name').value;
+            const email = document.getElementById('email').value || "No proporcionado";
+            const phone = document.getElementById('phone').value;
+            const type = document.getElementById('work-type').value;
+            const subject = document.getElementById('subject').value;
+            const title = document.getElementById('title').value;
+            const pages = document.getElementById('pages').value || "No especificado";
+            const deadline = document.getElementById('deadline').value;
+
+            const hasFiles = Array.from(fileRadios).find(r => r.checked).value === 'yes';
+            const method = hasFiles ? Array.from(uploadMethodRadios).find(r => r.checked).value : 'none';
+
+            let fileInfo = "";
+            if (!hasFiles) {
+                fileInfo = "Sin archivos adjuntos por el momento.";
+            } else if (method === 'whatsapp') {
+                fileInfo = "SE ENVIARÁN ARCHIVOS/FOTOS POR ESTE CHAT INTERNAMENTE.";
+            } else if (method === 'cloud') {
+                fileInfo = "✅ ARCHIVOS CARGADOS EN LA NUBE (Google Drive). Verificar carpeta de recepción.";
+            }
+
+            const message = `*NUEVO PEDIDO - ACADÉMIKA PLUS*%0A%0A` +
+                            `*DATOS DEL CLIENTE*%0A` +
+                            `👤 Nombre: ${name}%0A` +
+                            `📧 Correo: ${email}%0A` +
+                            `📞 Celular: ${phone}%0A%0A` +
+                            `*DETALLES DEL TRABAJO*%0A` +
+                            `📑 Tipo: ${type}%0A` +
+                            `📚 Asignatura: ${subject}%0A` +
+                            `🎯 Título: ${title}%0A` +
+                            `📄 Páginas: ${pages}%0A` +
+                            `⏰ Entrega: ${deadline.replace('T', ' ')}%0A%0A` +
+                            `*DOCUMENTACIÓN*%0A` +
+                            `📎 ${fileInfo}`;
+
+            const whatsappUrl = `https://wa.me/593995458260?text=${message}`;
+            window.open(whatsappUrl, '_blank');
         });
+
+        // TEMA OSCURO Y LOGOS
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const navLogo = document.getElementById('nav-logo');
+        const footerLogo = document.getElementById('footer-logo');
+        const logoColor = "https://academika-plus.github.io/img/static/academika_color.png";
+        const logoBlanco = "https://academika-plus.github.io/img/static/academika_blanco.png";
+
+        function updateLogos(isDark) {
+            navLogo.src = isDark ? logoBlanco : logoColor;
+            footerLogo.src = isDark ? logoBlanco : logoColor;
+        }
+
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            updateLogos(true);
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateLogos(isDark);
+        });
+
+        const menuBtn = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
     </script>
 </body>
 </html>
