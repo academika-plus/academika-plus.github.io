@@ -75,6 +75,16 @@
             opacity: 0;
             pointer-events: none;
         }
+
+        /* Brillo suave para el botón destacado */
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(250, 204, 21, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0); }
+        }
+        .animate-cta {
+            animation: pulse-gold 2s infinite;
+        }
     </style>
 </head>
 <body class="bg-white text-slate-900 dark:bg-brandDark dark:text-white transition-colors duration-300">
@@ -85,7 +95,6 @@
             <div class="flex justify-between h-16 md:h-20 items-center">
                 <div class="flex-shrink-0 flex items-center">
                     <a href="/">
-                        <!-- Logo ajustado a h-6 (24px) en móvil y h-8 (32px) en escritorio para mayor elegancia -->
                         <img id="nav-logo" class="h-6 md:h-8 w-auto transition-all duration-300" src="https://academika-plus.github.io/img/static/academika_color.png" alt="Académika Logo">
                     </a>
                 </div>
@@ -132,16 +141,29 @@
                     <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-xl mx-auto lg:mx-0">
                         Expertos dedicados a ayudarte con tus tareas, proyectos y tesis. Calidad garantizada para estudiantes que buscan la excelencia.
                     </p>
+                    
+                    <!-- ACCIONES PRINCIPALES DESTACADAS -->
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <a href="https://wa.me/593995458260?text=%C2%BFQuer%C3%ADa%20hacer%20una%20consulta%3F" target="_blank" class="flex items-center justify-center gap-2 bg-brandGreen text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-green-600 transition shadow-xl">
-                            <i data-lucide="message-circle"></i>
-                            Consultar por WhatsApp
+                        <!-- BOTÓN DE PEDIDO (PRINCIPAL) -->
+                        <a href="pedido" class="animate-cta flex items-center justify-center gap-2 bg-brandYellow text-black px-10 py-4 rounded-full font-black text-xl hover:shadow-2xl transition transform hover:-translate-y-1 group">
+                            <i data-lucide="file-edit" class="group-hover:rotate-12 transition-transform"></i>
+                            Hacer Pedido Ahora
                         </a>
-                        <a href="/servicios" class="flex items-center justify-center gap-2 bg-gray-100 dark:bg-gray-800 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition">
-                            Ver Servicios
+                        
+                        <!-- BOTÓN WHATSAPP (SECUNDARIO) -->
+                        <a href="https://wa.me/593995458260?text=%C2%BFQuer%C3%ADa%20hacer%20una%20consulta%3F" target="_blank" class="flex items-center justify-center gap-2 bg-white dark:bg-gray-800 text-slate-700 dark:text-white border-2 border-brandGreen px-8 py-4 rounded-full font-bold text-lg hover:bg-brandGreen hover:text-white transition shadow-lg">
+                            <i data-lucide="message-circle"></i>
+                            WhatsApp
                         </a>
                     </div>
+                    
+                    <div class="mt-6 flex items-center justify-center lg:justify-start gap-4 text-sm text-slate-500 font-medium">
+                        <span class="flex items-center gap-1"><i data-lucide="check" class="w-4 h-4 text-brandGreen"></i> Confidencial</span>
+                        <span class="flex items-center gap-1"><i data-lucide="check" class="w-4 h-4 text-brandGreen"></i> Rápido</span>
+                        <span class="flex items-center gap-1"><i data-lucide="check" class="w-4 h-4 text-brandGreen"></i> Seguro</span>
+                    </div>
                 </div>
+                
                 <div class="relative hidden lg:block">
                     <div class="absolute -top-20 -right-20 w-64 h-64 bg-brandYellow/20 rounded-full blur-3xl"></div>
                     <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-brandGreen/20 rounded-full blur-3xl"></div>
@@ -328,19 +350,17 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // LÓGICA DEL BANNER DE COOKIES (MEJORADA)
+        // LÓGICA DEL BANNER DE COOKIES
         const cookieBanner = document.getElementById('cookie-banner');
         const acceptBtn = document.getElementById('accept-cookies');
 
         function initCookies() {
             const accepted = localStorage.getItem('cookies-accepted');
             if (!accepted) {
-                // Pequeño retardo para asegurar que el DOM y Lucide estén listos
                 setTimeout(() => {
                     cookieBanner.classList.remove('hidden-banner');
                 }, 1000); 
             } else {
-                // Si ya fue aceptado, nos aseguramos de que no ocupe espacio ni bloquee eventos
                 cookieBanner.style.display = 'none';
             }
         }
@@ -348,13 +368,11 @@
         acceptBtn.addEventListener('click', () => {
             localStorage.setItem('cookies-accepted', 'true');
             cookieBanner.classList.add('hidden-banner');
-            // Después de la animación de salida, lo quitamos totalmente
             setTimeout(() => {
                 cookieBanner.style.display = 'none';
             }, 600);
         });
 
-        // Iniciar comprobación al cargar la página
         window.addEventListener('load', initCookies);
 
         // LÓGICA DE TEMA (MODO OSCURO/CLARO)
