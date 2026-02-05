@@ -437,7 +437,7 @@
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
         // CONFIGURACIÓN DRIVE
-        const scriptURL = "https://script.google.com/macros/s/AKfycbwl8vBS_B4DmTaHCp00n4ngwIK29IVRrokK9EDHpIeX3F98PAtChagjV2O_069TwcoY/exec";
+        const scriptURL = "https://script.google.com/macros/s/AKfycby3iI_C2_b8rQf_OwjHYRg05fo1loOLbK0LCuXEpRaVkxN2TsSDbuP3KDlhd1_sNB0w/exec";
         let isFileUploaded = false;
         let uploadedFilesCount = 0;
         let userEmail = "";
@@ -633,7 +633,8 @@
                         fileName: file.name,
                         mimeType: file.type,
                         userEmail: userEmail,
-                        customerName: customerName
+                        customerName: customerName,
+                        folderType: "CLIENTES" // Esto creará la subcarpeta dentro de CLIENTES
                     };
 
                     let simProgress = 0;

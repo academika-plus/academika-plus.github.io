@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO BÁSICO -->
+    <title>Trabajar con Nosotros | Académika Plus</title>
+    <meta name="description" content="Únete a nuestro equipo de expertos académicos. Buscamos profesionales apasionados por la educación y la excelencia.">
+    
+    <!-- CONFIGURACIÓN DE FAVICON -->
+    <link rel="icon" type="image/x-icon" href="https://academika-plus.github.io/img/static/a+.ico">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Identity Services (GSI) -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brandYellow: '#FACC15',
+                        brandGreen: '#22C55E',
+                        brandDark: '#111827',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap');
+        body { font-family: 'Lexend', sans-serif; }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        .dark .glass {
+            background: rgba(17, 24, 39, 0.8);
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #22C55E;
+            box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade { animation: fadeIn 0.4s ease-out; }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type=number] { -moz-appearance: textfield; }
+
+        .drag-over {
+            border-color: #22C55E !important;
+            background-color: rgba(34, 197, 94, 0.1) !important;
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900 dark:bg-brandDark dark:text-white transition-colors duration-300 min-h-screen flex flex-col">
+
+    <!-- NAVBAR SIMPLIFICADO -->
+    <nav class="sticky top-0 z-50 glass border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="/">
+                        <img id="nav-logo" class="h-12 w-auto" src="https://academika-plus.github.io/img/static/academika_color.png" alt="Académika Logo">
+                    </a>
+                </div>
+                <div>
+                    <a href="/" class="flex items-center gap-2 bg-gray-100 dark:bg-gray-800 px-5 py-2 rounded-full font-bold hover:bg-brandGreen hover:text-white transition transform hover:-translate-y-1 text-sm md:text-base">
+                        <i data-lucide="home" class="w-4 h-4"></i>
+                        Volver al inicio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow py-12 bg-gray-50 dark:bg-gray-900/30">
+        <div class="max-w-3xl mx-auto px-4">
+            
+            <header class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-black mb-4">Únete a <span class="text-brandGreen">Nosotros</span></h1>
+                <p class="text-slate-500 dark:text-slate-400">Buscamos talento académico para transformar el futuro de los estudiantes.</p>
+            </header>
+
+            <form id="cv-form" class="space-y-8">
+                
+                <!-- FORMULARIO 1: DATOS PERSONALES -->
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700">
+                    <div class="flex items-center gap-3 mb-6 border-b border-gray-50 dark:border-gray-700 pb-4">
+                        <div class="w-10 h-10 bg-brandGreen/10 text-brandGreen rounded-full flex items-center justify-center">
+                            <i data-lucide="user" class="w-5 h-5"></i>
+                        </div>
+                        <h2 class="text-xl font-bold">Datos Personales</h2>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-semibold mb-2 ml-1">Nombre y Apellido *</label>
+                            <input type="text" id="full-name" required placeholder="Ej. Juan Pérez" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 dark:text-white transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2 ml-1">Cédula / ID *</label>
+                            <input type="number" id="id-number" required placeholder="Máximo 10 números" oninput="if(this.value.length > 10) this.value = this.value.slice(0, 10)" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 dark:text-white transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2 ml-1">Número de celular *</label>
+                            <input type="number" id="phone" required placeholder="0995458260" oninput="if(this.value.length > 10) this.value = this.value.slice(0, 10)" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 dark:text-white transition-all">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-semibold mb-2 ml-1">Correo electrónico (Opcional)</label>
+                            <input type="email" id="email" placeholder="ejemplo@correo.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 dark:text-white transition-all">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FORMULARIO 2: DATOS ACADÉMICOS Y EXPERIENCIA -->
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700">
+                    <div class="flex items-center gap-3 mb-6 border-b border-gray-50 dark:border-gray-700 pb-4">
+                        <div class="w-10 h-10 bg-brandYellow/10 text-brandYellow rounded-full flex items-center justify-center">
+                            <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+                        </div>
+                        <h2 class="text-xl font-bold">Datos Académicos y Experiencia</h2>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-semibold mb-2 ml-1">Nivel Académico / Título *</label>
+                            <input type="text" id="academic-level" required placeholder="Ej. Lcdo. en Psicología / Estudiante de 8vo semestre" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 dark:text-white transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2 ml-1">Áreas de Especialidad / Materias que dominas *</label>
+                            <textarea id="experience" required rows="4" placeholder="Cuéntanos brevemente sobre tu experiencia previa haciendo trabajos académicos y en qué materias te destacas." class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 dark:text-white transition-all resize-none"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FORMULARIO 3: SUBIR CV -->
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700">
+                    <div class="flex items-center gap-3 mb-6 border-b border-gray-50 dark:border-gray-700 pb-4">
+                        <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">
+                            <i data-lucide="file-up" class="w-5 h-5"></i>
+                        </div>
+                        <h2 class="text-xl font-bold">Subir Hoja de Vida (CV)</h2>
+                    </div>
+
+                    <div class="space-y-6">
+                        <p class="text-sm text-slate-500 dark:text-slate-400">¿Cómo prefieres enviarnos tu CV y certificaciones?</p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <label class="flex items-start gap-3 p-4 bg-gray-50 dark:bg-gray-900 rounded-2xl cursor-pointer hover:border-brandGreen border-2 border-transparent transition has-[:checked]:border-brandGreen has-[:checked]:bg-green-50/30">
+                                <input type="radio" name="upload-method" value="whatsapp" checked class="mt-1 text-brandGreen">
+                                <div>
+                                    <div class="font-bold">WhatsApp</div>
+                                    <p class="text-xs text-slate-500">Envío manual dentro del chat.</p>
+                                </div>
+                            </label>
+                            <label class="flex items-start gap-3 p-4 bg-gray-50 dark:bg-gray-900 rounded-2xl cursor-pointer hover:border-brandGreen border-2 border-transparent transition has-[:checked]:border-brandGreen has-[:checked]:bg-green-50/30">
+                                <input type="radio" name="upload-method" value="cloud" class="mt-1 text-brandGreen">
+                                <div>
+                                    <div class="font-bold">Google Drive</div>
+                                    <p class="text-xs text-slate-500">Subida directa al sistema.</p>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- MENSAJE WHATSAPP -->
+                        <div id="whatsapp-notice" class="p-4 bg-green-50 dark:bg-green-900/20 rounded-xl text-green-700 dark:text-green-400 text-sm italic animate-fade">
+                            <strong>⚠️ Importante:</strong> Al finalizar, se abrirá WhatsApp. Deberás adjuntar manualmente tu CV dentro de la aplicación.
+                        </div>
+
+                        <!-- ZONA GOOGLE DRIVE -->
+                        <div id="drive-zone" class="hidden space-y-6 animate-fade">
+                            <div id="upload-step-login" class="text-center py-6 bg-gray-50 dark:bg-gray-900 rounded-2xl border-2 border-dashed border-gray-300 dark:border-gray-700">
+                                <p class="text-sm mb-4">Inicia sesión con Google para subir archivos:</p>
+                                <div id="g_id_onload"
+                                    data-client_id="853854343883-rc0pnonk39e9a5pek3bk014f3vk9l3l6.apps.googleusercontent.com"
+                                    data-callback="handleCredentialResponse">
+                                </div>
+                                <div class="g_id_signin flex justify-center" data-type="standard"></div>
+                            </div>
+
+                            <div id="upload-step-pick" class="hidden space-y-4">
+                                <div id="drop-area" class="flex flex-col items-center justify-center w-full min-h-[160px] border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-2xl cursor-pointer bg-green-50/10 dark:bg-green-900/5 hover:bg-green-50 transition-all duration-300">
+                                    <i data-lucide="upload-cloud" class="w-10 h-10 text-brandGreen mb-3"></i>
+                                    <p class="text-sm font-bold text-center px-4">Arrastra tu CV aquí o haz clic para añadir</p>
+                                    <p class="text-xs text-slate-400 mt-2">Formatos: PDF, Word, Imágenes</p>
+                                </div>
+                                <input id="real-file-input" type="file" class="hidden" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" multiple>
+
+                                <!-- LISTA DE ARCHIVOS PENDIENTES -->
+                                <div id="pending-files-container" class="hidden space-y-3 bg-white dark:bg-gray-800 p-4 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm">
+                                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">Archivos seleccionados</h3>
+                                    <div id="pending-files-list" class="space-y-2"></div>
+                                    <div class="pt-4 border-t border-gray-50 dark:border-gray-700 flex justify-end">
+                                        <button type="button" id="start-upload-btn" class="bg-brandGreen text-white text-xs font-bold px-4 py-2 rounded-xl hover:bg-green-600 transition flex items-center gap-2">
+                                            <i data-lucide="check-circle" class="w-4 h-4"></i> Confirmar y Subir
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- BARRA DE CARGA -->
+                            <div id="upload-step-loading" class="hidden space-y-4 p-4 bg-gray-50 dark:bg-gray-900 rounded-2xl">
+                                <div class="flex justify-between text-xs font-bold mb-1">
+                                    <span id="loading-text" class="text-brandGreen">Subiendo archivos...</span>
+                                    <span id="upload-percentage">0%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 overflow-hidden">
+                                    <div id="progress-bar" class="bg-brandGreen h-full w-0 transition-all duration-300"></div>
+                                </div>
+                            </div>
+
+                            <!-- ÉXITO DRIVE -->
+                            <div id="upload-step-success" class="hidden flex flex-col items-center p-6 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-2xl text-center animate-fade">
+                                <i data-lucide="check-circle" class="w-10 h-10 mb-2"></i>
+                                <span class="font-bold text-lg">¡CV Cargado con éxito! ✅</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TÉRMINOS -->
+                <div class="flex items-start gap-3 p-2">
+                    <input type="checkbox" id="terms-check" required class="mt-1 w-5 h-5 rounded border-gray-300 text-brandGreen focus:ring-brandGreen transition-colors cursor-pointer">
+                    <label for="terms-check" class="text-sm text-slate-600 dark:text-slate-400 cursor-pointer">
+                        Acepto los <a href="/legal/tyc" target="_blank" class="text-brandGreen font-bold underline">Términos y Condiciones</a> y la <a href="/legal/pdp" target="_blank" class="text-brandGreen font-bold underline">Política de Privacidad</a>.
+                    </label>
+                </div>
+
+                <!-- BOTÓN SUBMIT -->
+                <button type="submit" id="submit-btn" class="w-full bg-brandGreen text-white font-bold py-5 rounded-3xl hover:bg-green-600 transition shadow-lg transform hover:-translate-y-1 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
+                    <i data-lucide="send" class="w-5 h-5"></i>
+                    Enviar Aplicación por WhatsApp
+                </button>
+            </form>
+        </div>
+        
+        <!-- BOTÓN SUBIR (Go to Top) -->
+        <div class="pt-16 pb-8 flex justify-center">
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex flex-col items-center gap-2 group transition">
+                <div class="w-12 h-12 bg-brandYellow rounded-full flex items-center justify-center group-hover:bg-brandGreen group-hover:text-white transition shadow-lg">
+                    <i data-lucide="chevron-up" class="w-6 h-6"></i>
+                </div>
+                <span class="font-bold text-sm">Subir</span>
+            </button>
+        </div>
+    </main>
+
+    <!-- FOOTER (Exactamente igual a index.html) -->
+    <footer class="bg-gray-100 dark:bg-black pt-16 pb-8 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div class="space-y-6">
+                    <img id="footer-logo" class="h-12 w-auto" src="https://academika-plus.github.io/img/static/academika_color.png" alt="Académika Logo">
+                    <p class="text-slate-600 dark:text-slate-400 italic">
+                        "Excelencia académica a tu alcance, apoyando a la próxima generación de profesionales."
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/academika.plus" target="_blank" class="w-10 h-10 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-brandGreen hover:text-white transition shadow-sm">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@academika.plus" target="_blank" class="w-10 h-10 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-brandGreen hover:text-white transition shadow-sm">
+                            <i data-lucide="music-2" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://www.instagram.com/academika.plus" target="_blank" class="w-10 h-10 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-brandGreen hover:text-white transition shadow-sm">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-6 uppercase tracking-wider text-brandGreen">Quiénes Somos</h4>
+                    <ul class="space-y-4 text-slate-600 dark:text-slate-400">
+                        <li><a href="como-trabajamos" class="hover:text-brandGreen transition">¿Cómo trabajamos?</a></li>
+                        <li><a href="nuestro-equipo" class="hover:text-brandGreen transition">Nuestro Equipo</a></li>
+                        <li><a href="opiniones" class="hover:text-brandGreen transition">Opiniones sobre Nosotros</a></li>
+                        <li><a href="cv" class="text-brandGreen font-bold">Trabajar con Nosotros</a></li>
+                        <li><a href="metodo-pago" class="hover:text-brandGreen transition">Métodos de pago</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-6 uppercase tracking-wider text-brandGreen">Contacto</h4>
+                    <ul class="space-y-4 text-slate-600 dark:text-slate-400 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="phone" class="w-4 h-4 mt-1 text-brandYellow"></i>
+                            <span>+593 99 545 8260</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="mail" class="w-4 h-4 mt-1 text-brandYellow"></i>
+                            <span>academika.plus@gmail.com</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="clock" class="w-4 h-4 mt-1 text-brandYellow"></i>
+                            <div>
+                                <p>Lun - Vie: 07h00 - 20h00</p>
+                                <p>Sab - Dom: 08h00 - 17h00</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-6 uppercase tracking-wider text-brandGreen">Legal & Otros</h4>
+                    <ul class="space-y-4 text-slate-600 dark:text-slate-400">
+                        <li><a href="/legal/tyc" class="hover:text-brandGreen transition">Términos y Condiciones</a></li>
+                        <li><a href="/legal/pdp" class="hover:text-brandGreen transition">Política de Privacidad</a></li>
+                        <li><a href="/legal/pdc" class="hover:text-brandGreen transition">Política de Cookies</a></li>
+                        <li><a href="/legal/pdd" class="hover:text-brandGreen transition">Política de Devolución</a></li>
+                        <li><a href="/legal/ddr" class="hover:text-brandGreen transition">Descargo de Responsabilidad</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-slate-500 dark:text-slate-500 text-sm">
+                    © <span id="current-year"></span> Académika Plus. Todos los derechos reservados.
+                </p>
+                <button id="theme-toggle" class="flex items-center gap-3 px-5 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full shadow-sm hover:shadow-md transition">
+                    <span class="dark:hidden flex items-center gap-2 font-medium"><i data-lucide="moon" class="w-4 h-4"></i> Modo Noche</span>
+                    <span class="hidden dark:flex items-center gap-2 font-medium"><i data-lucide="sun" class="w-4 h-4"></i> Modo Claro</span>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // LOGICA DRIVE
+        const scriptURL = "https://script.google.com/macros/s/AKfycby3iI_C2_b8rQf_OwjHYRg05fo1loOLbK0LCuXEpRaVkxN2TsSDbuP3KDlhd1_sNB0w/exec";
+        let isFileUploaded = false;
+        let userEmail = "";
+        let pendingFiles = [];
+
+        // SELECTORES
+        const methodRadios = document.getElementsByName('upload-method');
+        const whatsappNotice = document.getElementById('whatsapp-notice');
+        const driveZone = document.getElementById('drive-zone');
+        const fileInput = document.getElementById('real-file-input');
+        const dropArea = document.getElementById('drop-area');
+        const startUploadBtn = document.getElementById('start-upload-btn');
+        const pendingFilesContainer = document.getElementById('pending-files-container');
+        const pendingFilesList = document.getElementById('pending-files-list');
+        const submitBtn = document.getElementById('submit-btn');
+
+        const stepLogin = document.getElementById('upload-step-login');
+        const stepPick = document.getElementById('upload-step-pick');
+        const stepLoading = document.getElementById('upload-step-loading');
+        const stepSuccess = document.getElementById('upload-step-success');
+
+        // VISIBILIDAD DE MÉTODOS
+        methodRadios.forEach(r => {
+            r.addEventListener('change', (e) => {
+                const isCloud = e.target.value === 'cloud';
+                driveZone.classList.toggle('hidden', !isCloud);
+                whatsappNotice.classList.toggle('hidden', isCloud);
+                checkSubmitButtonState();
+            });
+        });
+
+        // LOGIN GOOGLE
+        window.handleCredentialResponse = function(response) {
+            const payload = JSON.parse(atob(response.credential.split('.')[1]));
+            userEmail = payload.email;
+            document.getElementById('email').value = userEmail;
+            stepLogin.classList.add('hidden');
+            stepPick.classList.remove('hidden');
+            lucide.createIcons();
+        };
+
+        // DRAG & DROP
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(e => dropArea.addEventListener(e, (ev) => { ev.preventDefault(); ev.stopPropagation(); }));
+        ['dragenter', 'dragover'].forEach(e => dropArea.addEventListener(e, () => dropArea.classList.add('drag-over')));
+        ['dragleave', 'drop'].forEach(e => dropArea.addEventListener(e, () => dropArea.classList.remove('drag-over')));
+        dropArea.addEventListener('drop', (e) => handleSelectedFiles(e.dataTransfer.files));
+        dropArea.addEventListener('click', () => fileInput.click());
+        fileInput.addEventListener('change', function() { handleSelectedFiles(this.files); });
+
+        function handleSelectedFiles(files) {
+            Array.from(files).forEach(f => {
+                if (!pendingFiles.some(pf => pf.name === f.name && pf.size === f.size)) {
+                    pendingFiles.push(f);
+                }
+            });
+            renderPendingFiles();
+        }
+
+        function renderPendingFiles() {
+            if (pendingFiles.length === 0) { pendingFilesContainer.classList.add('hidden'); return; }
+            pendingFilesContainer.classList.remove('hidden');
+            pendingFilesList.innerHTML = "";
+            pendingFiles.forEach((f, i) => {
+                const div = document.createElement('div');
+                div.className = "flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-900 rounded-xl animate-fade";
+                div.innerHTML = `
+                    <div class="flex items-center gap-2 overflow-hidden">
+                        <i data-lucide="file" class="w-4 h-4 text-brandGreen shrink-0"></i>
+                        <span class="text-xs font-bold truncate">${f.name}</span>
+                    </div>
+                    <button type="button" onclick="removeFile(${i})" class="text-rose-500 p-1 hover:bg-rose-50 rounded-lg transition"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                `;
+                pendingFilesList.appendChild(div);
+            });
+            lucide.createIcons();
+            checkSubmitButtonState();
+        }
+
+        window.removeFile = function(i) { pendingFiles.splice(i, 1); renderPendingFiles(); };
+
+        // SUBIDA REAL
+        startUploadBtn.addEventListener('click', async () => {
+            const name = document.getElementById('full-name').value;
+            if (!name) { alert("Completa tu nombre primero"); return; }
+            if (pendingFiles.length === 0) return;
+
+            stepPick.classList.add('hidden');
+            stepLoading.classList.remove('hidden');
+
+            let count = 0;
+            for (const f of pendingFiles) {
+                document.getElementById('loading-text').innerText = `Subiendo: ${f.name}`;
+                await uploadToDrive(f, name, (p) => {
+                    const total = ((count + (p / 100)) / pendingFiles.length) * 100;
+                    document.getElementById('progress-bar').style.width = total + "%";
+                    document.getElementById('upload-percentage').innerText = Math.round(total) + "%";
+                });
+                count++;
+            }
+
+            stepLoading.classList.add('hidden');
+            stepSuccess.classList.remove('hidden');
+            isFileUploaded = true;
+            checkSubmitButtonState();
+        });
+
+        function uploadToDrive(file, name, onProgress) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = async () => {
+                    const base64 = reader.result.split(',')[1];
+                    onProgress(50);
+                    try {
+                        await fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ base64, fileName: "CV_" + name + "_" + file.name, mimeType: file.type, userEmail, customerName: name, folderType: "VACANTES"}) });
+                        onProgress(100); resolve();
+                    } catch (e) { reject(e); }
+                };
+            });
+        }
+
+        function checkSubmitButtonState() {
+            const method = Array.from(methodRadios).find(r => r.checked).value;
+            if (method === 'cloud' && !isFileUploaded) {
+                submitBtn.disabled = true;
+                submitBtn.style.opacity = "0.5";
+            } else {
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = "1";
+            }
+        }
+
+        // ENVÍO WHATSAPP
+        document.getElementById('cv-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('full-name').value;
+            const cedula = document.getElementById('id-number').value;
+            const phone = document.getElementById('phone').value;
+            const level = document.getElementById('academic-level').value;
+            const exp = document.getElementById('experience').value;
+            const method = Array.from(methodRadios).find(r => r.checked).value;
+
+            const fileStatus = method === 'cloud' 
+                ? "✅ CARGADO A GOOGLE DRIVE" 
+                : "📎 SE ADJUNTARÁ MANUALMENTE EN WHATSAPP";
+
+            const msg = `*NUEVA POSTULACIÓN TRABAJO*%0A%0A` +
+                        `👤 *Nombre:* ${name}%0A` +
+                        `🆔 *Cédula:* ${cedula}%0A` +
+                        `📞 *Celular:* ${phone}%0A%0A` +
+                        `🎓 *Nivel:* ${level}%0A` +
+                        `💡 *Especialidad:* ${exp}%0A%0A` +
+                        `📂 *CV:* ${fileStatus}`;
+
+            window.open(`https://wa.me/593995458260?text=${msg}`, '_blank');
+        });
+
+        // TEMA
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const navLogo = document.getElementById('nav-logo');
+        const footerLogo = document.getElementById('footer-logo');
+        const logoColor = "https://academika-plus.github.io/img/static/academika_color.png";
+        const logoBlanco = "https://academika-plus.github.io/img/static/academika_blanco.png";
+
+        function updateLogos(isDark) {
+            navLogo.src = isDark ? logoBlanco : logoColor;
+            footerLogo.src = isDark ? logoBlanco : logoColor;
+        }
+
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            updateLogos(true);
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateLogos(isDark);
+        });
+    </script>
+</body>
+</html>
