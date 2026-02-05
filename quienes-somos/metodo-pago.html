@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO BÁSICO -->
+    <title>Métodos de Pago | Académika Plus - Facilidades para tu éxito</title>
+    <meta name="description" content="Conoce las opciones de pago disponibles en Académika Plus: transferencias bancarias en Ecuador y billeteras digitales internacionales.">
+    
+    <!-- CONFIGURACIÓN DE FAVICON -->
+    <link rel="icon" type="image/x-icon" href="https://academika-plus.github.io/img/static/a+.ico">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brandYellow: '#FACC15',
+                        brandGreen: '#22C55E',
+                        brandDark: '#111827',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap');
+        body { font-family: 'Lexend', sans-serif; }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        .dark .glass {
+            background: rgba(17, 24, 39, 0.8);
+        }
+        
+        .payment-card {
+            transition: all 0.3s ease;
+        }
+        .payment-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900 dark:bg-brandDark dark:text-white transition-colors duration-300 min-h-screen flex flex-col">
+
+    <!-- NAVBAR -->
+    <nav class="sticky top-0 z-50 glass border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 md:h-20 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="/">
+                        <img id="nav-logo" class="h-6 md:h-8 w-auto transition-all duration-300" src="https://academika-plus.github.io/img/static/academika_color.png" alt="Académika Logo">
+                    </a>
+                </div>
+
+                <!-- Menú de Escritorio -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="/" class="hover:text-brandGreen transition text-sm font-medium">Inicio</a>
+                    <a href="servicios" class="hover:text-brandGreen transition text-sm font-medium">Servicios</a>
+                    <a href="quienes-somos" class="hover:text-brandGreen transition text-sm font-medium">Quiénes Somos</a>
+                    <a href="contacto" class="hover:text-brandGreen transition text-sm font-medium">Contacto</a>
+                    <a href="pedido" class="bg-brandYellow text-black px-5 py-2 rounded-full font-bold hover:shadow-lg transition transform hover:-translate-y-0.5 text-sm">Hacer Pedido</a>
+                </div>
+
+                <!-- Botón de Menú Móvil -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú Móvil Desplegable -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-brandDark border-b border-gray-200 dark:border-gray-800 px-4 pt-2 pb-6 space-y-2">
+            <a href="/" class="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg text-sm">Inicio</a>
+            <a href="servicios" class="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg text-sm">Servicios</a>
+            <a href="quienes-somos" class="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg text-sm">Quiénes Somos</a>
+            <a href="contacto" class="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg text-sm">Contacto</a>
+            <a href="pedido" class="block px-3 py-3 bg-brandYellow text-black font-bold text-center rounded-xl mt-4 text-sm shadow-md">Hacer Pedido</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="pt-16 pb-8 bg-gradient-to-b from-green-50 to-white dark:from-gray-900 dark:to-brandDark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brandYellow/10 text-yellow-700 dark:text-brandYellow text-xs font-bold mb-4 uppercase tracking-widest">
+                <i data-lucide="credit-card" class="w-4 h-4"></i> Pagos Seguros
+            </div>
+            <h1 class="text-4xl md:text-5xl font-black mb-4">Métodos de <span class="text-brandGreen">Pago</span></h1>
+            <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+                Ofrecemos diversas opciones para facilitar la contratación de tus servicios académicos.
+            </p>
+        </div>
+    </header>
+
+    <!-- AVISO DE MODALIDAD ONLINE -->
+    <section class="py-6">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 p-6 rounded-3xl flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
+                <div class="w-16 h-16 bg-white dark:bg-blue-900/40 text-blue-500 rounded-2xl flex items-center justify-center shrink-0 shadow-sm">
+                    <i data-lucide="globe" class="w-8 h-8"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-xl mb-1 text-blue-900 dark:text-blue-300">Servicio 100% en Línea</h3>
+                    <p class="text-blue-700 dark:text-blue-400 text-sm leading-relaxed">
+                        Para tu seguridad y comodidad, Académika Plus opera exclusivamente bajo modalidad virtual. Por este motivo, <strong>no aceptamos pagos en efectivo</strong>. Todos nuestros cobros se gestionan mediante transferencia bancaria o canales digitales.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN BANCOS -->
+    <section class="py-12 bg-white dark:bg-brandDark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-3 mb-10 border-b border-gray-100 dark:border-gray-800 pb-4">
+                <div class="w-10 h-10 bg-brandGreen/10 text-brandGreen rounded-xl flex items-center justify-center">
+                    <i data-lucide="building-2" class="w-6 h-6"></i>
+                </div>
+                <h2 class="text-2xl font-bold italic uppercase tracking-tight">Principales Bancos (Ecuador)</h2>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Banco Pichincha -->
+                <div class="payment-card bg-gray-50 dark:bg-gray-800/50 p-6 rounded-3xl border border-gray-100 dark:border-gray-700 flex items-center justify-center group shadow-sm">
+                    <img src="https://academika-plus.github.io/img/photos/banco_pichincha.png" alt="Logo de Banco Pichincha" class="max-h-16 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-500" onerror="this.src='https://placehold.co/200x100?text=Pichincha'">
+                </div>
+                <!-- Banco Guayaquil -->
+                <div class="payment-card bg-gray-50 dark:bg-gray-800/50 p-6 rounded-3xl border border-gray-100 dark:border-gray-700 flex items-center justify-center group shadow-sm">
+                    <img src="https://academika-plus.github.io/img/photos/banco_guayaquil.png" alt="Logo de Banco Guayaquil" class="max-h-16 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-500" onerror="this.src='https://placehold.co/200x100?text=Guayaquil'">
+                </div>
+                <!-- Banco del Pacífico -->
+                <div class="payment-card bg-gray-50 dark:bg-gray-800/50 p-6 rounded-3xl border border-gray-100 dark:border-gray-700 flex items-center justify-center group shadow-sm">
+                    <img src="https://academika-plus.github.io/img/photos/banco_pacifico.png" alt="Logo de Banco del Pacífico" class="max-h-16 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-500" onerror="this.src='https://placehold.co/200x100?text=Pacifico'">
+                </div>
+                <!-- Produbanco -->
+                <div class="payment-card bg-gray-50 dark:bg-gray-800/50 p-6 rounded-3xl border border-gray-100 dark:border-gray-700 flex items-center justify-center group shadow-sm">
+                    <img src="https://academika-plus.github.io/img/photos/banco_produbanco.png" alt="Logo de Produbanco" class="max-h-16 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-500" onerror="this.src='https://placehold.co/200x100?text=Produbanco'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN BILLETERAS DIGITALES -->
+    <section class="py-12 bg-gray-50 dark:bg-gray-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-3 mb-10 border-b border-gray-200 dark:border-gray-800 pb-4">
+                <div class="w-10 h-10 bg-brandYellow/10 text-brandYellow rounded-xl flex items-center justify-center">
+                    <i data-lucide="smartphone" class="w-6 h-6"></i>
+                </div>
+                <h2 class="text-2xl font-bold italic uppercase tracking-tight">Billeteras Digitales</h2>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Deuna -->
+                <div class="payment-card bg-white dark:bg-gray-800 p-6 rounded-3xl border border-gray-100 dark:border-gray-700 flex items-center justify-center group shadow-sm">
+                    <img src="https://academika-plus.github.io/img/photos/deduna!.png" alt="Logo de Deuna!" class="max-h-16 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-500" onerror="this.src='https://placehold.co/200x100?text=Deuna!'">
+                </div>
+                <!-- Peigo -->
+                <div class="payment-card bg-white dark:bg-gray-800 p-6 rounded-3xl border border-gray-100 dark:border-gray-700 flex items-center justify-center group shadow-sm">
+                    <img src="https://academika-plus.github.io/img/photos/peigo.png" alt="Logo de Peigo" class="max-h-16 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-500" onerror="this.src='https://placehold.co/200x100?text=Peigo'">
+                </div>
+                <!-- PayPal -->
+                <div class="payment-card bg-white dark:bg-gray-800 p-6 rounded-3xl border border-gray-100 dark:border-gray-700 flex items-center justify-center group shadow-sm">
+                    <img src="https://academika-plus.github.io/img/photos/paypal.png" alt="Logo de PayPal" class="max-h-16 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-500" onerror="this.src='https://placehold.co/200x100?text=PayPal'">
+                </div>
+                <!-- Payphone -->
+                <div class="payment-card bg-white dark:bg-gray-800 p-6 rounded-3xl border border-gray-100 dark:border-gray-700 flex items-center justify-center group shadow-sm">
+                    <img src="https://academika-plus.github.io/img/photos/payphone.png" alt="Logo de PayPhone" class="max-h-16 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-500" onerror="this.src='https://placehold.co/200x100?text=PayPhone'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COORDINACIÓN INTERNA CTA -->
+    <section class="py-16 flex-grow flex items-center">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="bg-brandGreen text-white p-10 md:p-16 rounded-[3rem] shadow-2xl relative overflow-hidden">
+                <!-- Decoración -->
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+                
+                <h3 class="text-3xl md:text-4xl font-black mb-6">¿Tu método de pago no aparece?</h3>
+                <p class="text-lg opacity-90 mb-10 max-w-xl mx-auto">
+                    No te preocupes. Si prefieres otro canal digital o necesitas una facilidad distinta, háznoslo saber internamente para coordinar de forma personalizada.
+                </p>
+                <a href="https://wa.me/593995458260?text=%C2%BFQuerr%C3%ADa%20consultar%20sobre%20un%20m%C3%A9todo%20de%20pago%20diferente%3F" target="_blank" class="inline-flex items-center gap-3 bg-brandYellow text-black px-12 py-4 rounded-full font-black text-lg hover:scale-105 transition transform shadow-xl">
+                    <i data-lucide="message-circle"></i>
+                    Coordinar por WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-100 dark:bg-black pt-16 pb-8 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div class="space-y-6">
+                    <img id="footer-logo" class="h-12 w-auto" src="https://academika-plus.github.io/img/static/academika_color.png" alt="Académika Logo">
+                    <p class="text-slate-600 dark:text-slate-400 italic">
+                        "Excelencia académica a tu alcance, apoyando a la próxima generación de profesionales."
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/academika.plus" target="_blank" class="w-10 h-10 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-brandGreen hover:text-white transition shadow-sm">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@academika.plus" target="_blank" class="w-10 h-10 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-brandGreen hover:text-white transition shadow-sm">
+                            <i data-lucide="music-2" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://www.instagram.com/academika.plus" target="_blank" class="w-10 h-10 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-brandGreen hover:text-white transition shadow-sm">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-6 uppercase tracking-wider text-brandGreen">Quiénes Somos</h4>
+                    <ul class="space-y-4 text-slate-600 dark:text-slate-400">
+                        <li><a href="/quienes-somos/como-trabajamos" class="hover:text-brandGreen transition">¿Cómo trabajamos?</a></li>
+                        <li><a href="/quienes-somos/nuestro-equipo" class="hover:text-brandGreen transition">Nuestro Equipo</a></li>
+                        <li><a href="/quienes-somos/opiniones" class="hover:text-brandGreen transition">Opiniones sobre Nosotros</a></li>
+                        <li><a href="/quienes-somos/cv" class="hover:text-brandGreen transition">Trabajar con Nosotros</a></li>
+                        <li><a href="/quienes-somos/metodo-pago" class="font-bold text-brandGreen">Métodos de pago</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-6 uppercase tracking-wider text-brandGreen">Contacto</h4>
+                    <ul class="space-y-4 text-slate-600 dark:text-slate-400 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="phone" class="w-4 h-4 mt-1 text-brandYellow"></i>
+                            <span>+593 99 545 8260</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="mail" class="w-4 h-4 mt-1 text-brandYellow"></i>
+                            <span>academika.plus@gmail.com</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="clock" class="w-4 h-4 mt-1 text-brandYellow"></i>
+                            <div>
+                                <p>Lun - Vie: 07h00 - 20h00</p>
+                                <p>Sab - Dom: 08h00 - 17h00</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-6 uppercase tracking-wider text-brandGreen">Legal & Otros</h4>
+                    <ul class="space-y-4 text-slate-600 dark:text-slate-400">
+                        <li><a href="/legal/tyc" class="hover:text-brandGreen transition">Términos y Condiciones</a></li>
+                        <li><a href="/legal/pdp" class="hover:text-brandGreen transition">Política de Privacidad</a></li>
+                        <li><a href="/legal/pdc" class="hover:text-brandGreen transition">Política de Cookies</a></li>
+                        <li><a href="/legal/pdd" class="hover:text-brandGreen transition">Política de Devolución</a></li>
+                        <li><a href="/legal/ddr" class="hover:text-brandGreen transition">Descargo de Responsabilidad</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-slate-500 dark:text-slate-500 text-sm">
+                    © <span id="current-year"></span> Académika Plus. Todos los derechos reservados.
+                </p>
+                
+                <button id="theme-toggle" class="flex items-center gap-3 px-5 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full shadow-sm hover:shadow-md transition">
+                    <span class="dark:hidden flex items-center gap-2 font-medium">
+                        <i data-lucide="moon" class="w-4 h-4"></i> Modo Noche
+                    </span>
+                    <span class="hidden dark:flex items-center gap-2 font-medium">
+                        <i data-lucide="sun" class="w-4 h-4"></i> Modo Claro
+                    </span>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // NAVBAR & TEMA
+        const menuBtn = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const navLogo = document.getElementById('nav-logo');
+        const footerLogo = document.getElementById('footer-logo');
+        const logoColor = "https://academika-plus.github.io/img/static/academika_color.png";
+        const logoBlanco = "https://academika-plus.github.io/img/static/academika_blanco.png";
+
+        function updateLogos(isDark) {
+            if (isDark) {
+                navLogo.src = logoBlanco;
+                footerLogo.src = logoBlanco;
+            } else {
+                navLogo.src = logoColor;
+                footerLogo.src = logoColor;
+            }
+        }
+
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            updateLogos(true);
+        } else {
+            document.documentElement.classList.remove('dark');
+            updateLogos(false);
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                updateLogos(false);
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                updateLogos(true);
+            }
+        });
+    </script>
+</body>
+</html>
