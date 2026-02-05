@@ -82,39 +82,39 @@
     <!-- NAVBAR -->
     <nav class="sticky top-0 z-50 glass border-b border-gray-200 dark:border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <!-- Logo -->
+            <div class="flex justify-between h-16 md:h-20 items-center">
                 <div class="flex-shrink-0 flex items-center">
                     <a href="/">
-                        <img id="nav-logo" class="h-12 w-auto" src="https://academika-plus.github.io/img/static/academika_color.png" alt="Académika Logo">
+                        <!-- Logo ajustado a h-6 (24px) en móvil y h-8 (32px) en escritorio para mayor elegancia -->
+                        <img id="nav-logo" class="h-6 md:h-8 w-auto transition-all duration-300" src="https://academika-plus.github.io/img/static/academika_color.png" alt="Académika Logo">
                     </a>
                 </div>
 
-                <!-- Desktop Menu -->
+                <!-- Menú de Escritorio -->
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="/" class="font-semibold text-brandGreen">Inicio</a>
-                    <a href="/servicios" class="hover:text-brandGreen transition">Servicios</a>
-                    <a href="/quienes-somos" class="hover:text-brandGreen transition">Quiénes Somos</a>
-                    <a href="/contacto" class="hover:text-brandGreen transition">Contacto</a>
-                    <a href="/pedido" class="bg-brandYellow text-black px-6 py-2 rounded-full font-bold hover:shadow-lg transition transform hover:-translate-y-1">Hacer Pedido</a>
+                    <a href="/" class="hover:text-brandGreen transition text-sm font-medium">Inicio</a>
+                    <a href="servicios" class="hover:text-brandGreen transition text-sm font-medium">Servicios</a>
+                    <a href="quienes-somos" class="hover:text-brandGreen transition text-sm font-medium">Quiénes Somos</a>
+                    <a href="contacto" class="hover:text-brandGreen transition text-sm font-medium">Contacto</a>
+                    <a href="pedido" class="bg-brandYellow text-black px-5 py-2 rounded-full font-bold hover:shadow-lg transition transform hover:-translate-y-0.5 text-sm">Hacer Pedido</a>
                 </div>
 
-                <!-- Mobile menu button -->
+                <!-- Botón de Menú Móvil -->
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
-                        <i data-lucide="menu"></i>
+                    <button id="mobile-menu-button" class="p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Mobile Menu -->
+        <!-- Menú Móvil Desplegable -->
         <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-brandDark border-b border-gray-200 dark:border-gray-800 px-4 pt-2 pb-6 space-y-2">
-            <a href="/" class="block px-3 py-2 text-brandGreen font-bold">Inicio</a>
-            <a href="/servicios" class="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">Servicios</a>
-            <a href="/quienes-somos" class="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">Quiénes Somos</a>
-            <a href="/contacto" class="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">Contacto</a>
-            <a href="/pedido" class="block px-3 py-2 bg-brandYellow text-black font-bold text-center rounded-lg mt-4">Hacer Pedido</a>
+            <a href="/" class="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg text-sm">Inicio</a>
+            <a href="servicios" class="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg text-sm">Servicios</a>
+            <a href="quienes-somos" class="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg text-sm">Quiénes Somos</a>
+            <a href="contacto" class="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg text-sm">Contacto</a>
+            <a href="pedido" class="block px-3 py-3 bg-brandYellow text-black font-bold text-center rounded-xl mt-4 text-sm shadow-md">Hacer Pedido</a>
         </div>
     </nav>
 
