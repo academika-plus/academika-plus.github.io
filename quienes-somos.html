@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO BÁSICO -->
+    <title>Quiénes Somos | Académika Plus - Pasión por la Excelencia</title>
+    <meta name="description" content="Conoce la historia, misión y el equipo detrás de Académika Plus. Expertos dedicados a potenciar tu éxito académico en Ecuador.">
+    
+    <!-- CONFIGURACIÓN DE FAVICON -->
+    <link rel="icon" type="image/x-icon" href="https://academika-plus.github.io/img/static/a+.ico">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brandYellow: '#FACC15',
+                        brandGreen: '#22C55E',
+                        brandDark: '#111827',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap');
+        body { font-family: 'Lexend', sans-serif; }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        .dark .glass {
+            background: rgba(17, 24, 39, 0.8);
+        }
+
+        .info-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .info-card:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900 dark:bg-brandDark dark:text-white transition-colors duration-300 min-h-screen flex flex-col">
+
+    <!-- NAVBAR -->
+    <nav class="sticky top-0 z-50 glass border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 md:h-20 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="/">
+                        <img id="nav-logo" class="h-6 md:h-8 w-auto transition-all duration-300" src="https://academika-plus.github.io/img/static/academika_color.png" alt="Académika Logo">
+                    </a>
+                </div>
+
+                <!-- Menú de Escritorio -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="/" class="hover:text-brandGreen transition text-sm font-medium">Inicio</a>
+                    <a href="servicios" class="hover:text-brandGreen transition text-sm font-medium">Servicios</a>
+                    <a href="quienes-somos" class="text-brandGreen font-bold text-sm">Quiénes Somos</a>
+                    <a href="contacto" class="hover:text-brandGreen transition text-sm font-medium">Contacto</a>
+                    <a href="pedido" class="bg-brandYellow text-black px-5 py-2 rounded-full font-bold hover:shadow-lg transition transform hover:-translate-y-0.5 text-sm">Hacer Pedido</a>
+                </div>
+
+                <!-- Botón de Menú Móvil -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú Móvil Desplegable -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-brandDark border-b border-gray-200 dark:border-gray-800 px-4 pt-2 pb-6 space-y-2">
+            <a href="/" class="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg text-sm">Inicio</a>
+            <a href="servicios" class="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg text-sm">Servicios</a>
+            <a href="quienes-somos" class="block px-3 py-2 bg-green-50 dark:bg-green-900/20 text-brandGreen font-bold rounded-lg text-sm">Quiénes Somos</a>
+            <a href="contacto" class="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg text-sm">Contacto</a>
+            <a href="pedido" class="block px-3 py-3 bg-brandYellow text-black font-bold text-center rounded-xl mt-4 text-sm shadow-md">Hacer Pedido</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="pt-20 pb-16 bg-gradient-to-br from-green-50 via-white to-yellow-50 dark:from-gray-900 dark:via-brandDark dark:to-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="px-4 py-1 rounded-full bg-brandGreen/10 text-brandGreen text-xs font-bold uppercase tracking-widest mb-6 inline-block">Tu éxito es nuestro éxito</span>
+            <h1 class="text-5xl md:text-6xl font-black mb-6 leading-tight">
+                Somos <span class="text-brandGreen">Académika Plus</span>
+            </h1>
+            <p class="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">
+                Nacimos con la misión de aliviar la carga académica de miles de estudiantes, brindando un apoyo profesional, ético y de alta calidad para convertir sus metas en realidad.
+            </p>
+        </div>
+    </header>
+
+    <!-- SOBRE NOSOTROS INFO -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-4 flex items-center gap-2">
+                            <i data-lucide="target" class="text-brandGreen"></i> Nuestra Misión
+                        </h2>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                            Proporcionar herramientas y asesoría académica de excelencia que permita a los estudiantes de Ecuador alcanzar su máximo potencial, garantizando trabajos originales, rigurosos y entregados a tiempo.
+                        </p>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold mb-4 flex items-center gap-2">
+                            <i data-lucide="eye" class="text-brandYellow"></i> Nuestra Visión
+                        </h2>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                            Convertirnos en el referente número uno de apoyo académico en línea de la región, destacando por nuestra transparencia, innovación y el éxito de nuestros clientes.
+                        </p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute -top-10 -left-10 w-32 h-32 bg-brandGreen/10 rounded-full blur-3xl"></div>
+                    <div class="bg-gray-100 dark:bg-gray-800 rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white dark:border-gray-700">
+                        <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Equipo de Académika Plus trabajando" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CARTELERA DE SECCIONES -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black mb-4 uppercase italic">Explora Académika</h2>
+                <div class="w-20 h-1.5 bg-brandYellow mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Cómo trabajamos -->
+                <a href="como-trabajamos" class="info-card bg-white dark:bg-gray-800 p-8 rounded-[2.5rem] shadow-sm hover:shadow-2xl border border-gray-100 dark:border-gray-700 group">
+                    <div class="w-14 h-14 bg-green-100 dark:bg-green-900/30 text-brandGreen rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform">
+                        <i data-lucide="settings" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">¿Cómo trabajamos?</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-6">Conoce nuestro proceso paso a paso, desde que recibimos tu pedido hasta la entrega final.</p>
+                    <span class="text-brandGreen font-bold flex items-center gap-2 group-hover:gap-4 transition-all">Ver proceso <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                </a>
+
+                <!-- Nuestro Equipo -->
+                <a href="nuestro-equipo" class="info-card bg-white dark:bg-gray-800 p-8 rounded-[2.5rem] shadow-sm hover:shadow-2xl border border-gray-100 dark:border-gray-700 group">
+                    <div class="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 text-blue-500 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform">
+                        <i data-lucide="users" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Nuestro Equipo</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-6">Expertos de diversas facultades y áreas académicas listos para ayudarte en tu proyecto.</p>
+                    <span class="text-brandGreen font-bold flex items-center gap-2 group-hover:gap-4 transition-all">Conocer equipo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                </a>
+
+                <!-- Opiniones -->
+                <a href="opiniones" class="info-card bg-white dark:bg-gray-800 p-8 rounded-[2.5rem] shadow-sm hover:shadow-2xl border border-gray-100 dark:border-gray-700 group">
+                    <div class="w-14 h-14 bg-yellow-100 dark:bg-yellow-900/30 text-brandYellow rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform">
+                        <i data-lucide="star" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Opiniones</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-6">Lo que nuestros clientes dicen sobre nosotros y los resultados obtenidos en sus carreras.</p>
+                    <span class="text-brandGreen font-bold flex items-center gap-2 group-hover:gap-4 transition-all">Ver testimonios <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                </a>
+
+                <!-- Trabajar con Nosotros -->
+                <a href="/quienes-somos/cv" class="info-card bg-white dark:bg-gray-800 p-8 rounded-[2.5rem] shadow-sm hover:shadow-2xl border border-gray-100 dark:border-gray-700 group">
+                    <div class="w-14 h-14 bg-purple-100 dark:bg-purple-900/30 text-purple-500 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform">
+                        <i data-lucide="briefcase" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Vacantes</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-6">¿Eres un experto académico? Únete a nuestro staff y ayuda a otros a brillar profesionalmente.</p>
+                    <span class="text-brandGreen font-bold flex items-center gap-2 group-hover:gap-4 transition-all">Postular ahora <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                </a>
+
+                <!-- Métodos de Pago -->
+                <a href="metodo-pago" class="info-card bg-white dark:bg-gray-800 p-8 rounded-[2.5rem] shadow-sm hover:shadow-2xl border border-gray-100 dark:border-gray-700 group">
+                    <div class="w-14 h-14 bg-orange-100 dark:bg-orange-900/30 text-orange-500 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform">
+                        <i data-lucide="credit-card" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Métodos de Pago</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-6">Opciones digitales y transferencias bancarias locales para facilitar tu contratación.</p>
+                    <span class="text-brandGreen font-bold flex items-center gap-2 group-hover:gap-4 transition-all">Ver medios <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="py-20 bg-white dark:bg-brandDark">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black mb-4">Preguntas Frecuentes</h2>
+                <p class="text-slate-500">Resolvemos tus dudas más inmediatas sobre nuestro servicio.</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Pregunta 1 -->
+                <div class="border border-gray-100 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm">
+                    <button class="faq-btn w-full p-6 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 transition-colors">
+                        <span class="font-bold">¿Mis trabajos son originales y libres de plagio?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden p-6 text-slate-600 dark:text-slate-400 bg-white dark:bg-gray-800/30 border-t border-gray-100 dark:border-gray-800">
+                        Absolutamente. Todos nuestros trabajos se redactan desde cero y pasan por rigurosos controles de calidad y software de detección de plagio para asegurar la originalidad total.
+                    </div>
+                </div>
+
+                <!-- Pregunta 2 -->
+                <div class="border border-gray-100 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm">
+                    <button class="faq-btn w-full p-6 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 transition-colors">
+                        <span class="font-bold">¿En cuánto tiempo entregan los trabajos?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden p-6 text-slate-600 dark:text-slate-400 bg-white dark:bg-gray-800/30 border-t border-gray-100 dark:border-gray-800">
+                        El tiempo de entrega depende de la complejidad y extensión del proyecto. Para tareas cortas solemos entregar en 24-48 horas, mientras que para tesis o proyectos largos acordamos cronogramas de entrega por capítulos o fases.
+                    </div>
+                </div>
+
+                <!-- Pregunta 3 -->
+                <div class="border border-gray-100 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm">
+                    <button class="faq-btn w-full p-6 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 transition-colors">
+                        <span class="font-bold">¿Atienden feriados o fines de semana?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden p-6 text-slate-600 dark:text-slate-400 bg-white dark:bg-gray-800/30 border-t border-gray-100 dark:border-gray-800">
+                        Sí, nuestro horario de atención los fines de semana es de 08h00 a 17h00. Entendemos que la vida académica no se detiene y estamos disponibles para consultas y recepción de pedidos incluso en días festivos bajo previa coordinación.
+                    </div>
+                </div>
+
+                <!-- Pregunta 4 -->
+                <div class="border border-gray-100 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm">
+                    <button class="faq-btn w-full p-6 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 transition-colors">
+                        <span class="font-bold">¿Cómo se realiza el pago?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden p-6 text-slate-600 dark:text-slate-400 bg-white dark:bg-gray-800/30 border-t border-gray-100 dark:border-gray-800">
+                        Trabajamos con una modalidad de abono inicial para comenzar el trabajo. El saldo restante se cancela antes de la entrega final. Puedes ver los bancos disponibles en nuestra sección de Métodos de Pago.
+                    </div>
+                </div>
+
+                <!-- Pregunta 5 -->
+                <div class="border border-gray-100 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm">
+                    <button class="faq-btn w-full p-6 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 transition-colors">
+                        <span class="font-bold">¿Qué pasa si necesito el trabajo de un día para otro?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden p-6 text-slate-600 dark:text-slate-400 bg-white dark:bg-gray-800/30 border-t border-gray-100 dark:border-gray-800">
+                        Contamos con un servicio de pedidos urgentes. Dependiendo de nuestra disponibilidad y el tema, podemos realizar entregas express. Estos pedidos suelen tener un recargo adicional por prioridad.
+                    </div>
+                </div>
+
+                <!-- Pregunta 6 -->
+                <div class="border border-gray-100 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm">
+                    <button class="faq-btn w-full p-6 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 transition-colors">
+                        <span class="font-bold">¿Mantienen mi privacidad y protección de datos?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden p-6 text-slate-600 dark:text-slate-400 bg-white dark:bg-gray-800/30 border-t border-gray-100 dark:border-gray-800">
+                        Totalmente. Nos regimos por la Ley Orgánica de Protección de Datos Personales de Ecuador. Tus datos y la naturaleza de tus pedidos son confidenciales y están protegidos en nuestros sistemas internos.
+                    </div>
+                </div>
+
+                <!-- Pregunta 7 -->
+                <div class="border border-gray-100 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm">
+                    <button class="faq-btn w-full p-6 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 transition-colors">
+                        <span class="font-bold">¿Qué pasa si mi profesor me pide cambios?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden p-6 text-slate-600 dark:text-slate-400 bg-white dark:bg-gray-800/30 border-t border-gray-100 dark:border-gray-800">
+                        Ofrecemos revisiones y correcciones incluidas en el presupuesto inicial, siempre que se ajusten a las instrucciones originales del pedido. Tu satisfacción y la nota final son lo más importante.
+                    </div>
+                </div>
+
+                <!-- Pregunta 8 -->
+                <div class="border border-gray-100 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm">
+                    <button class="faq-btn w-full p-6 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 transition-colors">
+                        <span class="font-bold">¿Tienen oficinas físicas para ir a pagar?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden p-6 text-slate-600 dark:text-slate-400 bg-white dark:bg-gray-800/30 border-t border-gray-100 dark:border-gray-800">
+                        Académika Plus es una plataforma nativa digital. Operamos exclusivamente en línea para ofrecer cobertura nacional en todo el Ecuador de forma rápida. Por ello, todos los pagos se gestionan mediante transferencias bancarias o billeteras digitales seguras.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER (Sincronizado con index.html) -->
+    <footer class="bg-gray-100 dark:bg-black pt-16 pb-8 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div class="space-y-6">
+                    <img id="footer-logo" class="h-12 w-auto" src="https://academika-plus.github.io/img/static/academika_color.png" alt="Académika Logo">
+                    <p class="text-slate-600 dark:text-slate-400 italic">
+                        "Excelencia académica a tu alcance, apoyando a la próxima generación de profesionales."
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/academika.plus" target="_blank" class="w-10 h-10 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-brandGreen hover:text-white transition shadow-sm">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@academika.plus" target="_blank" class="w-10 h-10 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-brandGreen hover:text-white transition shadow-sm">
+                            <i data-lucide="music-2" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://www.instagram.com/academika.plus" target="_blank" class="w-10 h-10 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-brandGreen hover:text-white transition shadow-sm">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-6 uppercase tracking-wider text-brandGreen">Quiénes Somos</h4>
+                    <ul class="space-y-4 text-slate-600 dark:text-slate-400">
+                        <li><a href="/quienes-somos/como-trabajamos" class="hover:text-brandGreen transition">¿Cómo trabajamos?</a></li>
+                        <li><a href="/quienes-somos/nuestro-equipo" class="hover:text-brandGreen transition">Nuestro Equipo</a></li>
+                        <li><a href="/quienes-somos/opiniones" class="hover:text-brandGreen transition">Opiniones sobre Nosotros</a></li>
+                        <li><a href="/quienes-somos/quienes-somos/cv" class="hover:text-brandGreen transition">Trabajar con Nosotros</a></li>
+                        <li><a href="/quienes-somos/metodo-pago" class="hover:text-brandGreen transition">Métodos de pago</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-6 uppercase tracking-wider text-brandGreen">Contacto</h4>
+                    <ul class="space-y-4 text-slate-600 dark:text-slate-400 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="phone" class="w-4 h-4 mt-1 text-brandYellow"></i>
+                            <span>+593 99 545 8260</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="mail" class="w-4 h-4 mt-1 text-brandYellow"></i>
+                            <span>academika.plus@gmail.com</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="clock" class="w-4 h-4 mt-1 text-brandYellow"></i>
+                            <div>
+                                <p>Lun - Vie: 07h00 - 20h00</p>
+                                <p>Sab - Dom: 08h00 - 17h00</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-6 uppercase tracking-wider text-brandGreen">Legal & Otros</h4>
+                    <ul class="space-y-4 text-slate-600 dark:text-slate-400">
+                        <li><a href="/legal/tyc" class="hover:text-brandGreen transition">Términos y Condiciones</a></li>
+                        <li><a href="/legal/pdp" class="hover:text-brandGreen transition">Política de Privacidad</a></li>
+                        <li><a href="/legal/pdc" class="hover:text-brandGreen transition">Política de Cookies</a></li>
+                        <li><a href="/legal/pdd" class="hover:text-brandGreen transition">Política de Devolución</a></li>
+                        <li><a href="/legal/ddr" class="hover:text-brandGreen transition">Descargo de Responsabilidad</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-slate-500 dark:text-slate-500 text-sm">
+                    © <span id="current-year"></span> Académika Plus. Todos los derechos reservados.
+                </p>
+                
+                <button id="theme-toggle" class="flex items-center gap-3 px-5 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full shadow-sm hover:shadow-md transition">
+                    <span class="dark:hidden flex items-center gap-2 font-medium">
+                        <i data-lucide="moon" class="w-4 h-4"></i> Modo Noche
+                    </span>
+                    <span class="hidden dark:flex items-center gap-2 font-medium">
+                        <i data-lucide="sun" class="w-4 h-4"></i> Modo Claro
+                    </span>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // LÓGICA DE ACORDEÓN FAQ
+        const faqButtons = document.querySelectorAll('.faq-btn');
+        faqButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const content = btn.nextElementSibling;
+                const icon = btn.querySelector('i');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+        // NAVBAR & MÓVIL
+        const menuBtn = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+        // MODO OSCURO
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const navLogo = document.getElementById('nav-logo');
+        const footerLogo = document.getElementById('footer-logo');
+        const logoColor = "https://academika-plus.github.io/img/static/academika_color.png";
+        const logoBlanco = "https://academika-plus.github.io/img/static/academika_blanco.png";
+
+        function updateLogos(isDark) {
+            navLogo.src = isDark ? logoBlanco : logoColor;
+            footerLogo.src = isDark ? logoBlanco : logoColor;
+        }
+
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            updateLogos(true);
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateLogos(isDark);
+        });
+    </script>
+</body>
+</html>
