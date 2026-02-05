@@ -68,10 +68,10 @@
 
         /* Animación para el banner de cookies */
         #cookie-banner {
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
         }
         #cookie-banner.hidden-banner {
-            transform: translateY(100%);
+            transform: translate(-50%, 150%);
             opacity: 0;
             pointer-events: none;
         }
@@ -85,18 +85,18 @@
             <div class="flex justify-between h-20 items-center">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="index">
+                    <a href="/">
                         <img id="nav-logo" class="h-12 w-auto" src="https://academika-plus.github.io/img/static/academika_color.png" alt="Académika Logo">
                     </a>
                 </div>
 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="index" class="font-semibold text-brandGreen">Inicio</a>
-                    <a href="servicios" class="hover:text-brandGreen transition">Servicios</a>
-                    <a href="quienes-somos" class="hover:text-brandGreen transition">Quiénes Somos</a>
-                    <a href="contacto" class="hover:text-brandGreen transition">Contacto</a>
-                    <a href="pedido" class="bg-brandYellow text-black px-6 py-2 rounded-full font-bold hover:shadow-lg transition transform hover:-translate-y-1">Hacer Pedido</a>
+                    <a href="/" class="font-semibold text-brandGreen">Inicio</a>
+                    <a href="/servicios" class="hover:text-brandGreen transition">Servicios</a>
+                    <a href="/quienes-somos" class="hover:text-brandGreen transition">Quiénes Somos</a>
+                    <a href="/contacto" class="hover:text-brandGreen transition">Contacto</a>
+                    <a href="/pedido" class="bg-brandYellow text-black px-6 py-2 rounded-full font-bold hover:shadow-lg transition transform hover:-translate-y-1">Hacer Pedido</a>
                 </div>
 
                 <!-- Mobile menu button -->
@@ -110,11 +110,11 @@
 
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-brandDark border-b border-gray-200 dark:border-gray-800 px-4 pt-2 pb-6 space-y-2">
-            <a href="index" class="block px-3 py-2 text-brandGreen font-bold">Inicio</a>
-            <a href="servicios" class="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">Servicios</a>
-            <a href="quienes-somos" class="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">Quiénes Somos</a>
-            <a href="contacto" class="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">Contacto</a>
-            <a href="pedido" class="block px-3 py-2 bg-brandYellow text-black font-bold text-center rounded-lg mt-4">Hacer Pedido</a>
+            <a href="/" class="block px-3 py-2 text-brandGreen font-bold">Inicio</a>
+            <a href="/servicios" class="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">Servicios</a>
+            <a href="/quienes-somos" class="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">Quiénes Somos</a>
+            <a href="/contacto" class="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">Contacto</a>
+            <a href="/pedido" class="block px-3 py-2 bg-brandYellow text-black font-bold text-center rounded-lg mt-4">Hacer Pedido</a>
         </div>
     </nav>
 
@@ -133,12 +133,11 @@
                         Expertos dedicados a ayudarte con tus tareas, proyectos y tesis. Calidad garantizada para estudiantes que buscan la excelencia.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <!-- WHATSAPP BUTTON WITH PRE-LOADED TEXT -->
                         <a href="https://wa.me/593995458260?text=%C2%BFQuer%C3%ADa%20hacer%20una%20consulta%3F" target="_blank" class="flex items-center justify-center gap-2 bg-brandGreen text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-green-600 transition shadow-xl">
                             <i data-lucide="message-circle"></i>
                             Consultar por WhatsApp
                         </a>
-                        <a href="servicios" class="flex items-center justify-center gap-2 bg-gray-100 dark:bg-gray-800 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                        <a href="/servicios" class="flex items-center justify-center gap-2 bg-gray-100 dark:bg-gray-800 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition">
                             Ver Servicios
                         </a>
                     </div>
@@ -163,7 +162,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-                <!-- Calidad -->
                 <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:border-brandGreen transition">
                     <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 text-brandGreen rounded-xl flex items-center justify-center mb-6">
                         <i data-lucide="award"></i>
@@ -172,7 +170,6 @@
                     <p class="text-slate-500 dark:text-slate-400 text-sm">Contenidos rigurosos, bien investigados y con excelente redacción.</p>
                 </div>
 
-                <!-- Confidencialidad -->
                 <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:border-brandGreen transition">
                     <div class="w-12 h-12 bg-yellow-100 dark:bg-yellow-900/30 text-brandYellow rounded-xl flex items-center justify-center mb-6">
                         <i data-lucide="shield-check"></i>
@@ -181,7 +178,6 @@
                     <p class="text-slate-500 dark:text-slate-400 text-sm">Tus datos y tus proyectos están seguros con nosotros. Privacidad total.</p>
                 </div>
 
-                <!-- Trato Personal -->
                 <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:border-brandGreen transition">
                     <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 text-blue-500 rounded-xl flex items-center justify-center mb-6">
                         <i data-lucide="users"></i>
@@ -190,7 +186,6 @@
                     <p class="text-slate-500 dark:text-slate-400 text-sm">Atención directa para entender exactamente qué necesitas.</p>
                 </div>
 
-                <!-- Soporte -->
                 <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:border-brandGreen transition">
                     <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 text-purple-500 rounded-xl flex items-center justify-center mb-6">
                         <i data-lucide="headphones"></i>
@@ -199,7 +194,6 @@
                     <p class="text-slate-500 dark:text-slate-400 text-sm">Estamos disponibles para resolver tus dudas en cualquier momento.</p>
                 </div>
 
-                <!-- Precio -->
                 <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:border-brandGreen transition">
                     <div class="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 text-orange-500 rounded-xl flex items-center justify-center mb-6">
                         <i data-lucide="zap"></i>
@@ -215,7 +209,6 @@
     <footer class="bg-gray-100 dark:bg-black pt-16 pb-8 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-                <!-- Brand & Slogan -->
                 <div class="space-y-6">
                     <img id="footer-logo" class="h-12 w-auto" src="https://academika-plus.github.io/img/static/academika_color.png" alt="Académika Logo">
                     <p class="text-slate-600 dark:text-slate-400 italic">
@@ -234,19 +227,17 @@
                     </div>
                 </div>
 
-                <!-- Quiénes Somos Sub-links -->
                 <div>
                     <h4 class="font-bold text-lg mb-6 uppercase tracking-wider text-brandGreen">Quiénes Somos</h4>
                     <ul class="space-y-4 text-slate-600 dark:text-slate-400">
-                        <li><a href="como-trabajamos" class="hover:text-brandGreen transition">¿Cómo trabajamos?</a></li>
-                        <li><a href="nuestro-equipo" class="hover:text-brandGreen transition">Nuestro Equipo</a></li>
-                        <li><a href="opiniones" class="hover:text-brandGreen transition">Opiniones sobre Nosotros</a></li>
-                        <li><a href="cv" class="hover:text-brandGreen transition">Trabajar con Nosotros</a></li>
-                        <li><a href="metodo-pago" class="hover:text-brandGreen transition">Métodos de pago</a></li>
+                        <li><a href="/como-trabajamos" class="hover:text-brandGreen transition">¿Cómo trabajamos?</a></li>
+                        <li><a href="/nuestro-equipo" class="hover:text-brandGreen transition">Nuestro Equipo</a></li>
+                        <li><a href="/opiniones" class="hover:text-brandGreen transition">Opiniones sobre Nosotros</a></li>
+                        <li><a href="/cv" class="hover:text-brandGreen transition">Trabajar con Nosotros</a></li>
+                        <li><a href="/metodo-pago" class="hover:text-brandGreen transition">Métodos de pago</a></li>
                     </ul>
                 </div>
 
-                <!-- Contact & Services -->
                 <div>
                     <h4 class="font-bold text-lg mb-6 uppercase tracking-wider text-brandGreen">Contacto</h4>
                     <ul class="space-y-4 text-slate-600 dark:text-slate-400 text-sm">
@@ -265,26 +256,21 @@
                                 <p>Sab - Dom: 08h00 - 17h00</p>
                             </div>
                         </li>
-                        <li class="pt-4 font-bold border-t border-gray-200 dark:border-gray-800">
-                            <a href="servicios" class="hover:text-brandGreen">Ver todos nuestros servicios</a>
-                        </li>
                     </ul>
                 </div>
 
-                <!-- Legal -->
                 <div>
                     <h4 class="font-bold text-lg mb-6 uppercase tracking-wider text-brandGreen">Legal & Otros</h4>
                     <ul class="space-y-4 text-slate-600 dark:text-slate-400">
-                        <li><a href="legal/tyc" class="hover:text-brandGreen transition">Términos y Condiciones</a></li>
-                        <li><a href="legal/pdp" class="hover:text-brandGreen transition">Política de Privacidad</a></li>
-                        <li><a href="legal/pdc" class="hover:text-brandGreen transition">Política de Cookies</a></li>
-                        <li><a href="legal/pdd" class="hover:text-brandGreen transition">Política de Devolución</a></li>
-                        <li><a href="legal/ddr" class="hover:text-brandGreen transition">Descargo de Responsabilidad</a></li>
+                        <li><a href="/legal/tyc" class="hover:text-brandGreen transition">Términos y Condiciones</a></li>
+                        <li><a href="/legal/pdp" class="hover:text-brandGreen transition">Política de Privacidad</a></li>
+                        <li><a href="/legal/pdc" class="hover:text-brandGreen transition">Política de Cookies</a></li>
+                        <li><a href="/legal/pdd" class="hover:text-brandGreen transition">Política de Devolución</a></li>
+                        <li><a href="/legal/ddr" class="hover:text-brandGreen transition">Descargo de Responsabilidad</a></li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Footer Bottom: Theme Toggle & Copyright -->
             <div class="pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-6">
                 <p class="text-slate-500 dark:text-slate-500 text-sm">
                     © <span id="current-year"></span> Académika Plus. Todos los derechos reservados.
@@ -311,15 +297,15 @@
             <div class="flex-grow text-center md:text-left">
                 <h4 class="font-bold text-lg mb-1">¡Usamos cookies! 🍪</h4>
                 <p class="text-sm text-slate-600 dark:text-slate-400">
-                    Utilizamos cookies técnicas y de funcionalidad para mejorar tu experiencia en Académika Plus. Puedes leer más en nuestra 
-                    <a href="legal/pdc" class="text-brandGreen font-bold hover:underline">Política de Cookies</a>.
+                    Utilizamos cookies técnicas para mejorar tu experiencia. Puedes leer más en nuestra 
+                    <a href="/legal/pdc" class="text-brandGreen font-bold hover:underline">Política de Cookies</a>.
                 </p>
             </div>
             <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
                 <button id="accept-cookies" class="bg-brandGreen text-white px-6 py-3 rounded-xl font-bold hover:bg-green-600 transition shadow-lg shrink-0">
                     Aceptar
                 </button>
-                <a href="legal/pdc" class="bg-gray-100 dark:bg-gray-800 px-6 py-3 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition text-center shrink-0">
+                <a href="/legal/pdc" class="bg-gray-100 dark:bg-gray-800 px-6 py-3 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition text-center shrink-0">
                     Ver más
                 </a>
             </div>
@@ -342,21 +328,34 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // LÓGICA DEL BANNER DE COOKIES
+        // LÓGICA DEL BANNER DE COOKIES (MEJORADA)
         const cookieBanner = document.getElementById('cookie-banner');
         const acceptBtn = document.getElementById('accept-cookies');
 
-        // Mostrar banner si no se ha aceptado
-        if (!localStorage.getItem('cookies-accepted')) {
-            setTimeout(() => {
-                cookieBanner.classList.remove('hidden-banner');
-            }, 1500); // Aparece suavemente después de 1.5s
+        function initCookies() {
+            const accepted = localStorage.getItem('cookies-accepted');
+            if (!accepted) {
+                // Pequeño retardo para asegurar que el DOM y Lucide estén listos
+                setTimeout(() => {
+                    cookieBanner.classList.remove('hidden-banner');
+                }, 1000); 
+            } else {
+                // Si ya fue aceptado, nos aseguramos de que no ocupe espacio ni bloquee eventos
+                cookieBanner.style.display = 'none';
+            }
         }
 
         acceptBtn.addEventListener('click', () => {
             localStorage.setItem('cookies-accepted', 'true');
             cookieBanner.classList.add('hidden-banner');
+            // Después de la animación de salida, lo quitamos totalmente
+            setTimeout(() => {
+                cookieBanner.style.display = 'none';
+            }, 600);
         });
+
+        // Iniciar comprobación al cargar la página
+        window.addEventListener('load', initCookies);
 
         // LÓGICA DE TEMA (MODO OSCURO/CLARO)
         const themeToggleBtn = document.getElementById('theme-toggle');
