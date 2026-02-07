@@ -66,12 +66,13 @@
             border-radius: 10px;
         }
 
-        /* Estilos del Banner de Cookies */
+        /* Estilos mejorados del Banner de Cookies */
         #cookie-banner {
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
         }
         #cookie-banner.hidden-banner {
-            transform: translate(-50%, 150%);
+            transform: translate(-50%, 150%) scale(0.95);
             opacity: 0;
             pointer-events: none;
         }
@@ -90,14 +91,11 @@
             <div class="flex justify-between h-20 items-center">
                 <div class="flex-shrink-0 flex items-center">
                     <a href="/">
-                        <!-- El logo ahora mide h-9 (36px) en móvil y h-12 (48px) en PC -->
                         <img id="nav-logo" class="h-6 md:h-12 w-auto transition-all duration-300" src="https://academika-plus.github.io/img/static/academika_color.png" alt="Académika Logo">
                     </a>
                 </div>
                 <div>
-                    <!-- El botón reduce su padding (px-4 py-1.5) y letra (text-xs) en móvil -->
                     <a href="/" class="flex items-center gap-2 bg-gray-100 dark:bg-gray-800 px-4 py-1.5 md:px-5 md:py-2 rounded-full font-bold hover:bg-brandGreen hover:text-white transition transform hover:-translate-y-1 text-xs md:text-base">
-                        <!-- El icono también es más pequeño en móvil (w-3 h-3) -->
                         <i data-lucide="arrow-left" class="w-3 h-3 md:w-4 md:h-4"></i>
                         Volver al inicio
                     </a>
@@ -111,161 +109,114 @@
         <div class="max-w-4xl mx-auto">
             <header class="mb-12 text-center">
                 <h1 class="text-4xl md:text-5xl font-black mb-4">Política de <span class="text-brandGreen">Cookies</span></h1>
-                <p class="text-slate-500 dark:text-slate-400 font-medium italic">Última actualización: 4 de febrero de 2026</p>
+                <p class="text-slate-500 dark:text-slate-400 font-medium italic">Última actualización: 7 de febrero de 2026</p>
                 <div class="w-24 h-1 bg-brandYellow mx-auto mt-6 rounded-full"></div>
             </header>
 
             <div class="bg-white dark:bg-gray-800/50 p-8 md:p-12 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-sm space-y-10 text-slate-700 dark:text-slate-300 leading-relaxed text-justify">
                 
                 <section>
-                    <p>Académika Plus utiliza cookies y tecnologías similares en su sitio web <a href="https://academika-plus.github.io/" class="text-brandGreen underline">https://academika-plus.github.io/</a> para garantizar el correcto funcionamiento, mejorar la experiencia de navegación y respetar tu privacidad, en cumplimiento de la <strong>Ley Orgánica de Protección de Datos Personales (LOPDP)</strong>, su Reglamento General y las directrices de la Superintendencia de Protección de Datos Personales (SPDP).</p>
+                    <p>Académika Plus utiliza cookies y tecnologías similares en su sitio web <a href="https://academika-plus.github.io/" class="text-brandGreen underline">https://academika-plus.github.io/</a> para garantizar el correcto funcionamiento, mejorar la experiencia de navegación y recoger feedback que nos permita optimizar nuestros servicios, siempre en cumplimiento de la <strong>Ley Orgánica de Protección de Datos Personales (LOPDP)</strong> de Ecuador.</p>
                 </section>
 
                 <section>
                     <h2 class="text-2xl font-bold text-brandGreen mb-4 flex items-center gap-3">
-                        <span class="text-brandYellow text-3xl">1.</span> ¿Qué son las cookies?
+                        <span class="text-brandYellow text-3xl">1.</span> Privacidad por Diseño
                     </h2>
-                    <p>Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo (computadora, celular o tablet) cuando visitas un sitio web. Permiten que el sitio recuerde información sobre tu visita (preferencias, sesión activa, configuración, etc.) para ofrecer una experiencia más fluida y personalizada en futuras visitas.</p>
-                    <p class="mt-4 font-bold">Existen varios tipos de cookies según su finalidad y duración:</p>
-                    <ul class="space-y-4 mt-4">
-                        <li class="flex items-start gap-3">
-                            <div class="mt-1 bg-brandGreen/10 p-1 rounded-lg shrink-0"><i data-lucide="check-circle" class="w-4 h-4 text-brandGreen"></i></div>
-                            <span><strong>Cookies estrictamente necesarias / técnicas:</strong> imprescindibles para el funcionamiento básico del sitio (navegación, seguridad, carga de recursos). No requieren consentimiento.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="mt-1 bg-brandGreen/10 p-1 rounded-lg shrink-0"><i data-lucide="settings" class="w-4 h-4 text-brandGreen"></i></div>
-                            <span><strong>Cookies de funcionalidad / preferencias:</strong> recuerdan tus elecciones (modo oscuro/claro, idioma). No requieren consentimiento si son limitadas a mejorar la usabilidad.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="mt-1 bg-blue-100 dark:bg-blue-900/30 p-1 rounded-lg shrink-0"><i data-lucide="bar-chart-3" class="w-4 h-4 text-blue-500"></i></div>
-                            <span><strong>Cookies de análisis / rendimiento:</strong> miden visitas, páginas vistas, tiempo en sitio. Requieren consentimiento.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="mt-1 bg-purple-100 dark:bg-purple-900/30 p-1 rounded-lg shrink-0"><i data-lucide="target" class="w-4 h-4 text-purple-500"></i></div>
-                            <span><strong>Cookies de marketing / publicidad:</strong> perfilan intereses para mostrar anuncios personalizados. Requieren consentimiento explícito.</span>
-                        </li>
-                    </ul>
+                    <p>En Académika Plus aplicamos el principio de <strong>privacidad por defecto</strong>. Esto significa que las herramientas de análisis (Google Analytics) están completamente desactivadas cuando entras por primera vez. Solo se activarán si decides pulsar el botón "Aceptar" en nuestro banner, otorgándonos el permiso para recoger datos estadísticos sobre tu navegación.</p>
                 </section>
 
                 <section>
                     <h2 class="text-2xl font-bold text-brandGreen mb-6 flex items-center gap-3">
                         <span class="text-brandYellow text-3xl">2.</span> ¿Qué cookies utiliza Académika Plus?
                     </h2>
-                    <p class="mb-6">Nuestro sitio utiliza principalmente cookies estrictamente necesarias y de funcionalidad. No empleamos cookies de análisis avanzado (como Google Analytics), ni de publicidad comportamental, ni de redes sociales (Facebook Pixel, TikTok, etc.).</p>
                     
                     <div class="overflow-x-auto custom-scrollbar rounded-2xl border border-gray-100 dark:border-gray-800">
-                        <table class="w-full text-left text-sm min-w-[700px]">
+                        <table class="w-full text-left text-sm min-w-[750px]">
                             <thead class="bg-gray-50 dark:bg-gray-900 text-brandGreen">
                                 <tr>
                                     <th class="px-4 py-3 font-bold border-b border-gray-200 dark:border-gray-700">Tipo</th>
                                     <th class="px-4 py-3 font-bold border-b border-gray-200 dark:border-gray-700">Proveedor / Origen</th>
                                     <th class="px-4 py-3 font-bold border-b border-gray-200 dark:border-gray-700">Finalidad</th>
-                                    <th class="px-4 py-3 font-bold border-b border-gray-200 dark:border-gray-700">Duración</th>
-                                    <th class="px-4 py-3 font-bold border-b border-gray-200 dark:border-gray-700">¿Consentimiento?</th>
+                                    <th class="px-4 py-3 font-bold border-b border-gray-200 dark:border-gray-700">¿Requiere Consentimiento?</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
                                 <tr>
                                     <td class="px-4 py-4 font-bold">Estrictamente necesarias</td>
-                                    <td class="px-4 py-4 italic">JavaScript propio (localStorage + cookie de respaldo)</td>
-                                    <td class="px-4 py-4">Guardar preferencia de modo oscuro/claro.</td>
-                                    <td class="px-4 py-4">Sesión o persistente (hasta 1 año)</td>
-                                    <td class="px-4 py-4 font-bold text-rose-500">No</td>
+                                    <td class="px-4 py-4 italic">Académika (localStorage)</td>
+                                    <td class="px-4 py-4">Guardar tu preferencia de Modo Oscuro/Claro y si has aceptado las cookies.</td>
+                                    <td class="px-4 py-4 font-bold text-rose-500">No (Técnicas)</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-4 font-bold">Análisis / Rendimiento</td>
+                                    <td class="px-4 py-4 italic">Google Tag Manager / Analytics</td>
+                                    <td class="px-4 py-4">Recoger feedback, ver qué servicios son los más buscados y detectar errores para mejorar la interactividad de la web.</td>
+                                    <td class="px-4 py-4 font-bold text-brandGreen">Sí (Solo tras aceptar)</td>
                                 </tr>
                                 <tr>
                                     <td class="px-4 py-4 font-bold">Funcionales / Sesión</td>
-                                    <td class="px-4 py-4 italic">Google Identity Services (accounts.google.com/gsi/client)</td>
-                                    <td class="px-4 py-4">Autenticación temporal con Google para subida de archivos a Drive (solo en Pedido  y Trabajar con Nosotros).</td>
-                                    <td class="px-4 py-4">Sesión (expira al cerrar navegador o recargar)</td>
-                                    <td class="px-4 py-4 font-bold text-rose-500">No (necesaria para la función solicitada)</td>
+                                    <td class="px-4 py-4 italic">Google Identity Services</td>
+                                    <td class="px-4 py-4">Autenticación temporal para la subida de archivos a Drive en los formularios.</td>
+                                    <td class="px-4 py-4 font-bold text-rose-500">No (Esencial para la función)</td>
                                 </tr>
                                 <tr>
                                     <td class="px-4 py-4 font-bold">Funcionales / Terceros</td>
-                                    <td class="px-4 py-4 italic">Google Fonts (fonts.googleapis.com)</td>
-                                    <td class="px-4 py-4">Cargar fuentes tipográficas personalizadas (familia Lexend).</td>
-                                    <td class="px-4 py-4">Persistente (hasta 1 año)</td>
-                                    <td class="px-4 py-4 font-bold text-rose-500">No</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-4 py-4 font-bold">Funcionales / Terceros</td>
-                                    <td class="px-4 py-4 italic">Tailwind CSS CDN (cdn.tailwindcss.com)</td>
-                                    <td class="px-4 py-4">Posibles cookies de optimización y entrega de recursos del CDN (muy limitadas).</td>
-                                    <td class="px-4 py-4">Sesión o breve</td>
-                                    <td class="px-4 py-4 font-bold text-rose-500">No</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-4 py-4 font-bold">Funcionales / Terceros</td>
-                                    <td class="px-4 py-4 italic">Lucide Icons (unpkg.com/lucide)</td>
-                                    <td class="px-4 py-4">Carga de iconos SVG (generalmente sin cookies persistentes).</td>
-                                    <td class="px-4 py-4">Sesión</td>
+                                    <td class="px-4 py-4 italic">Google Fonts / Lucide</td>
+                                    <td class="px-4 py-4">Carga de tipografías (Lexend) e iconos necesarios para la interfaz visual.</td>
                                     <td class="px-4 py-4 font-bold text-rose-500">No</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-
-                    <div class="mt-8 p-6 bg-rose-50 dark:bg-rose-900/10 rounded-2xl border border-rose-100 dark:border-rose-900/30">
-                        <h4 class="font-bold text-rose-600 dark:text-rose-400 mb-4 flex items-center gap-2">
-                            <i data-lucide="shield-alert" class="w-5 h-5"></i> No utilizamos ni instalamos:
-                        </h4>
-                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
-                            <li class="flex items-center gap-2"><i data-lucide="x" class="w-4 h-4 text-rose-500"></i> Cookies de análisis (Google Analytics, Matomo, Hotjar, etc.)</li>
-                            <li class="flex items-center gap-2"><i data-lucide="x" class="w-4 h-4 text-rose-500"></i> Cookies de publicidad o remarketing</li>
-                            <li class="flex items-center gap-2"><i data-lucide="x" class="w-4 h-4 text-rose-500"></i> Cookies de seguimiento cross-site</li>
-                            <li class="flex items-center gap-2"><i data-lucide="x" class="w-4 h-4 text-rose-500"></i> Cookies de redes sociales (Meta, TikTok, LinkedIn)</li>
-                        </ul>
-                    </div>
                 </section>
 
                 <section>
                     <h2 class="text-2xl font-bold text-brandGreen mb-4 flex items-center gap-3">
-                        <span class="text-brandYellow text-3xl">3.</span> Consentimiento y cómo gestionamos las cookies
+                        <span class="text-brandYellow text-3xl">3.</span> Gestión del Consentimiento y GTM
                     </h2>
-                    <p><strong>Cookies estrictamente necesarias y funcionales esenciales:</strong> se instalan automáticamente al entrar al sitio porque son indispensables para su correcto funcionamiento (la LOPDP no exige consentimiento para estas según el <strong>Art. 7 literal b</strong>: ejecución de contrato o medidas precontractuales).</p>
-                    <p class="mt-4"><strong>Otras cookies:</strong> en caso de que en el futuro las implementemos, mostraremos un banner de consentimiento con opciones claras: <strong>Aceptar todas</strong>, <strong>Configurar (elegir categorías)</strong> o <strong>Rechazar</strong>. El consentimiento será libre, específico, informado e inequívoco. Puedes retirarlo en cualquier momento eliminando cookies desde tu navegador o solicitándolo directamente.</p>
+                    <p>Nuestra web utiliza <strong>Google Tag Manager (GTM)</strong> como gestor de etiquetas. El flujo de privacidad funciona de la siguiente manera:</p>
+                    <ul class="space-y-4 mt-4">
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 bg-brandYellow/20 p-1 rounded-lg shrink-0"><i data-lucide="eye-off" class="w-4 h-4 text-brandYellow"></i></div>
+                            <span><strong>Estado Inicial:</strong> Al cargar la página, el script de GTM no envía ningún evento de rastreo de Analytics. Tu navegación es anónima.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 bg-brandGreen/10 p-1 rounded-lg shrink-0"><i data-lucide="mouse-pointer-2" class="w-4 h-4 text-brandGreen"></i></div>
+                            <span><strong>Acción del Usuario:</strong> Al hacer clic en "Aceptar", nuestro código JavaScript guarda una señal en tu navegador y envía un evento personalizado (`cookies_aceptadas`) a GTM.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 bg-blue-100 dark:bg-blue-900/30 p-1 rounded-lg shrink-0"><i data-lucide="check" class="w-4 h-4 text-blue-500"></i></div>
+                            <span><strong>Activación:</strong> Solo en este momento, GTM activa las etiquetas de Google Analytics para empezar a recoger datos sobre qué contenido te resulta más útil.</span>
+                        </li>
+                    </ul>
                 </section>
 
                 <section>
                     <h2 class="text-2xl font-bold text-brandGreen mb-4 flex items-center gap-3">
-                        <span class="text-brandYellow text-3xl">4.</span> ¿Cómo gestionar o eliminar cookies?
+                        <span class="text-brandYellow text-3xl">4.</span> ¿Para qué usamos estos datos?
                     </h2>
-                    <p>Puedes controlar o eliminar cookies en cualquier momento desde la configuración de tu navegador:</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 text-sm">
-                        <div class="p-4 bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-100 dark:border-gray-800">
-                            <strong class="block mb-2 text-brandGreen">Google Chrome</strong>
-                            Configuración &rarr; Privacidad y seguridad &rarr; Cookies y otros datos de sitios &rarr; Ver todas las cookies y datos de sitios.
-                        </div>
-                        <div class="p-4 bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-100 dark:border-gray-800">
-                            <strong class="block mb-2 text-brandGreen">Mozilla Firefox</strong>
-                            Opciones &rarr; Privacidad y Seguridad &rarr; Cookies y datos de sitios &rarr; Administrar datos.
-                        </div>
-                        <div class="p-4 bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-100 dark:border-gray-800">
-                            <strong class="block mb-2 text-brandGreen">Microsoft Edge</strong>
-                            Configuración &rarr; Cookies y permisos del sitio &rarr; Administrar y eliminar cookies.
-                        </div>
-                        <div class="p-4 bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-100 dark:border-gray-800">
-                            <strong class="block mb-2 text-brandGreen">Safari</strong>
-                            Preferencias &rarr; Privacidad &rarr; Administrar datos de sitios web.
-                        </div>
-                    </div>
-                    <p class="mt-6">También puedes activar el modo <strong>"No rastrear" (Do Not Track)</strong> en la mayoría de navegadores, aunque no todos los sitios lo respetan.</p>
-                    <p class="mt-4 text-sm font-bold p-4 bg-yellow-50 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-400 rounded-xl">
-                        Nota: Bloquear o eliminar cookies puede afectar el funcionamiento del sitio (ej. no recordar modo oscuro, problemas con el login de Google en Pedido  y Trabajar con Nosotro, fuentes que no cargan correctamente).
-                    </p>
+                    <p>La información recogida por las cookies de análisis nos sirve exclusivamente para:</p>
+                    <ul class="list-disc pl-6 space-y-2 mt-2">
+                        <li>Identificar qué servicios académicos tienen mayor demanda para priorizar su actualización.</li>
+                        <li>Entender la interactividad con los formularios y mejorar el proceso de pedido.</li>
+                        <li>Recoger feedback indirecto sobre la usabilidad de la página tanto en móviles como en computadoras.</li>
+                        <li>Detectar páginas con errores (404) que los usuarios visitan frecuentemente para corregir enlaces rotos.</li>
+                    </ul>
                 </section>
 
                 <section>
                     <h2 class="text-2xl font-bold text-brandGreen mb-4 flex items-center gap-3">
-                        <span class="text-brandYellow text-3xl">5.</span> Actualizaciones de esta política
+                        <span class="text-brandYellow text-3xl">5.</span> ¿Cómo revocar tu consentimiento?
                     </h2>
-                    <p>Podemos modificar esta Política de Cookies por cambios en el sitio, nuevas tecnologías o actualizaciones normativas de la SPDP. La versión vigente siempre estará publicada aquí. Si los cambios son significativos, te notificaremos (por WhatsApp si ya hemos tenido contacto previo).</p>
+                    <p>Si aceptaste las cookies pero deseas dejar de ser rastreado, puedes borrar las cookies de tu navegador en cualquier momento. Al recargar la página, el banner aparecerá de nuevo y el rastreo se detendrá hasta que vuelvas a aceptar.</p>
                 </section>
 
                 <section>
                     <h2 class="text-2xl font-bold text-brandGreen mb-4 flex items-center gap-3">
-                        <span class="text-brandYellow text-3xl">6.</span> Contacto y ejercicio de derechos
+                        <span class="text-brandYellow text-3xl">6.</span> Contacto
                     </h2>
-                    <p>Para cualquier duda sobre cookies, ejercer tus derechos <strong>ARCO+</strong> (acceso, rectificación, eliminación, oposición, portabilidad, etc.) o revocar consentimiento:</p>
+                    <p>Si tienes dudas sobre cómo gestionamos tu privacidad:</p>
                     <ul class="list-none space-y-2 mt-4">
                         <li class="flex items-center gap-2">
                             <i data-lucide="message-circle" class="w-4 h-4 text-brandGreen"></i>
@@ -276,13 +227,6 @@
                             <strong>Correo:</strong> academika.plus@gmail.com
                         </li>
                     </ul>
-                    <p class="mt-6 text-xs italic">También puedes presentar un reclamo ante la Superintendencia de Protección de Datos Personales (SPDP) si consideras que no hemos atendido adecuadamente tus derechos.</p>
-                </section>
-
-                <section class="border-t border-gray-100 dark:border-gray-800 pt-8 mt-12 text-center">
-                    <p class="text-sm font-semibold italic">
-                        Al continuar navegando en el sitio web, aceptas el uso de cookies conforme a esta Política de Cookies.
-                    </p>
                 </section>
 
                 <!-- BOTÓN SUBIR -->
@@ -383,25 +327,31 @@
         </div>
     </footer>
     
-    <!-- BANNER DE COOKIES -->
-    <div id="cookie-banner" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-2xl hidden-banner">
-        <div class="glass border border-gray-200 dark:border-gray-800 rounded-3xl p-6 shadow-2xl flex flex-col md:flex-row items-center gap-6">
-            <div class="flex-shrink-0 w-14 h-14 bg-brandYellow/10 text-brandYellow rounded-2xl flex items-center justify-center">
-                <i data-lucide="cookie" class="w-8 h-8"></i>
+    <!-- BANNER DE COOKIES REDISEÑADO -->
+    <div id="cookie-banner" class="fixed bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-[100] w-[92%] max-w-4xl hidden-banner">
+        <div class="glass dark:bg-brandDark/95 border border-gray-200 dark:border-gray-800 rounded-[2rem] p-5 md:p-6 shadow-2xl flex flex-col md:flex-row items-center gap-5 md:gap-8">
+            <!-- Icono oculto en móvil para ahorrar espacio -->
+            <div class="hidden md:flex flex-shrink-0 w-12 h-12 bg-brandYellow/10 text-brandYellow rounded-2xl items-center justify-center">
+                <i data-lucide="cookie" class="w-6 h-6"></i>
             </div>
-            <div class="flex-grow text-center md:text-left">
-                <h4 class="font-bold text-lg mb-1">¡Usamos cookies! 🍪</h4>
-                <p class="text-sm text-slate-600 dark:text-slate-400">
-                    Utilizamos cookies técnicas para mejorar tu experiencia. Puedes leer más en nuestra 
+            
+            <div class="flex-grow text-center md:text-left space-y-1">
+                <h4 class="font-bold text-base md:text-lg flex items-center justify-center md:justify-start gap-2">
+                    <span class="md:hidden"><i data-lucide="cookie" class="w-4 h-4 text-brandYellow"></i></span>
+                    Tu privacidad nos importa 🍪
+                </h4>
+                <p class="text-xs md:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Usamos cookies para mejorar tu experiencia. Al hacer clic en "Aceptar", activas Google Analytics para ayudarnos a mejorar. Consulta nuestra 
                     <a href="/legal/pdc" class="text-brandGreen font-bold hover:underline">Política de Cookies</a>.
                 </p>
             </div>
-            <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-                <button id="accept-cookies" class="bg-brandGreen text-white px-6 py-3 rounded-xl font-bold hover:bg-green-600 transition shadow-lg shrink-0">
+            
+            <div class="flex flex-col sm:flex-row gap-2 w-full md:w-auto shrink-0">
+                <button id="accept-cookies" class="w-full sm:w-auto bg-brandGreen text-white px-8 py-2.5 rounded-xl font-bold hover:bg-green-600 transition shadow-lg text-sm">
                     Aceptar
                 </button>
-                <a href="/legal/pdc" class="bg-gray-100 dark:bg-gray-800 px-6 py-3 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition text-center shrink-0">
-                    Ver más
+                <a href="/legal/pdc" class="w-full sm:w-auto bg-gray-100 dark:bg-gray-800 px-6 py-2.5 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition text-center text-sm">
+                    Más info
                 </a>
             </div>
         </div>

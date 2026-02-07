@@ -15,7 +15,7 @@
     
     <!-- SEO BÁSICO -->
     <title>Política de Privacidad | Académika Plus</title>
-    <meta name="description" content="Conoce cómo protegemos tus datos personales en Académika Plus de acuerdo a la LOPDP de Ecuador.">
+    <meta name="description" content="Conoce cómo protegemos tus datos personales en Académika Plus de acuerdo a la LOPDP de Ecuador y nuestra política de Privacidad por Diseño.">
     
     <!-- CONFIGURACIÓN DE FAVICON -->
     <link rel="icon" type="image/x-icon" href="https://academika-plus.github.io/img/static/a+.ico">
@@ -61,6 +61,17 @@
             opacity: 0;
             pointer-events: none;
         }
+
+        /* Estilos mejorados del Banner de Cookies */
+        #cookie-banner {
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+        }
+        #cookie-banner.hidden-banner {
+            transform: translate(-50%, 150%) scale(0.95);
+            opacity: 0;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body class="bg-white text-slate-900 dark:bg-brandDark dark:text-white transition-colors duration-300 min-h-screen flex flex-col">
@@ -76,14 +87,11 @@
             <div class="flex justify-between h-20 items-center">
                 <div class="flex-shrink-0 flex items-center">
                     <a href="/">
-                        <!-- El logo ahora mide h-9 (36px) en móvil y h-12 (48px) en PC -->
                         <img id="nav-logo" class="h-6 md:h-12 w-auto transition-all duration-300" src="https://academika-plus.github.io/img/static/academika_color.png" alt="Académika Logo">
                     </a>
                 </div>
                 <div>
-                    <!-- El botón reduce su padding (px-4 py-1.5) y letra (text-xs) en móvil -->
                     <a href="/" class="flex items-center gap-2 bg-gray-100 dark:bg-gray-800 px-4 py-1.5 md:px-5 md:py-2 rounded-full font-bold hover:bg-brandGreen hover:text-white transition transform hover:-translate-y-1 text-xs md:text-base">
-                        <!-- El icono también es más pequeño en móvil (w-3 h-3) -->
                         <i data-lucide="arrow-left" class="w-3 h-3 md:w-4 md:h-4"></i>
                         Volver al inicio
                     </a>
@@ -97,7 +105,7 @@
         <div class="max-w-4xl mx-auto">
             <header class="mb-12 text-center">
                 <h1 class="text-4xl md:text-5xl font-black mb-4">Política de <span class="text-brandGreen">Privacidad</span></h1>
-                <p class="text-slate-500 dark:text-slate-400 font-medium italic">Última actualización: 4 de febrero de 2026</p>
+                <p class="text-slate-500 dark:text-slate-400 font-medium italic">Última actualización: 7 de febrero de 2026</p>
                 <div class="w-24 h-1 bg-brandYellow mx-auto mt-6 rounded-full"></div>
             </header>
 
@@ -112,12 +120,12 @@
                     <h2 class="text-2xl font-bold text-brandGreen mb-4 flex items-center gap-3">
                         <span class="text-brandYellow">1.</span> Responsable del Tratamiento
                     </h2>
-                    <ul class="space-y-2 list-disc pl-5">
-                        <li><strong>Responsable:</strong> Académika Plus</li>
-                        <li><strong>Contacto principal:</strong> +593 99 545 8260 (WhatsApp) | academika.plus@gmail.com</li>
-                        <li><strong>Domicilio:</strong> Ecuador</li>
+                    <ul class="space-y-2 list-none">
+                        <li class="flex items-center gap-2"><strong>Responsable:</strong> Académika Plus</li>
+                        <li class="flex items-center gap-2"><strong>Contacto principal:</strong> +593 99 545 8260 (WhatsApp) | academika.plus@gmail.com</li>
+                        <li class="flex items-center gap-2"><strong>Domicilio:</strong> Ecuador</li>
                     </ul>
-                    <p class="mt-4 italic text-sm">No mantenemos una base de datos propia en el sitio web ni almacenamos información personal de forma persistente en servidores web bajo nuestro control directo.</p>
+                    <p class="mt-4 italic text-sm p-4 bg-gray-50 dark:bg-gray-900 rounded-xl">No mantenemos una base de datos propia en el sitio web ni almacenamos información personal de forma persistente en servidores web bajo nuestro control directo.</p>
                 </section>
 
                 <section>
@@ -125,39 +133,34 @@
                         <span class="text-brandYellow">2.</span> Datos que recopilamos y cómo los obtenemos
                     </h2>
                     <p>El sitio web no almacena información personal en bases de datos propias. Los datos se recopilan de las siguientes formas:</p>
-                    <div class="mt-6 space-y-8">
-                        <div class="bg-gray-50 dark:bg-gray-900 p-6 rounded-2xl">
-                            <h3 class="font-bold mb-3 text-brandYellow flex items-center gap-2">
-                                <i data-lucide="file-text" class="w-5 h-5"></i> A. Solicitudes de servicios académicos (Pedido)
-                            </h3>
+                    <div class="mt-6 space-y-6">
+                        <div class="p-6 border border-gray-100 dark:border-gray-700 rounded-2xl">
+                            <h3 class="font-bold mb-3 text-brandYellow flex items-center gap-2 italic">A. Solicitudes de servicios académicos (pedido.html)</h3>
                             <ul class="text-sm space-y-2 list-disc pl-5">
                                 <li><strong>Datos obligatorios:</strong> nombre y apellido, número de celular.</li>
                                 <li><strong>Datos opcionales:</strong> correo electrónico.</li>
                                 <li><strong>Detalles del trabajo:</strong> tipo de trabajo, asignatura, título, número de páginas, formato, fecha límite.</li>
                                 <li><strong>Archivos de referencia (opcional):</strong> PDF, Word, imágenes, etc.</li>
                             </ul>
-                            <p class="mt-3 text-xs"><strong>Cómo se obtienen:</strong> Al enviar el formulario, no se guardan datos en el sitio. Se genera un mensaje prellenado que abre WhatsApp para que tú lo envíes manualmente al <strong>+593 99 545 8260</strong>. Si eliges subir archivos vía Google Drive: usas login temporal con Google Identity Services (solo para identificar y crear carpeta temporal en nuestro Drive empresarial). La sesión expira al recargar página o cerrar navegador.</p>
+                            <p class="mt-3 text-xs text-slate-500"><strong>Cómo se obtienen:</strong> Al enviar el formulario, no se guardan datos en el sitio. Se genera un mensaje prellenado que abre WhatsApp para que tú lo envíes manualmente al +593 99 545 8260. Si eliges subir archivos vía Google Drive: usas login temporal con Google Identity Services (solo para identificar y crear carpeta temporal en nuestro Drive empresarial). La sesión expira al recargar la página o cerrar el navegador.</p>
                         </div>
 
-                        <div class="bg-gray-50 dark:bg-gray-900 p-6 rounded-2xl">
-                            <h3 class="font-bold mb-3 text-brandYellow flex items-center gap-2">
-                                <i data-lucide="users" class="w-5 h-5"></i> B. Postulaciones laborales / colaboración (Trabajar con Nosotros)
-                            </h3>
+                        <div class="p-6 border border-gray-100 dark:border-gray-700 rounded-2xl">
+                            <h3 class="font-bold mb-3 text-brandYellow flex items-center gap-2 italic">B. Postulaciones laborales / colaboración (cv.html)</h3>
                             <ul class="text-sm space-y-2 list-disc pl-5">
                                 <li><strong>Datos obligatorios:</strong> nombre y apellido, cédula/ID, número de celular, nivel académico/título, áreas de especialidad/experiencia.</li>
                                 <li><strong>Datos opcionales:</strong> correo electrónico.</li>
                                 <li><strong>Documentación:</strong> Hoja de vida / CV y certificaciones.</li>
                             </ul>
-                            <p class="mt-3 text-xs"><strong>Cómo se obtienen:</strong> Igual que en pedidos: el formulario genera un mensaje de WhatsApp o permite la subida temporal a Google Drive.</p>
+                            <p class="mt-3 text-xs text-slate-500"><strong>Cómo se obtienen:</strong> Igual que en pedidos: el formulario genera mensaje WhatsApp o permite subida temporal a Google Drive.</p>
                         </div>
 
-                        <div class="bg-gray-50 dark:bg-gray-900 p-6 rounded-2xl">
-                            <h3 class="font-bold mb-3 text-brandYellow flex items-center gap-2">
-                                <i data-lucide="cpu" class="w-5 h-5"></i> C. Datos técnicos automáticos
-                            </h3>
+                        <div class="p-6 border border-gray-100 dark:border-gray-700 rounded-2xl">
+                            <h3 class="font-bold mb-3 text-brandYellow flex items-center gap-2 italic">C. Datos técnicos automáticos</h3>
                             <ul class="text-sm space-y-2 list-disc pl-5">
                                 <li>Preferencias de navegación (modo oscuro/claro guardado en <strong>localStorage</strong> del navegador).</li>
-                                <li>Logs temporales del hosting (IP, navegador, hora de visita), los cuales no están vinculados a la identidad personal.</li>
+                                <li>Logs temporales del hosting (IP, navegador, hora de visita - no vinculados a identidad personal).</li>
+                                <li>Datos de análisis de uso del sitio (mediante Google Analytics vía Google Tag Manager, <strong>solo si das consentimiento explícito</strong> - ver sección de cookies).</li>
                             </ul>
                         </div>
                     </div>
@@ -168,25 +171,14 @@
                         <span class="text-brandYellow">3.</span> Finalidades del tratamiento
                     </h2>
                     <p>Utilizamos tus datos exclusivamente para:</p>
-                    <ul class="space-y-3 mt-4">
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle" class="w-5 h-5 text-brandGreen shrink-0 mt-1"></i>
-                            <span>Cotizar, coordinar y ejecutar servicios académicos solicitados.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle" class="w-5 h-5 text-brandGreen shrink-0 mt-1"></i>
-                            <span>Recibir y gestionar archivos de referencia necesarios para el trabajo.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle" class="w-5 h-5 text-brandGreen shrink-0 mt-1"></i>
-                            <span>Evaluar perfiles de postulantes, contactar para entrevistas o asignaciones (en caso de Trabajar con Nosotros).</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle" class="w-5 h-5 text-brandGreen shrink-0 mt-1"></i>
-                            <span>Responder consultas o resolver incidencias vía WhatsApp o correo electrónico.</span>
-                        </li>
+                    <ul class="space-y-2 mt-4">
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brandGreen mt-1"></i> Cotizar, coordinar y ejecutar servicios académicos solicitados.</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brandGreen mt-1"></i> Recibir y gestionar archivos de referencia necesarios para el trabajo.</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brandGreen mt-1"></i> Evaluar perfiles de postulantes, contactar para entrevistas o asignaciones (en caso de cv.html).</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brandGreen mt-1"></i> Responder consultas o resolver incidencias vía WhatsApp/correo.</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brandGreen mt-1"></i> Mejorar la experiencia en el sitio web: identificar servicios populares, optimizar formularios y detectar errores (como páginas 404), mediante datos agregados y anonimizados de Google Analytics (solo con tu consentimiento).</li>
                     </ul>
-                    <p class="mt-4 font-semibold text-sm">No realizamos perfiles de usuarios, marketing directo, publicidad comportamental, venta de datos ni ningún tratamiento adicional.</p>
+                    <p class="mt-4 font-bold text-sm text-brandYellow">No realizamos perfiles de usuarios, marketing directo, publicidad comportamental, venta de datos ni ningún tratamiento adicional.</p>
                 </section>
 
                 <section>
@@ -194,14 +186,17 @@
                         <span class="text-brandYellow">4.</span> Base legal del tratamiento (LOPDP Art. 7)
                     </h2>
                     <ul class="space-y-4">
-                        <li>
-                            <strong>Ejecución de contrato o medidas precontractuales (literal b):</strong> cotización, coordinación y posible prestación del servicio.
+                        <li class="flex gap-3">
+                            <span class="font-bold text-brandGreen">&bull;</span>
+                            <span><strong>Ejecución de contrato o medidas precontractuales (literal b):</strong> cotización, coordinación y posible prestación del servicio.</span>
                         </li>
-                        <li>
-                            <strong>Consentimiento expreso e informado (literal a):</strong> al enviar el formulario y aceptar estos Términos/Política (login Google, envío de CV, etc.).
+                        <li class="flex gap-3">
+                            <span class="font-bold text-brandGreen">&bull;</span>
+                            <span><strong>Consentimiento expreso e informado (literal a):</strong> al enviar formulario, aceptar esta Política/Términos, login Google, envío de CV, o al pulsar "Aceptar" en el banner de cookies para activar Google Analytics.</span>
                         </li>
-                        <li>
-                            <strong>Interés legítimo (limitado):</strong> funcionamiento técnico del sitio (preferencias de tema).
+                        <li class="flex gap-3">
+                            <span class="font-bold text-brandGreen">&bull;</span>
+                            <span><strong>Interés legítimo (limitado):</strong> funcionamiento técnico del sitio (preferencias de tema, logs de hosting).</span>
                         </li>
                     </ul>
                     <p class="mt-4 text-sm italic">Puedes retirar el consentimiento en cualquier momento (ver sección Derechos).</p>
@@ -209,87 +204,140 @@
 
                 <section>
                     <h2 class="text-2xl font-bold text-brandGreen mb-4 flex items-center gap-3">
-                        <span class="text-brandYellow">5.</span> Destinatarios de los datos
+                        <span class="text-brandYellow">5.</span> Cookies y tecnologías similares
+                    </h2>
+                    <p>Aplicamos <strong>Privacidad por Diseño</strong>: Google Analytics (a través de Google Tag Manager) está desactivado por defecto. No se instala ni activa ninguna cookie de análisis hasta que pulses explícitamente "Aceptar" en el banner de consentimiento de cookies.</p>
+                    
+                    <div class="overflow-x-auto custom-scrollbar rounded-2xl border border-gray-100 dark:border-gray-800 mt-6">
+                        <table class="w-full text-left text-xs md:text-sm min-w-[600px]">
+                            <thead class="bg-gray-50 dark:bg-gray-900 text-brandGreen">
+                                <tr>
+                                    <th class="px-4 py-3 font-bold">Tipo de Cookie</th>
+                                    <th class="px-4 py-3 font-bold">Propósito</th>
+                                    <th class="px-4 py-3 font-bold">Herramientas</th>
+                                    <th class="px-4 py-3 font-bold">Consentimiento</th>
+                                    <th class="px-4 py-3 font-bold">Duración</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                                <tr>
+                                    <td class="px-4 py-4 font-bold">Necesarias</td>
+                                    <td class="px-4 py-4">Funcionamiento básico del sitio (preferencias de tema, navegación)</td>
+                                    <td class="px-4 py-4 italic">localStorage del navegador</td>
+                                    <td class="px-4 py-4 text-rose-500 font-bold">No</td>
+                                    <td class="px-4 py-4">Sesión o persistente (hasta borrado manual)</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-4 font-bold">Análisis / Rendimiento</td>
+                                    <td class="px-4 py-4">Medir visitas, fuentes de tráfico, detectar errores 404, identificar servicios populares</td>
+                                    <td class="px-4 py-4 italic">Google Tag Manager (GTM) + Analytics (GA4)</td>
+                                    <td class="px-4 py-4 text-brandGreen font-bold">Sí (explícito vía banner)</td>
+                                    <td class="px-4 py-4">Hasta 2 años o según configuración</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="mt-8 space-y-4">
+                        <h4 class="font-bold text-brandGreen">Flujo técnico de activación (Gestión GTM):</h4>
+                        <ul class="list-disc pl-6 space-y-2 text-sm">
+                            <li>Al cargar la página, GTM se inicializa en modo de consentimiento por defecto ("denied" para analytics_storage).</li>
+                            <li>El banner de cookies muestra las opciones: "Aceptar", "Rechazar" o "Ver más".</li>
+                            <li>Al pulsar "Aceptar", se dispara un evento personalizado llamado <code>cookies_aceptadas</code> que actualiza el estado de consentimiento vía la API de Consent Mode de Google (<code>gtag('consent', 'update', { 'analytics_storage': 'granted' })</code>).</li>
+                            <li>Esto activa las etiquetas de Google Analytics en GTM, permitiendo el envío de datos anonimizados.</li>
+                            <li>Si rechazas o no respondes, las etiquetas no se disparan y no se envían datos a Google.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section>
+                    <h2 class="text-2xl font-bold text-brandGreen mb-4 flex items-center gap-3">
+                        <span class="text-brandYellow">6.</span> Destinatarios de los datos
                     </h2>
                     <p>No vendemos, alquilamos ni compartimos datos con terceros con fines comerciales. Los únicos destinatarios son:</p>
-                    <ul class="list-disc pl-6 space-y-2 mt-2">
+                    <ul class="list-disc pl-6 space-y-2 mt-4">
                         <li><strong>Equipo interno de Académika Plus:</strong> personas naturales que ejecutan trabajos o evalúan postulaciones.</li>
-                        <li><strong>Google Drive:</strong> plataforma temporal, solo para archivos/CV que tú subas voluntariamente.</li>
+                        <li><strong>Google Drive:</strong> temporal, solo para archivos/CV que subas voluntariamente.</li>
                         <li><strong>WhatsApp:</strong> plataforma de mensajería cifrada de extremo a extremo.</li>
+                        <li><strong>Google:</strong> solo para Analytics vía GTM, datos agregados/anonimizados y con consentimiento; Google actúa como encargado del tratamiento bajo sus políticas.</li>
                     </ul>
                 </section>
 
                 <section>
                     <h2 class="text-2xl font-bold text-brandGreen mb-4 flex items-center gap-3">
-                        <span class="text-brandYellow">6.</span> Transferencias internacionales
+                        <span class="text-brandYellow">7.</span> Transferencias internacionales
                     </h2>
-                    <p>El uso de Google Drive implica transferencia internacional de datos (servidores de Google en diferentes países). Google se adhiere a marcos como el <strong>EU-US Data Privacy Framework</strong> y ofrece cláusulas contractuales tipo. La transferencia es temporal y limitada a los archivos que tú decidas subir.</p>
+                    <p>El uso de Google Drive y Google Analytics implica transferencia internacional de datos (servidores de Google en diferentes países). Google se adhiere a marcos como <strong>EU-US Data Privacy Framework</strong> y ofrece cláusulas contractuales tipo. La transferencia es temporal/limitada (archivos subidos o datos de uso anonimizados con consentimiento).</p>
                 </section>
 
                 <section>
                     <h2 class="text-2xl font-bold text-brandGreen mb-4 flex items-center gap-3">
-                        <span class="text-brandYellow">7.</span> Plazo de conservación
+                        <span class="text-brandYellow">8.</span> Plazo de conservación
                     </h2>
                     <ul class="space-y-4">
                         <li class="flex items-start gap-3">
-                            <i data-lucide="clock" class="w-5 h-5 text-brandYellow shrink-0 mt-1"></i>
-                            <span><strong>Datos de pedidos:</strong> No se almacenan en la web; existen solo en el chat de WhatsApp mientras la conversación esté activa.</span>
+                            <i data-lucide="calendar-clock" class="w-5 h-5 text-brandYellow mt-1 shrink-0"></i>
+                            <span><strong>Datos de pedidos:</strong> no se almacenan en la web; existen solo en el chat de WhatsApp mientras la conversación esté activa.</span>
                         </li>
                         <li class="flex items-start gap-3">
-                            <i data-lucide="clock" class="w-5 h-5 text-brandYellow shrink-0 mt-1"></i>
-                            <span><strong>Archivos subidos a Drive (pedidos o CV):</strong> Eliminados inmediatamente después de entregar el trabajo o finalizar el proceso de selección, o a solicitud tuya (máximo 30 días naturales tras entrega final o cierre de vacante, salvo requerimiento legal).</span>
+                            <i data-lucide="calendar-clock" class="w-5 h-5 text-brandYellow mt-1 shrink-0"></i>
+                            <span><strong>Archivos subidos a Drive (pedidos o CV):</strong> eliminados inmediatamente después de entregar el trabajo / finalizar proceso de selección, o a solicitud tuya (máximo 30 días naturales tras entrega final).</span>
                         </li>
                         <li class="flex items-start gap-3">
-                            <i data-lucide="clock" class="w-5 h-5 text-brandYellow shrink-0 mt-1"></i>
-                            <span><strong>Datos de postulantes no seleccionados:</strong> Máximo 12 meses para posibles futuras oportunidades (luego se eliminan o anonimizan).</span>
+                            <i data-lucide="calendar-clock" class="w-5 h-5 text-brandYellow mt-1 shrink-0"></i>
+                            <span><strong>Datos de postulantes no seleccionados:</strong> máximo 12 meses para posibles futuras oportunidades (luego se eliminan o anonimizan).</span>
                         </li>
                         <li class="flex items-start gap-3">
-                            <i data-lucide="clock" class="w-5 h-5 text-brandYellow shrink-0 mt-1"></i>
-                            <span><strong>Datos técnicos (logs):</strong> Eliminados según política del hosting (generalmente días o semanas).</span>
+                            <i data-lucide="calendar-clock" class="w-5 h-5 text-brandYellow mt-1 shrink-0"></i>
+                            <span><strong>Datos técnicos (logs):</strong> eliminados según política del hosting (generalmente días/semanas).</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="calendar-clock" class="w-5 h-5 text-brandYellow mt-1 shrink-0"></i>
+                            <span><strong>Datos de Analytics:</strong> agregados y anonimizados; conservados según configuración de GA (máximo 14-26 meses).</span>
                         </li>
                     </ul>
                 </section>
 
                 <section>
                     <h2 class="text-2xl font-bold text-brandGreen mb-4 flex items-center gap-3">
-                        <span class="text-brandYellow">8.</span> Tus derechos según la LOPDP (Arts. 12 a 18)
+                        <span class="text-brandYellow">9.</span> Tus derechos según la LOPDP (Arts. 12 a 18)
                     </h2>
-                    <p class="mb-4 font-bold uppercase text-sm tracking-wider">Tienes derecho a:</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm mb-6">
-                        <div class="bg-gray-50 dark:bg-gray-900 p-4 rounded-xl border-l-4 border-brandGreen"><strong>Acceso:</strong> saber qué datos tenemos de ti.</div>
-                        <div class="bg-gray-50 dark:bg-gray-900 p-4 rounded-xl border-l-4 border-brandGreen"><strong>Rectificación:</strong> corregir datos inexactos.</div>
-                        <div class="bg-gray-50 dark:bg-gray-900 p-4 rounded-xl border-l-4 border-brandGreen"><strong>Eliminación:</strong> solicitar borrado cuando ya no sean necesarios.</div>
-                        <div class="bg-gray-50 dark:bg-gray-900 p-4 rounded-xl border-l-4 border-brandGreen"><strong>Oposición:</strong> oponerte al tratamiento.</div>
-                        <div class="bg-gray-50 dark:bg-gray-900 p-4 rounded-xl border-l-4 border-brandGreen"><strong>Portabilidad:</strong> recibir copia de tus datos.</div>
-                        <div class="bg-gray-50 dark:bg-gray-900 p-4 rounded-xl border-l-4 border-brandGreen"><strong>No decisiones automatizadas:</strong> no aplicable (no usamos algoritmos).</div>
+                    <p class="mb-4 font-bold">Tienes derecho a:</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm italic">
+                        <div class="p-3 bg-gray-50 dark:bg-gray-900 rounded-lg">Acceso: saber qué datos tenemos de ti.</div>
+                        <div class="p-3 bg-gray-50 dark:bg-gray-900 rounded-lg">Rectificación y actualización: corregir datos inexactos.</div>
+                        <div class="p-3 bg-gray-50 dark:bg-gray-900 rounded-lg">Eliminación (cancelación): solicitar borrado.</div>
+                        <div class="p-3 bg-gray-50 dark:bg-gray-900 rounded-lg">Oposición: oponerte al tratamiento.</div>
+                        <div class="p-3 bg-gray-50 dark:bg-gray-900 rounded-lg">Portabilidad: recibir copia de tus datos.</div>
+                        <div class="p-3 bg-gray-50 dark:bg-gray-900 rounded-lg">No ser objeto de decisiones automatizadas.</div>
                     </div>
-                    <p class="mb-4"><strong>Cómo ejercerlos:</strong> Envía tu solicitud por WhatsApp (<strong>+593 99 545 8260</strong>) o correo (<strong>academika.plus@gmail.com</strong>) indicando el derecho y tu identificación. Responderemos en máximo <strong>15 días hábiles</strong> (LOPDP Art. 40).</p>
-                    <p class="text-xs italic">También puedes presentar un reclamo ante la Superintendencia de Protección de Datos Personales (SPDP) si consideras que no hemos atendido tu derecho.</p>
+                    <p class="mt-6"><strong>Cómo ejercerlos:</strong> envía tu solicitud por WhatsApp (<strong>+593 99 545 8260</strong>) o correo (<strong>academika.plus@gmail.com</strong>). Responderemos en máximo <strong>15 días hábiles</strong> (LOPDP Art. 40).</p>
                 </section>
 
                 <section>
                     <h2 class="text-2xl font-bold text-brandGreen mb-4 flex items-center gap-3">
-                        <span class="text-brandYellow">9.</span> Medidas de seguridad
+                        <span class="text-brandYellow">10.</span> Medidas de seguridad
                     </h2>
                     <p>Aunque no almacenamos datos en nuestra web, aplicamos:</p>
-                    <ul class="list-disc pl-6 space-y-2 mt-2">
-                        <li>Conexión HTTPS cifrada en todo el sitio.</li>
-                        <li>Canales de WhatsApp Business con cifrado de extremo a extremo.</li>
-                        <li>Permisos restringidos y eliminación proactiva de carpetas en Google Drive.</li>
-                        <li>No utilizamos cookies de seguimiento ni herramientas de analytics invasivas.</li>
+                    <ul class="list-disc pl-6 space-y-2 mt-4">
+                        <li>Conexión HTTPS en todo el sitio.</li>
+                        <li>WhatsApp Business (cifrado de extremo a extremo).</li>
+                        <li>Permisos restringidos y eliminación proactiva en Google Drive.</li>
+                        <li>Modo de consentimiento en GTM para desactivar Analytics por defecto.</li>
+                        <li>No usamos cookies de seguimiento invasivas sin consentimiento.</li>
                     </ul>
                 </section>
 
                 <section>
                     <h2 class="text-2xl font-bold text-brandGreen mb-4 flex items-center gap-3">
-                        <span class="text-brandYellow">10.</span> Cambios en esta Política
+                        <span class="text-brandYellow">11.</span> Cambios en esta Política
                     </h2>
                     <p>Cualquier modificación será publicada en esta página. Si los cambios son significativos (ej. nuevo tratamiento de datos), te notificaremos por WhatsApp si ya hemos tenido contacto previo.</p>
                 </section>
 
                 <section>
                     <h2 class="text-2xl font-bold text-brandGreen mb-4 flex items-center gap-3">
-                        <span class="text-brandYellow">11.</span> Contacto
+                        <span class="text-brandYellow">12.</span> Contacto
                     </h2>
                     <p>Para dudas, ejercicio de derechos o reclamos:</p>
                     <ul class="list-none space-y-2 mt-4">
@@ -408,25 +456,31 @@
         </div>
     </footer>
     
-    <!-- BANNER DE COOKIES -->
-    <div id="cookie-banner" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-2xl hidden-banner">
-        <div class="glass border border-gray-200 dark:border-gray-800 rounded-3xl p-6 shadow-2xl flex flex-col md:flex-row items-center gap-6">
-            <div class="flex-shrink-0 w-14 h-14 bg-brandYellow/10 text-brandYellow rounded-2xl flex items-center justify-center">
-                <i data-lucide="cookie" class="w-8 h-8"></i>
+    <!-- BANNER DE COOKIES REDISEÑADO -->
+    <div id="cookie-banner" class="fixed bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-[100] w-[92%] max-w-4xl hidden-banner">
+        <div class="glass dark:bg-brandDark/95 border border-gray-200 dark:border-gray-800 rounded-[2rem] p-5 md:p-6 shadow-2xl flex flex-col md:flex-row items-center gap-5 md:gap-8">
+            <!-- Icono oculto en móvil para ahorrar espacio -->
+            <div class="hidden md:flex flex-shrink-0 w-12 h-12 bg-brandYellow/10 text-brandYellow rounded-2xl items-center justify-center">
+                <i data-lucide="cookie" class="w-6 h-6"></i>
             </div>
-            <div class="flex-grow text-center md:text-left">
-                <h4 class="font-bold text-lg mb-1">¡Usamos cookies! 🍪</h4>
-                <p class="text-sm text-slate-600 dark:text-slate-400">
-                    Utilizamos cookies técnicas para mejorar tu experiencia. Puedes leer más en nuestra 
+            
+            <div class="flex-grow text-center md:text-left space-y-1">
+                <h4 class="font-bold text-base md:text-lg flex items-center justify-center md:justify-start gap-2">
+                    <span class="md:hidden"><i data-lucide="cookie" class="w-4 h-4 text-brandYellow"></i></span>
+                    Tu privacidad nos importa 🍪
+                </h4>
+                <p class="text-xs md:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Usamos cookies para mejorar tu experiencia. Al hacer clic en "Aceptar", activas Google Analytics para ayudarnos a mejorar. Consulta nuestra 
                     <a href="/legal/pdc" class="text-brandGreen font-bold hover:underline">Política de Cookies</a>.
                 </p>
             </div>
-            <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-                <button id="accept-cookies" class="bg-brandGreen text-white px-6 py-3 rounded-xl font-bold hover:bg-green-600 transition shadow-lg shrink-0">
+            
+            <div class="flex flex-col sm:flex-row gap-2 w-full md:w-auto shrink-0">
+                <button id="accept-cookies" class="w-full sm:w-auto bg-brandGreen text-white px-8 py-2.5 rounded-xl font-bold hover:bg-green-600 transition shadow-lg text-sm">
                     Aceptar
                 </button>
-                <a href="/legal/pdc" class="bg-gray-100 dark:bg-gray-800 px-6 py-3 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition text-center shrink-0">
-                    Ver más
+                <a href="/legal/pdc" class="w-full sm:w-auto bg-gray-100 dark:bg-gray-800 px-6 py-2.5 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition text-center text-sm">
+                    Más info
                 </a>
             </div>
         </div>
@@ -480,6 +534,12 @@
 
         function activarRastreoGTM() {
             window.dataLayer = window.dataLayer || [];
+            // Actualización de Consent Mode si se utiliza gtag
+            if (typeof gtag === 'function') {
+                gtag('consent', 'update', {
+                    'analytics_storage': 'granted'
+                });
+            }
             window.dataLayer.push({
                 'event': 'cookies_aceptadas'
             });
@@ -488,12 +548,10 @@
         function initCookies() {
             const accepted = localStorage.getItem('cookies-accepted');
             if (!accepted) {
-                // Si no ha aceptado, mostramos el banner
                 setTimeout(() => {
                     cookieBanner.classList.remove('hidden-banner');
                 }, 1000); 
             } else {
-                // Si ya aceptó antes (en index u otra página), activamos rastreo
                 cookieBanner.style.display = 'none';
                 activarRastreoGTM();
             }

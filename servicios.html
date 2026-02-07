@@ -75,12 +75,13 @@
             animation: pulse-gold 2s infinite;
         }
 
-        /* Estilos del Banner de Cookies */
+        /* Estilos mejorados del Banner de Cookies */
         #cookie-banner {
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
         }
         #cookie-banner.hidden-banner {
-            transform: translate(-50%, 150%);
+            transform: translate(-50%, 150%) scale(0.95);
             opacity: 0;
             pointer-events: none;
         }
@@ -425,25 +426,31 @@
         </div>
     </footer>
     
-    <!-- BANNER DE COOKIES -->
-    <div id="cookie-banner" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-2xl hidden-banner">
-        <div class="glass border border-gray-200 dark:border-gray-800 rounded-3xl p-6 shadow-2xl flex flex-col md:flex-row items-center gap-6">
-            <div class="flex-shrink-0 w-14 h-14 bg-brandYellow/10 text-brandYellow rounded-2xl flex items-center justify-center">
-                <i data-lucide="cookie" class="w-8 h-8"></i>
+    <!-- BANNER DE COOKIES REDISEÑADO -->
+    <div id="cookie-banner" class="fixed bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-[100] w-[92%] max-w-4xl hidden-banner">
+        <div class="glass dark:bg-brandDark/95 border border-gray-200 dark:border-gray-800 rounded-[2rem] p-5 md:p-6 shadow-2xl flex flex-col md:flex-row items-center gap-5 md:gap-8">
+            <!-- Icono oculto en móvil para ahorrar espacio -->
+            <div class="hidden md:flex flex-shrink-0 w-12 h-12 bg-brandYellow/10 text-brandYellow rounded-2xl items-center justify-center">
+                <i data-lucide="cookie" class="w-6 h-6"></i>
             </div>
-            <div class="flex-grow text-center md:text-left">
-                <h4 class="font-bold text-lg mb-1">¡Usamos cookies! 🍪</h4>
-                <p class="text-sm text-slate-600 dark:text-slate-400">
-                    Utilizamos cookies técnicas para mejorar tu experiencia. Puedes leer más en nuestra 
+            
+            <div class="flex-grow text-center md:text-left space-y-1">
+                <h4 class="font-bold text-base md:text-lg flex items-center justify-center md:justify-start gap-2">
+                    <span class="md:hidden"><i data-lucide="cookie" class="w-4 h-4 text-brandYellow"></i></span>
+                    Tu privacidad nos importa 🍪
+                </h4>
+                <p class="text-xs md:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Usamos cookies para mejorar tu experiencia. Al hacer clic en "Aceptar", activas Google Analytics para ayudarnos a mejorar. Consulta nuestra 
                     <a href="/legal/pdc" class="text-brandGreen font-bold hover:underline">Política de Cookies</a>.
                 </p>
             </div>
-            <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-                <button id="accept-cookies" class="bg-brandGreen text-white px-6 py-3 rounded-xl font-bold hover:bg-green-600 transition shadow-lg shrink-0">
+            
+            <div class="flex flex-col sm:flex-row gap-2 w-full md:w-auto shrink-0">
+                <button id="accept-cookies" class="w-full sm:w-auto bg-brandGreen text-white px-8 py-2.5 rounded-xl font-bold hover:bg-green-600 transition shadow-lg text-sm">
                     Aceptar
                 </button>
-                <a href="/legal/pdc" class="bg-gray-100 dark:bg-gray-800 px-6 py-3 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition text-center shrink-0">
-                    Ver más
+                <a href="/legal/pdc" class="w-full sm:w-auto bg-gray-100 dark:bg-gray-800 px-6 py-2.5 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition text-center text-sm">
+                    Más info
                 </a>
             </div>
         </div>
