@@ -1,0 +1,21 @@
+# robots.txt para Académika Plus
+# Ubicación: https://academika-plus.github.io/robots.txt
+
+User-agent: *
+Allow: /
+Allow: /index
+Allow: /servicios
+Allow: /quienes-somos
+Allow: /contacto
+
+# Bloquear páginas de proceso y error
+Disallow: /404
+Disallow: /pedido
+Disallow: /quienes-somos/cv
+Disallow: /img/static/
+
+# Bloquear subcarpetas legales para optimizar el rastreo
+Disallow: /legal/
+
+# Ubicación del Sitemap
+Sitemap: https://academika-plus.github.io/sitemap.xml
