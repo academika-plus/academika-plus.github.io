@@ -80,6 +80,16 @@
             border-color: #22C55E !important;
             background-color: rgba(34, 197, 94, 0.1) !important;
         }
+
+        /* Estilos del Banner de Cookies */
+        #cookie-banner {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+        }
+        #cookie-banner.hidden-banner {
+            transform: translate(-50%, 150%);
+            opacity: 0;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body class="bg-white text-slate-900 dark:bg-brandDark dark:text-white transition-colors duration-300 min-h-screen flex flex-col">
@@ -452,6 +462,30 @@
             </div>
         </div>
     </footer>
+    
+    <!-- BANNER DE COOKIES -->
+    <div id="cookie-banner" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-2xl hidden-banner">
+        <div class="glass border border-gray-200 dark:border-gray-800 rounded-3xl p-6 shadow-2xl flex flex-col md:flex-row items-center gap-6">
+            <div class="flex-shrink-0 w-14 h-14 bg-brandYellow/10 text-brandYellow rounded-2xl flex items-center justify-center">
+                <i data-lucide="cookie" class="w-8 h-8"></i>
+            </div>
+            <div class="flex-grow text-center md:text-left">
+                <h4 class="font-bold text-lg mb-1">¡Usamos cookies! 🍪</h4>
+                <p class="text-sm text-slate-600 dark:text-slate-400">
+                    Utilizamos cookies técnicas para mejorar tu experiencia. Puedes leer más en nuestra 
+                    <a href="/legal/pdc" class="text-brandGreen font-bold hover:underline">Política de Cookies</a>.
+                </p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                <button id="accept-cookies" class="bg-brandGreen text-white px-6 py-3 rounded-xl font-bold hover:bg-green-600 transition shadow-lg shrink-0">
+                    Aceptar
+                </button>
+                <a href="/legal/pdc" class="bg-gray-100 dark:bg-gray-800 px-6 py-3 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition text-center shrink-0">
+                    Ver más
+                </a>
+            </div>
+        </div>
+    </div>
 
     <script>
         lucide.createIcons();
@@ -768,6 +802,44 @@
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
             updateLogos(isDark);
         });
+
+        // ==========================================
+        // LÓGICA DE COOKIES Y GOOGLE TAG MANAGER
+        // ==========================================
+        const cookieBanner = document.getElementById('cookie-banner');
+        const acceptBtn = document.getElementById('accept-cookies');
+
+        function activarRastreoGTM() {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                'event': 'cookies_aceptadas'
+            });
+        }
+
+        function initCookies() {
+            const accepted = localStorage.getItem('cookies-accepted');
+            if (!accepted) {
+                // Si no ha aceptado, mostramos el banner
+                setTimeout(() => {
+                    cookieBanner.classList.remove('hidden-banner');
+                }, 1000); 
+            } else {
+                // Si ya aceptó antes (en index u otra página), activamos rastreo
+                cookieBanner.style.display = 'none';
+                activarRastreoGTM();
+            }
+        }
+
+        acceptBtn.addEventListener('click', () => {
+            localStorage.setItem('cookies-accepted', 'true');
+            activarRastreoGTM();
+            cookieBanner.classList.add('hidden-banner');
+            setTimeout(() => {
+                cookieBanner.style.display = 'none';
+            }, 600);
+        });
+
+        window.addEventListener('load', initCookies);
     </script>
 </body>
 </html>
