@@ -1,5 +1,5 @@
 # robots.txt para Académika Plus
-# Ubicación: https://academika-plus.github.io/robots.txt
+# Ubicación: https://academika.kiro-ec.com/robots.txt
 
 User-agent: *
 Allow: /
@@ -18,4 +18,4 @@ Disallow: /img/static/
 Disallow: /legal/
 
 # Ubicación del Sitemap
-Sitemap: https://academika-plus.github.io/sitemap.xml
+Sitemap: https://academika.kiro-ec.com/sitemap.xml

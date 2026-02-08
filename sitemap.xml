@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://academika-plus.github.io/</loc>
+    <loc>https://academika.kiro-ec.com/</loc>
     <lastmod>2026-02-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://academika-plus.github.io/servicios</loc>
+    <loc>https://academika.kiro-ec.com/servicios</loc>
     <lastmod>2026-02-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://academika-plus.github.io/quienes-somos</loc>
+    <loc>https://academika.kiro-ec.com/quienes-somos</loc>
     <lastmod>2026-02-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://academika-plus.github.io/quienes-somos/metodo-pago</loc>
+    <loc>https://academika.kiro-ec.com/quienes-somos/metodo-pago</loc>
     <lastmod>2026-02-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://academika-plus.github.io/pedido</loc>
+    <loc>https://academika.kiro-ec.com/pedido</loc>
     <lastmod>2026-02-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://academika-plus.github.io/quienes-somos/cv</loc>
+    <loc>https://academika.kiro-ec.com/quienes-somos/cv</loc>
     <lastmod>2026-02-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
