@@ -1,44 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+<urlset xmlns="[enlace sospechoso eliminado]">
+  <!-- Página de Inicio -->
   <url>
     <loc>https://academika.kiro-ec.com/</loc>
-    <lastmod>2026-02-07</lastmod>
+    <lastmod>2026-02-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
+  <!-- Servicios Principales -->
+
   <url>
     <loc>https://academika.kiro-ec.com/servicios</loc>
-    <lastmod>2026-02-07</lastmod>
+    <lastmod>2026-02-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
+  <!-- Quiénes Somos e Historia -->
+
   <url>
     <loc>https://academika.kiro-ec.com/quienes-somos</loc>
-    <lastmod>2026-02-07</lastmod>
+    <lastmod>2026-02-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
+  <!-- Formulario de Pedido -->
+
   <url>
-    <loc>https://academika.kiro-ec.com/quienes-somos/metodo-pago</loc>
-    <lastmod>2026-02-07</lastmod>
+    <loc>https://academika.kiro-ec.com/pedido</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Secciones de Quiénes Somos -->
+
+  <url>
+    <loc>https://academika.kiro-ec.com/quienes-somos/reviews</loc>
+    <lastmod>2026-02-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://academika.kiro-ec.com/pedido</loc>
-    <lastmod>2026-02-07</lastmod>
+    <loc>https://academika.kiro-ec.com/quienes-somos/metodo-pago</loc>
+    <lastmod>2026-02-09</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://academika.kiro-ec.com/quienes-somos/cv</loc>
-    <lastmod>2026-02-07</lastmod>
+    <lastmod>2026-02-09</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Páginas Legales (Prioridad baja para optimizar rastreo) -->
+
+  <url>
+    <loc>https://academika.kiro-ec.com/legal/tyc</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://academika.kiro-ec.com/legal/pdp</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://academika.kiro-ec.com/legal/pdc</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://academika.kiro-ec.com/legal/pdd</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://academika.kiro-ec.com/legal/cds</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://academika.kiro-ec.com/legal/ddr</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
   </url>
 </urlset>

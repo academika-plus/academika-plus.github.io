@@ -1,21 +1,24 @@
-# robots.txt para Académika Plus
-# Ubicación: https://academika.kiro-ec.com/robots.txt
+robots.txt para Académika Plus
+
+Optimizado para mejorar el SEO y el presupuesto de rastreo (crawl budget)
+
+Ubicación: https://academika.kiro-ec.com/robots.txt
 
 User-agent: *
+
 Allow: /
 Allow: /index
 Allow: /servicios
 Allow: /quienes-somos
+Allow: /quienes-somos/reviews
+Allow: /quienes-somos/metodo-pago
 Allow: /contacto
 
-# Bloquear páginas de proceso y error
 Disallow: /404
 Disallow: /pedido
 Disallow: /quienes-somos/cv
 Disallow: /img/static/
 
-# Bloquear subcarpetas legales para optimizar el rastreo
 Disallow: /legal/
 
-# Ubicación del Sitemap
 Sitemap: https://academika.kiro-ec.com/sitemap.xml
