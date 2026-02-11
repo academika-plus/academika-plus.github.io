@@ -21,6 +21,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Lottie Player -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     
     <script>
         tailwind.config = {
@@ -48,7 +50,6 @@
             background: rgba(17, 24, 39, 0.8);
         }
 
-        /* Estilos mejorados del Banner de Cookies */
         #cookie-banner {
             transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: transform, opacity;
@@ -65,20 +66,17 @@
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PHDHQGVW"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
      
-    <!-- NAVBAR (Mismo de /) -->
+    <!-- NAVBAR -->
     <nav class="sticky top-0 z-50 glass border-b border-gray-200 dark:border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 md:h-20 items-center">
                 <div class="flex-shrink-0 flex items-center">
                     <a href="/">
-                        <!-- Logo ajustado a h-6 (24px) en móvil y h-8 (32px) en escritorio para mayor elegancia -->
                         <img id="nav-logo" class="h-6 md:h-8 w-auto transition-all duration-300" src="https://academika.kiro-ec.com/img/static/academika_color.png" alt="Académika Logo">
                     </a>
                 </div>
 
-                <!-- Menú de Escritorio -->
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="/" class="hover:text-brandGreen transition text-sm font-medium">Inicio</a>
                     <a href="/servicios" class="hover:text-brandGreen transition text-sm font-medium">Servicios</a>
@@ -87,7 +85,6 @@
                     <a href="/pedido" class="bg-brandYellow text-black px-5 py-2 rounded-full font-bold hover:shadow-lg transition transform hover:-translate-y-0.5 text-sm">Hacer Pedido</a>
                 </div>
 
-                <!-- Botón de Menú Móvil -->
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-button" class="p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
                         <i data-lucide="menu" class="w-5 h-5"></i>
@@ -96,7 +93,6 @@
             </div>
         </div>
 
-        <!-- Menú Móvil Desplegable -->
         <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-brandDark border-b border-gray-200 dark:border-gray-800 px-4 pt-2 pb-6 space-y-2">
             <a href="/" class="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg text-sm">Inicio</a>
             <a href="/servicios" class="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg text-sm">Servicios</a>
@@ -106,36 +102,58 @@
         </div>
     </nav>
 
-    <!-- 404 CONTENT -->
-    <main class="flex-grow flex items-center justify-center py-20 px-4">
-        <div class="max-w-2xl w-full text-center">
-            <div class="relative inline-block mb-8">
-                <h1 class="text-9xl font-black text-gray-100 dark:text-gray-800 select-none">404</h1>
-                <div class="absolute inset-0 flex items-center justify-center">
-                    <i data-lucide="search-x" class="w-24 h-24 text-brandYellow animate-bounce"></i>
-                </div>
+    <!-- 404 CONTENT REDESIGN -->
+    <main class="flex-grow flex flex-col items-center justify-start pt-2 pb-16 px-4">
+        
+        <!-- Bloque Superior: Animación Lottie -->
+        <div class="w-full max-w-sm md:max-w-md">
+            <lottie-player 
+                src="https://academika.kiro-ec.com/img/animated/academika.json" 
+                background="transparent" 
+                speed="1" 
+                style="width: 100%; height: auto;" 
+                loop 
+                autoplay>
+            </lottie-player>
+        </div>
+
+        <!-- Bloque Central: Error 404 Gigante -->
+        <div class="relative -mt-12 md:-mt-20">
+            <h1 class="text-[12rem] md:text-[18rem] font-black leading-none text-slate-100 dark:text-white/5 tracking-tighter select-none">
+                404
+            </h1>
+        </div>
+
+        <!-- Bloque Inferior: Mensaje y Acciones -->
+        <div class="max-w-xl text-center space-y-6 -mt-8 md:-mt-12">
+            <div class="space-y-2">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white">
+                    ¡Página extraviada!
+                </h2>
+                <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 font-medium">
+                    Parece que te has salido del mapa académico. No te preocupes, incluso a los mejores investigadores les pasa.
+                </p>
             </div>
-            
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">¡Ups! Parece que te perdiste en el campus</h2>
-            <p class="text-slate-600 dark:text-slate-400 text-lg mb-10">
-                La página que buscas ha sido removida, cambió de nombre o quizás nunca existió. No te preocupes, incluso a los mejores estudiantes les pasa.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="/" class="flex items-center justify-center gap-2 bg-brandGreen text-white px-8 py-3 rounded-full font-bold hover:bg-green-600 transition shadow-lg transform hover:-translate-y-1">
-                    <i data-lucide="home"></i>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+                <a href="/" class="group flex items-center justify-center gap-3 bg-brandGreen text-white px-10 py-4 rounded-full font-bold hover:bg-green-600 transition-all shadow-xl hover:shadow-green-500/20 transform hover:-translate-y-1 text-lg">
+                    <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i>
                     Volver al Inicio
                 </a>
-                <a href="https://wa.me/593995458260?text=%C2%BFQuer%C3%ADa%20hacer%20una%20consulta%3F" target="_blank" class="flex items-center justify-center gap-2 bg-gray-100 dark:bg-gray-800 px-8 py-3 rounded-full font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition transform hover:-translate-y-1">
-                    <i data-lucide="help-circle"></i>
-                    Pedir ayuda
+                <a href="https://wa.me/593995458260?text=%C2%BFQuer%C3%ADa%20hacer%20una%20consulta%3F" target="_blank" class="flex items-center justify-center gap-3 bg-white dark:bg-slate-800 text-slate-700 dark:text-white border-2 border-slate-200 dark:border-slate-700 px-10 py-4 rounded-full font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-all shadow-lg transform hover:-translate-y-1 text-lg">
+                    <i data-lucide="message-circle" class="w-6 h-6 text-brandGreen"></i>
+                    Pedir Ayuda
                 </a>
             </div>
+            
+            <p class="text-slate-400 dark:text-slate-500 text-sm font-light pt-4 italic">
+                ¿Buscabas algún servicio? Prueba explorando nuestro menú superior.
+            </p>
         </div>
     </main>
 
-    <!-- FOOTER (Mismo de /) -->
-    <footer class="bg-gray-100 dark:bg-black pt-16 pb-8 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
+    <!-- FOOTER -->
+    <footer class="bg-gray-100 dark:bg-black pt-16 pb-8 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300 mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
                 <div class="space-y-6">
@@ -180,13 +198,7 @@
                         </li>
                         <li class="flex items-start gap-3">
                             <i data-lucide="clock" class="w-4 h-4 mt-1 text-brandYellow"></i>
-                            <div>
-                                <p>Lun - Vie: 07h00 - 20h00</p>
-                                <p>Sab - Dom: 08h00 - 17h00</p>
-                            </div>
-                        </li>
-                        <li class="pt-4 font-bold border-t border-gray-200 dark:border-gray-800">
-                            <a href="/servicios" class="hover:text-brandGreen">Ver todos nuestros servicios</a>
+                            <div><p>Lun - Vie: 07h00 - 20h00</p><p>Sab - Dom: 08h00 - 17h00</p></div>
                         </li>
                     </ul>
                 </div>
@@ -206,46 +218,29 @@
 
             <div class="pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-6">
                 <p class="text-slate-500 dark:text-slate-500 text-sm">
-                    © <span id="current-year"></span> Académika. Todos los derechos reservados.
+                    © <span id="current-year"></span> Académika Plus. Todos los derechos reservados.
                 </p>
                 <button id="theme-toggle" class="flex items-center gap-3 px-5 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full shadow-sm hover:shadow-md transition">
-                    <span class="dark:hidden flex items-center gap-2 font-medium">
-                        <i data-lucide="moon" class="w-4 h-4"></i> Modo Noche
-                    </span>
-                    <span class="hidden dark:flex items-center gap-2 font-medium">
-                        <i data-lucide="sun" class="w-4 h-4"></i> Modo Claro
-                    </span>
+                    <span class="dark:hidden flex items-center gap-2 font-medium"><i data-lucide="moon" class="w-4 h-4"></i> Modo Noche</span>
+                    <span class="hidden dark:flex items-center gap-2 font-medium"><i data-lucide="sun" class="w-4 h-4"></i> Modo Claro</span>
                 </button>
             </div>
         </div>
     </footer>
     
-    <!-- BANNER DE COOKIES REDISEÑADO -->
+    <!-- BANNER DE COOKIES -->
     <div id="cookie-banner" class="fixed bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-[100] w-[92%] max-w-4xl hidden-banner">
         <div class="glass dark:bg-brandDark/95 border border-gray-200 dark:border-gray-800 rounded-[2rem] p-5 md:p-6 shadow-2xl flex flex-col md:flex-row items-center gap-5 md:gap-8">
-            <!-- Icono oculto en móvil para ahorrar espacio -->
-            <div class="hidden md:flex flex-shrink-0 w-12 h-12 bg-brandYellow/10 text-brandYellow rounded-2xl items-center justify-center">
-                <i data-lucide="cookie" class="w-6 h-6"></i>
-            </div>
-            
+            <div class="hidden md:flex flex-shrink-0 w-12 h-12 bg-brandYellow/10 text-brandYellow rounded-2xl items-center justify-center"><i data-lucide="cookie" class="w-6 h-6"></i></div>
             <div class="flex-grow text-center md:text-left space-y-1">
-                <h4 class="font-bold text-base md:text-lg flex items-center justify-center md:justify-start gap-2">
-                    <span class="md:hidden"><i data-lucide="cookie" class="w-4 h-4 text-brandYellow"></i></span>
-                    Tu privacidad nos importa 🍪
-                </h4>
+                <h4 class="font-bold text-base md:text-lg flex items-center justify-center md:justify-start gap-2">Tu privacidad nos importa 🍪</h4>
                 <p class="text-xs md:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                    Usamos cookies para mejorar tu experiencia. Al hacer clic en "Aceptar", activas Google Analytics para ayudarnos a mejorar. Consulta nuestra 
-                    <a href="/legal/pdc" class="text-brandGreen font-bold hover:underline">Política de Cookies</a>.
+                    Usamos cookies para mejorar tu experiencia. Al hacer clic en "Aceptar", activas Google Analytics. Consulta nuestra <a href="/legal/pdc" class="text-brandGreen font-bold hover:underline">Política de Cookies</a>.
                 </p>
             </div>
-            
             <div class="flex flex-col sm:flex-row gap-2 w-full md:w-auto shrink-0">
-                <button id="accept-cookies" class="w-full sm:w-auto bg-brandGreen text-white px-8 py-2.5 rounded-xl font-bold hover:bg-green-600 transition shadow-lg text-sm">
-                    Aceptar
-                </button>
-                <a href="/legal/pdc" class="w-full sm:w-auto bg-gray-100 dark:bg-gray-800 px-6 py-2.5 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition text-center text-sm">
-                    Más info
-                </a>
+                <button id="accept-cookies" class="w-full sm:w-auto bg-brandGreen text-white px-8 py-2.5 rounded-xl font-bold hover:bg-green-600 transition shadow-lg text-sm">Aceptar</button>
+                <a href="/legal/pdc" class="w-full sm:w-auto bg-gray-100 dark:bg-gray-800 px-6 py-2.5 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition text-center text-sm">Más info</a>
             </div>
         </div>
     </div>
@@ -256,9 +251,7 @@
 
         const menuBtn = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 
         const themeToggleBtn = document.getElementById('theme-toggle');
         const navLogo = document.getElementById('nav-logo');
@@ -267,57 +260,35 @@
         const logoBlanco = "https://academika.kiro-ec.com/img/static/academika_blanco.png";
 
         function updateLogos(isDark) {
-            if (isDark) {
-                navLogo.src = logoBlanco;
-                footerLogo.src = logoBlanco;
-            } else {
-                navLogo.src = logoColor;
-                footerLogo.src = logoColor;
-            }
+            navLogo.src = isDark ? logoBlanco : logoColor;
+            footerLogo.src = isDark ? logoBlanco : logoColor;
         }
 
         if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
             updateLogos(true);
-        } else {
-            document.documentElement.classList.remove('dark');
-            updateLogos(false);
         }
 
         themeToggleBtn.addEventListener('click', () => {
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-                updateLogos(false);
-            } else {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-                updateLogos(true);
-            }
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateLogos(isDark);
         });
 
-        // ==========================================
-        // LÓGICA DE COOKIES Y GOOGLE TAG MANAGER
-        // ==========================================
+        // LÓGICA DE COOKIES
         const cookieBanner = document.getElementById('cookie-banner');
         const acceptBtn = document.getElementById('accept-cookies');
 
         function activarRastreoGTM() {
             window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-                'event': 'cookies_aceptadas'
-            });
+            window.dataLayer.push({ 'event': 'cookies_aceptadas' });
         }
 
         function initCookies() {
             const accepted = localStorage.getItem('cookies-accepted');
             if (!accepted) {
-                // Si no ha aceptado, mostramos el banner
-                setTimeout(() => {
-                    cookieBanner.classList.remove('hidden-banner');
-                }, 1000); 
+                setTimeout(() => cookieBanner.classList.remove('hidden-banner'), 1000); 
             } else {
-                // Si ya aceptó antes (en index u otra página), activamos rastreo
                 cookieBanner.style.display = 'none';
                 activarRastreoGTM();
             }
@@ -327,9 +298,7 @@
             localStorage.setItem('cookies-accepted', 'true');
             activarRastreoGTM();
             cookieBanner.classList.add('hidden-banner');
-            setTimeout(() => {
-                cookieBanner.style.display = 'none';
-            }, 600);
+            setTimeout(() => cookieBanner.style.display = 'none', 600);
         });
 
         window.addEventListener('load', initCookies);
