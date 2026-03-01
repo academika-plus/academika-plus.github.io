@@ -4,44 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Académika Plus - Mudanza Temporal</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lottie Player -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
         body { font-family: 'Inter', sans-serif; }
+        
+        /* Efecto Glassmorphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
     </style>
 </head>
-<body class="bg-gradient-to-br from-green-500 via-teal-500 to-blue-600 flex items-center justify-center min-h-screen relative overflow-hidden">
+<body class="bg-gradient-to-br from-green-400 via-teal-500 to-blue-600 flex items-center justify-center min-h-screen relative overflow-hidden p-6 md:p-12">
     
-    <!-- Background Decorators -->
-    <div class="absolute -top-32 -left-32 w-96 h-96 bg-white opacity-10 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-10 -right-20 w-80 h-80 bg-green-300 opacity-20 rounded-full blur-2xl"></div>
+    <!-- Decoradores de fondo asimétricos y coloridos -->
+    <div class="absolute -top-32 -left-32 w-[30rem] h-[30rem] bg-white opacity-20 rounded-full blur-[80px] mix-blend-overlay pointer-events-none"></div>
+    <div class="absolute bottom-10 -right-20 w-[24rem] h-[24rem] bg-green-300 opacity-30 rounded-full blur-[80px] mix-blend-overlay pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-tr from-white/10 to-transparent opacity-50 pointer-events-none"></div>
 
-    <div class="bg-white/90 backdrop-blur-md p-10 md:p-14 rounded-[2rem] shadow-2xl max-w-lg w-full mx-4 text-center border border-white/40 transform transition-all hover:scale-[1.02] duration-500 relative z-10">
+    <!-- Contenedor Principal (Tarjeta de Cristal) -->
+    <div class="glass-card p-8 md:p-14 lg:p-16 rounded-[2.5rem] max-w-lg md:max-w-xl lg:max-w-2xl w-full text-center transform transition-all hover:scale-[1.01] duration-500 relative z-10 flex flex-col items-center shadow-2xl">
         
-        <!-- Icon -->
-        <div class="w-24 h-24 bg-gradient-to-tr from-green-400 to-teal-400 text-white rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-lg shadow-green-400/30 transform -rotate-6">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-            </svg>
+        <!-- Animación Lottie -->
+        <div class="w-48 h-48 md:w-56 md:h-56 mx-auto mb-2 flex items-center justify-center -mt-6">
+            <lottie-player 
+                src="academika.json" 
+                background="transparent"  
+                speed="1"  
+                style="width: 100%; height: 100%;"  
+                loop  
+                autoplay>
+            </lottie-player>
         </div>
 
-        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">¡Nos hemos mudado temporalmente!</h1>
+        <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900 mb-6 tracking-tight leading-tight">
+            ¡Nos hemos <br class="hidden md:block" /> mudado temporalmente!
+        </h1>
         
-        <p class="text-gray-600 mb-10 text-lg leading-relaxed">
-            Estamos realizando mejoras. Hasta mientras puedes visitarnos en nuestra nueva plataforma temporal:
+        <p class="text-gray-800 mb-10 text-base md:text-lg lg:text-xl leading-relaxed font-medium">
+            Estamos realizando mejoras para brindarte una mejor experiencia. Hasta mientras puedes visitarnos en nuestra nueva plataforma:
         </p>
 
         <a href="https://academikaplus-production.up.railway.app/" 
-           class="group relative inline-flex items-center justify-center w-full px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gray-900 border-2 border-transparent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 rounded-xl overflow-hidden shadow-xl hover:shadow-2xl">
-            <span class="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-black"></span>
-            <span class="relative flex items-center gap-2">
+           class="group relative inline-flex items-center justify-center w-full sm:w-11/12 px-6 py-4 text-base md:text-lg font-bold text-white transition-all duration-300 bg-gray-900 hover:bg-black rounded-2xl overflow-hidden shadow-xl hover:shadow-green-500/30 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-green-400">
+            <!-- Efecto Hover Botón -->
+            <span class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-green-400 to-teal-400 transition-all group-hover:h-full opacity-20 group-hover:opacity-30"></span>
+            
+            <span class="relative flex items-center gap-2 md:gap-3 drop-shadow-sm">
                 Ir a: academikaplus-production.app
-                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                <svg class="w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
             </span>
         </a>
         
-        <div class="mt-8 text-sm text-gray-400">
-            Gracias por su paciencia.
+        <div class="mt-8 text-sm md:text-base text-gray-700 font-medium opacity-80 backdrop-blur-sm">
+            Gracias por tu paciencia y confianza.
         </div>
     </div>
 </body>
